@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Cubes using aggregates and general strings.  
+     Note that entity definitions including other entity defintions must be defined in the
+	 DTD using % and referenced in the DTD.  They can then subtituted in the XML and in 
+	 XML included via entities.
+-->
+<!DOCTYPE Schema SYSTEM "dtd/mondrian.dtd" 
+[
+<!ENTITY % strings SYSTEM "strings/strings.xml">
+<!ENTITY  % conformed SYSTEM "conformed/tables.xml">
+<!ENTITY conformed-cube SYSTEM "conformed/cube.xml">
+<!ENTITY % crm SYSTEM "crm/tables.xml">
+<!ENTITY crm-cube SYSTEM "crm/cube.xml">
+<!ENTITY erpbi-role SYSTEM "roles/erpbi-role.xml">
+<!ENTITY authenticated-role SYSTEM "roles/authenticated-role.xml">
+%strings;
+%conformed;
+%crm;
+]>
+
+<Schema name="&Schema;">
+	<Parameter name="APRValue" type="Numeric" modifiable="false" defaultValue=".065">
+	</Parameter>
+	<!-- Conformed Dimensions -->
+	&conformed-cube;
+	<!-- CRM Cubes -->
+	&crm-cube;
+	<!-- User Roles --> 
+	&erpbi-role;
+	&authenticated-role;
+	<UserDefinedFunction name="getDateString" className="com.erpbi.GetDateInfo">
+	</UserDefinedFunction>
+	<UserDefinedFunction name="getCurrentDays" className="com.erpbi.GetDateInfo">
+	</UserDefinedFunction>
+</Schema>

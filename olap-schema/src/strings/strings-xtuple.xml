@@ -1,0 +1,398 @@
+<!-- 
+	Copyright 2012 Jeff Gunderson
+	Licensed under the GNU Public License, Version 3.0
+-->
+<!ENTITY FormatCurrency "$#,###.00">
+<!ENTITY FormatCount "#,###">
+<!ENTITY FormatDate "yyyy/MM/dd">
+<!ENTITY FormatRatio "#,###.00">
+<!ENTITY FormatPercent "##.00&#37;">
+
+<!ENTITY PaymentTerms "Payment Terms">
+<!ENTITY CreditLimit "Credit Limit">
+<!ENTITY DebitAmount "Amount, Debit">
+<!ENTITY CreditAmount "Amount, Credit">
+<!ENTITY BalanceAmount "Amount, Balance">
+<!ENTITY TransactionDate "Date, Transaction">
+<!ENTITY ActivityAmount "Amount, Activity">
+<!ENTITY VarianceAmount "Amount, Variance">
+<!ENTITY AssetsAmount "Amount, Assets (BS)">
+<!ENTITY LiabilitiesAmount "Amount, Liabilities (BS)">
+<!ENTITY OwnersEquityAmount "Amount, Owner's Equity (BS)">
+<!ENTITY RevenueAmount "Amount, Revenue (IS)">
+<!ENTITY ChangesRevenueAmount "Amount, Changes in Revenue (IS)">
+<!ENTITY ExpensesAmount "Amount, Expenses (IS)">
+<!ENTITY NetIncomeAmount "Amount, Net Income (IS)">
+<!ENTITY IncomeAmount "Amount, Income (IS)">
+<!ENTITY NCFAmount "Amount, Net Cash Flow (CF)">
+<!ENTITY FCFAmount "Amount, Free Cash Flow">
+<!ENTITY FinancingAmount "Amount, Financing Activities (CF)">
+<!ENTITY InvestingActivitiesAmount "Amount, Investing Activities (CF)">
+<!ENTITY OperatingActivitiesAmount "Amount, Operating Activities (CF)">
+<!ENTITY CSEAmount "Amount, Common Stock and Equity (CF)">
+<!ENTITY ChangesCSEAmount "Amount, Changes in Common Stock and Equity (CF)">
+<!ENTITY ChangesLongTermDebtAmount "Amount, Changes in Long Term Debt (CF)">
+<!ENTITY ChangesOtherAssetsAmount "Amount, Changes in Other Assets (CF)">
+<!ENTITY ChangesPPEAmount "Amount, Changes in Property Plant and Equipment (CF)">
+<!ENTITY AccountsPayableAmount "Amount, Accounts Payable (CF)">
+<!ENTITY ChangesAccountsPayableAmount "Amount, Changes in Accounts Payable (CF)">
+<!ENTITY ChangeLiabilityAmount "Amount, Change in Current Liability (CF)">
+<!ENTITY LiabilityAmount "Amount, Current Liability (CF)">
+<!ENTITY InventoryAmount "Amount, Inventory (CF)">
+<!ENTITY ChangesInventoryAmount "Amount, Changes in Inventory (CF)">
+<!ENTITY NetReceivablesAmount "Amount, Net Receivables (CF)">
+<!ENTITY ChangesReceivablesAmount "Amount, Changes in Receivables (CF)">
+<!ENTITY ChangesAssetsAmount "Amount, Changes in Current Assets (CF)">
+<!ENTITY CurrentAssetsAmount "Amount, Current Assets (CF)">
+<!ENTITY ChargesAmount "Amount, Charges Not Using Cash (CF)">
+<!ENTITY OwnersEquityAmount "Amount, Owner's Equity (BS)">
+<!ENTITY COGSAmount "Amount, Cost of Goods Sold (IS)">
+<!ENTITY ChangesCOGSAmount "Amount, Changes in Cost of Goods Sold (IS)">
+<!ENTITY DepreciationAmount "Amount, Depreciation (IS)">
+<!ENTITY OperatingExpensesAmount "Amount, Operating Expenses (IS)">
+<!ENTITY OperatingIncomeAmount "Amount, Operating Income (IS)">
+<!ENTITY NetMarginPercentage "Percentage, Net Margin" >
+<!ENTITY MarginPercentage "Percentage, Margin" >
+<!ENTITY OperatingMarginPercentage "Percentage, Operating Margin" >
+<!ENTITY SalesIncomeAmount "Amount, Sales Income">
+<!ENTITY SalesIncomeBudgetAmount "Amount, Sales Income Budget">
+<!ENTITY OtherIncomeAmount "Amount, Other Income (CF)">
+<!ENTITY OtherIncomeBudgetAmount "Amount, Other Income Budget (CF)">
+
+<!ENTITY DaysInInventory "Days, In Inventory" >
+<!ENTITY DaysSalesOutstanding "Days, Sales Outstanding" >
+<!ENTITY DaysPayableOutstanding "Days, Payable Outstanding" >
+<!ENTITY DaysCCC "Days, Cash Conversion Cycle" >
+
+<!ENTITY ratioDebtEquity "Ratio, Debt to Equity" >
+<!ENTITY ratioTotalDebt "Ratio, Total Debt" >
+<!ENTITY ratioCurrent "Ratio, Current" >
+<!ENTITY ratioQuick "Ratio, Quick" >
+<!ENTITY ratioReturnAssets "Ratio, Return on Assets" >
+<!ENTITY ratioReturnEquity "Ratio, Return on Equity" >
+
+<!ENTITY RevenueBudgetAmount "Amount, Revenue Budget (IS)">
+<!ENTITY ChangesRevenueBudgetAmount "Amount, Changes in Revenue Budget (IS)">
+<!ENTITY ExpensesBudgetAmount "Amount, Expenses Budget (IS)">
+<!ENTITY NetIncomeBudgetAmount "Amount, Net Income Budget (IS)">
+<!ENTITY FinancingBudgetAmount "Amount, Financing Activities Budget (CF)">
+<!ENTITY InvestingActivitiesBudgetAmount "Amount, Investing Activities Budget (CF)">
+<!ENTITY OperatingActivitiesBudgetAmount "Amount, Operating Activities Budget (CF)">
+<!ENTITY CSEBudgetAmount "Amount, Common Stock and Equity Budget (CF)">
+<!ENTITY ChangesCSEBudgetAmount "Amount, Changes in Common Stock and Equity Budget (CF)">
+<!ENTITY ChangesLongTermDebtBudgetAmount "Amount, Changes in Long Term Debt Budget (CF)">
+<!ENTITY ChangesOtherAssetsBudgetAmount "Amount, Changes in Other Assets Budget (CF)">
+<!ENTITY ChangesPPEBudgetAmount "Amount, Changes in Property Plant and Equipment Budget (CF)">
+<!ENTITY AccountsPayableBudgetAmount "Amount, Accounts Payable Budget (CF)">
+<!ENTITY ChangesAccountsPayableBudgetAmount "Amount, Changes in Accounts Payable Budget (CF)">
+<!ENTITY ChangeLiabilityBudgetAmount "Amount, Change in Current Liability Budget (CF)">
+<!ENTITY LiabilityBudgetAmount "Amount, Current Liability Budget (CF)">
+<!ENTITY InventoryBudgetAmount "Amount, Inventory Budget (CF)">
+<!ENTITY ChangesInventoryBudgetAmount "Amount, Changes in Inventory Budget (CF)">
+<!ENTITY NetReceivablesBudgetAmount "Amount, Net Receivables Budget (CF)">
+<!ENTITY ChangesReceivablesBudgetAmount "Amount, Changes in Receivables Budget (CF)">
+<!ENTITY ChangesAssetsBudgetAmount "Amount, Changes in Current Assets Budget (CF)">
+<!ENTITY CurrentAssetsBudgetAmount "Amount, Current Assets Budget (CF)">
+<!ENTITY ChargesBudgetAmount "Amount, Charges Not Using Cash Budget (CF)">
+<!ENTITY OwnersEquityBudgetAmount "Amount, Owner's Equity Budget (BS)">
+<!ENTITY COGSBudgetAmount "Amount, Cost of Goods Sold Budget (IS)">
+<!ENTITY ChangesCOGSBudgetAmount "Amount, Changes in Cost of Goods Sold Budget (IS)">
+<!ENTITY OperatingExpensesBudgetAmount "Amount, Operating Expenses Budget (IS)">
+<!ENTITY OperatingIncomeBudgetAmount "Amount, Operating Income Budget (IS)">
+<!ENTITY BudgetAmount "Amount, Budget" >
+<!ENTITY ActivityBudgetAmount "Amount, Activity Budget" >
+<!ENTITY NCFBudgetAmount "Amount, Net Cash Flow Budget (CF)">
+
+<!ENTITY DaysInInventoryBudget "Days, In Inventory Budget" >
+<!ENTITY DaysSalesOutstandingBudget "Days, Sales Outstanding Budget" >
+<!ENTITY DaysPayableOutstandingBudget "Days, Payable Outstanding Budget" >
+<!ENTITY DaysCCCBudget "Days, Cash Conversion Cycle Budget" >
+
+<!ENTITY Company "Company">
+<!ENTITY CompanyAll "All Companies by Name">
+<!ENTITY CompanyByName "Company by Name">
+<!ENTITY CompanyName "Company Name">
+<!ENTITY CompanyKey "Company Number">
+<!ENTITY CompanyCodeAll "All Companies by Number">
+<!ENTITY CompanyByCode "Company by Number">
+<!ENTITY CompanyCode "Company Number">
+<!ENTITY CompanyCount "Count, Company">
+
+<!ENTITY CityBill "Bill-To City">
+<!ENTITY CityBillAll "All Bill-To Cities">
+<!ENTITY CityBillByRegionByCountry "Bill-To Cities by State by Country">
+<!ENTITY CityBillName "City">
+<!ENTITY CityShip "Ship-To City">
+<!ENTITY CityShipAll "All Ship-To Cities">
+<!ENTITY CityShipByRegionByCountry "Ship-To Cities by Region by Country">
+<!ENTITY CityShipName "City">
+<!ENTITY CityCountryName "Country">
+<!ENTITY CityRegionCode "Region">
+<!ENTITY CityName "City">
+<!ENTITY CityLogitude "Logitude">
+<!ENTITY CityLatitude "Latitude">
+
+<!ENTITY RegionBill "Bill-To Region">
+<!ENTITY RegionBillAll "All Bill-To States">
+<!ENTITY RegionShip "Ship-To Region">
+<!ENTITY RegionShipAll "All Ship-To Regions">
+<!ENTITY RegionName "Region">
+
+<!ENTITY BusinessUnit "Business Unit">
+<!ENTITY BusinessUnitAll "All Business Units by Name">
+<!ENTITY BusinessUnitByName "Business Unit by Name">
+<!ENTITY BusinessUnitName "Business Unit Name">
+<!ENTITY BusinessUnitKey "Business Unit Number">
+<!ENTITY BusinessUnitCodeAll "All Business Units by Number">
+<!ENTITY BusinessUnitByCode "Business Unit by Number">
+<!ENTITY BusinessUnitCode "Business Unit Number">
+<!ENTITY BusinessUnitCount "Count, Business Unit">
+
+<!ENTITY ProfitCenter "Profit Center">
+<!ENTITY ProfitCenterAll "All Profit Centers by Name">
+<!ENTITY ProfitCenterByName "Profit Center by Name">
+<!ENTITY ProfitCenterName "Profit Center Name">
+<!ENTITY ProfitCenterKey "Profit Center Number">
+<!ENTITY ProfitCenterCodeAll "All Profit Centers by Number">
+<!ENTITY ProfitCenterByCode "Profit Center by Number">
+<!ENTITY ProfitCenterCode "Profit Center Number">
+<!ENTITY ProfitCenterCount "Count, Profit Center">
+
+<!ENTITY Product "Item">
+<!ENTITY ProductAll "All Items by Name">
+<!ENTITY ProductByName "Item by Name">
+<!ENTITY ProductName "Item Name">
+<!ENTITY ProductKey "Item Number">
+<!ENTITY ProductCodeAll "All Items">
+<!ENTITY ProductByCode "Item">
+<!ENTITY ProductCode "Item Number">
+<!ENTITY ProductCategoryAll "All Items by Category">
+<!ENTITY ProductByCategory "Item by Category">
+<!ENTITY ProductCategory "Item Category">
+<!ENTITY ProductClassAll "All Items by Class">
+<!ENTITY ProductByClass "Item by Class">
+<!ENTITY ProductClass "Item Class">
+<!ENTITY ProductTypeAll "All Items by Type">
+<!ENTITY ProductByType "Item by Type">
+<!ENTITY ProductType "Item Type">
+<!ENTITY ProductCategoryCodeAll "All Items by Category">
+<!ENTITY ProductByCategoryCode "Item by Category">
+<!ENTITY ProductClassCodeAll "All Items by Class">
+<!ENTITY ProductByClassCode "Item by Class">
+<!ENTITY ProductTypeCodeAll "All Items by Type">
+<!ENTITY ProductByTypeCode "Item by Type">
+<!ENTITY ProductCount "Count, Items">
+
+<!ENTITY Division "Division">
+<!ENTITY DivisionAll "All Divisions by Name">
+<!ENTITY DivisionByName "Division by Name">
+<!ENTITY DivisionName "Division Name">
+<!ENTITY DivisionKey "Division Number">
+<!ENTITY DivisionCodeAll "All Divisions by Number">
+<!ENTITY DivisionByCode "Division by Number">
+<!ENTITY DivisionCode "Division Number">
+<!ENTITY DivisionCount "Count, Divisions">
+
+<!ENTITY Customer "Customer">
+<!ENTITY CustomerAll "All Customers by Name">
+<!ENTITY CustomerByName "Customer by Name">
+<!ENTITY CustomerName "Customer Name">
+<!ENTITY CustomerKey "Customer Number">
+<!ENTITY CustomerCodeAll "All Customers">
+<!ENTITY CustomerByCode "Customer">
+<!ENTITY CustomerCode "Customer Number">
+<!ENTITY CustomerCount "Count, Customers">
+<!ENTITY CustomerType "Customer Type">
+<!ENTITY CustomerByType "Customers By Type">
+<!ENTITY CustomerTypeAll "All Customers By Type">
+
+<!ENTITY AccountRepAll "All Sales Reps by Name">
+<!ENTITY AccountRepByName "Sales Rep by Name">
+<!ENTITY AccountRepName "Sales Rep Name">
+<!ENTITY AccountRepKey "Sales Rep Number">
+<!ENTITY AccountRepCodeAll "All Sales Reps by Number">
+<!ENTITY AccountRepByCode "Sales Rep by Number">
+<!ENTITY AccountRepCode "Sales Rep Number">
+<!ENTITY AccountRepCount "Count, Sales Reps">
+<!ENTITY AccountRep "Sales Rep">
+
+<!ENTITY CrmAccountAll "All CRM Accounts by Name">
+<!ENTITY CrmAccountByName "CRM Account by Name">
+<!ENTITY CrmAccountName "CRM Account Name">
+<!ENTITY CrmAccountKey "CRM Account Number">
+<!ENTITY CrmAccountCodeAll "All CRM Accounts by Number">
+<!ENTITY CrmAccountByCode "CRM Account by Number">
+<!ENTITY CrmAccountCode "CRM Account Number">
+<!ENTITY CrmAccountCount "Count, CRM Accounts">
+<!ENTITY CrmAccount "CRM Account">
+<!ENTITY CrmDaysS2A "Days, Start to Assigned">
+<!ENTITY CrmDaysS2T "Days, Start to Target">
+<!ENTITY CrmDaysS2C "Days, Start to Actual">
+
+<!ENTITY UserAll "All Users by Name">
+<!ENTITY UserByName "User by Name">
+<!ENTITY UserName "User Name">
+<!ENTITY UserKey "User Number">
+<!ENTITY UserCodeAll "All Users by Number">
+<!ENTITY UserByCode "User by Number">
+<!ENTITY UserCode "User Number">
+<!ENTITY UserCount "Count, Users">
+<!ENTITY User "User">
+<!ENTITY UserAssigned "Assigned User">
+
+<!ENTITY ProspectAll "All Prospects by Name">
+<!ENTITY ProspectByName "Prospect by Name">
+<!ENTITY ProspectName "Prospect Name">
+<!ENTITY ProspectKey "Prospect Number">
+<!ENTITY ProspectCodeAll "All Prospects by Number">
+<!ENTITY ProspectByCode "Prospect by Number">
+<!ENTITY ProspectCode "Prospect Number">
+<!ENTITY ProspectCount "Count, Prospects">
+<!ENTITY Prospect "Prospect">
+
+<!ENTITY Account "GL Account">
+<!ENTITY AccountAll "All GL Accounts by Name">
+<!ENTITY AccountByName "GL Account by Name">
+<!ENTITY AccountName "GL Account Name">
+<!ENTITY AccountKey "GL Account Number">
+<!ENTITY AccountNumberAll "All GL Accounts by Number">
+<!ENTITY AccountByNumber "GL Account by Number">
+<!ENTITY AccountNumber "GL Account Number">
+<!ENTITY AccountTypeSubtypeAll "All GL Accounts by Type by Subtype">
+<!ENTITY AccountByTypeSubtype "GL Account by Type by Subtype">
+<!ENTITY AccountType "GL Account Type">
+<!ENTITY AccountSubtype "GL Account Subtype">
+<!ENTITY AccountCFTypeAll "All GL Accounts by Cash Flow Type">
+<!ENTITY AccountByCFType "GL Account by Cash Flow Type">
+<!ENTITY AccountCFType "GL Account Cash Flow Type">
+
+<!ENTITY Budget "Budget" >
+<!ENTITY BudgetDoc "Budget Document" >
+<!ENTITY BudgetDocAll "All Budget Documents" >
+<!ENTITY BudgetDocByKey "Budget Document By Number" >
+<!ENTITY BudgetDocKey "Budget Document Number" >
+<!ENTITY BudgetAll "All Budgets" >
+<!ENTITY BudgetByName "Budget By Name" >
+<!ENTITY BudgetName "Budget Name" >
+<!ENTITY BudgetKey "Budget Number" >
+<!ENTITY BudgetByCode "Budget By Number" >
+<!ENTITY BudgetCodeAll "All Budgets By Number" >
+<!ENTITY BudgetCode "Budget Number" >
+
+<!ENTITY JournalDoc "GL Journal Doc">
+<!ENTITY JournalDocAll "All GL Journal Doc by Name">
+<!ENTITY JournalDocByKey "GL Journal Doc by Number">
+<!ENTITY JournalDocKey "GL Journal Doc Number">
+
+<!ENTITY JournalDocLine "GL Journal Doc Line">
+<!ENTITY JournalDocLineAll "All GL Journal Doc Lines">
+<!ENTITY JournalDocLineByDoc "GL Journal Line by Doc">
+<!ENTITY JournalDocLineKey "GL Journal Doc Line Number">
+
+<!ENTITY Ledger "Ledger">
+<!ENTITY LedgerAll "All Ledgers by Number">
+<!ENTITY LedgerByKey "Ledger by Number">
+<!ENTITY LedgerKey "Ledger Number">
+
+<!ENTITY Quote "Quote">
+<!ENTITY QuoteByKey "Quote">
+<!ENTITY QuoteKey "Quote Number">
+<!ENTITY QuoteKeyAll "All Quotes">
+<!ENTITY QuoteCount "Count, Quotes">
+<!ENTITY QuoteAmount "Amount, Quote">
+<!ENTITY QuoteActiveAmount "Amount, Active Quote">
+<!ENTITY QuoteAmountList "Amount, Customer Price">
+<!ENTITY QuoteAmountQuantity "Amount, Quote Quantity">
+<!ENTITY QuoteDiscount "Amount, Quote Discount">
+<!ENTITY QuoteAverage "Average, Quote">
+<!ENTITY QuoteDate "Date, Quote">
+<!ENTITY QuotePromise "Date, Promise">
+<!ENTITY QuoteExpire "Date, Expiration">
+<!ENTITY QuoteStatus "Quote Status">
+<!ENTITY QuoteByStatus "Quote By Status">
+<!ENTITY QuoteStatusAll "All Quotes By Status">
+
+<!ENTITY QuoteLine "Quote Line">
+<!ENTITY QuoteLineByQuote "QuoteLine by Quote">
+<!ENTITY QuoteLineKey "QuoteLine Number">
+<!ENTITY QuoteLineAll "All Quote Lines by Quote">
+
+<!ENTITY Opportunity "Opportunity">
+<!ENTITY OpportunityAll "All Opportunities">
+<!ENTITY OpportunityByKey "Opportunity">
+<!ENTITY OpportunityKey "Opportunity Number">
+<!ENTITY OpportunityKeyAll "All Opportunities">
+<!ENTITY OpportunityCount "Count, Opportunities">
+<!ENTITY OpportunityAmount "Amount, Opportunity">
+<!ENTITY OpportunityAmountList "Amount, Opportunity List">
+<!ENTITY OpportunityAverage "Average, Opportunity">
+<!ENTITY OpportunityWeightedAverage "Average, Opportunity Weighted">
+<!ENTITY OpportunityDate "Date, Opportunity">
+<!ENTITY OpportunityAssignedDate "Date, Assigned">
+<!ENTITY OpportunityTargetDate "Date, Target">
+<!ENTITY OpportunityActualDate "Date, Actual">
+<!ENTITY OpportunityStatus "Opportunity Status">
+<!ENTITY OpportunityByStatusStage "Opportunity By Status by Stage">
+<!ENTITY OpportunityByStatusStageAll "All Opportunities By Status by Stage">
+<!ENTITY OpportunityByStatusType "Opportunity By Status by Type">
+<!ENTITY OpportunityByStatusTypeAll "All Opportunities By Status by Type">
+<!ENTITY OpportunityType "Opportunity Type">
+<!ENTITY OpportunityStage "Opportunity Stage">
+<!ENTITY OpportunityAmount "Amount, Opportunity">
+<!ENTITY OpportunityAmountWeighted "Amount, Opportunity Weighted">
+<!ENTITY OpportunityProbabilityPercent "Percent, Opportunity Probability">
+<!ENTITY ForecastProbabilityPercent "Percent, Forecast Probability">
+<!ENTITY OpportunityForecast "Amount, Opportunity Forecast">
+<!ENTITY ForecastWeighted "Amount, Forecast Weighted">
+<!ENTITY ConversionRatio "Ratio, Conversion">
+<!ENTITY ConversionWeightedRatio "Ratio, Conversion Weighted">
+<!ENTITY OpportunityCount "Count, Opportunity">
+<!ENTITY OpportunityDate "Date, Opportunity">
+<!ENTITY AssignedDate "Date, Assigned">
+<!ENTITY TargetDate "Date, Target">
+<!ENTITY ActualDate "Date, Actual">
+
+<!ENTITY FiscalPeriod "Fiscal Period">
+<!ENTITY FiscalPeriodCL "Fiscal Period CL">
+<!ENTITY FiscalYear "Fiscal Year">
+<!ENTITY FiscalVariant "Fiscal Variant">
+<!ENTITY FiscalDate "Date">
+<!ENTITY FiscalDaysBegin "Days Begin Date">
+<!ENTITY FiscalDays " Date">
+<!ENTITY FiscalPeriodKey "Fiscal Period Number">
+
+<!ENTITY Period "Month/Period">
+<!ENTITY PeriodCL "Month/Period CL">
+<!ENTITY PeriodYear "Year">
+<!ENTITY PeriodPeriod "Month/Period">
+
+<!ENTITY DateAllYears "All Years">
+<!ENTITY DatePromise "Promise Date">
+<!ENTITY DateQuote "Quote Date">
+<!ENTITY DateOpportunity "Opportunity Date">
+<!ENTITY DateExpire "Expiration Date">
+<!ENTITY DateAssigned "Assigned Date">
+<!ENTITY DateTarget "Target Date">
+<!ENTITY DateActual "Actual Date">
+<!ENTITY DateCalendarPeriod "Calendar by Period">
+<!ENTITY DateCalendarWeek "Calendar by Week">
+<!ENTITY DateYear "Year">
+<!ENTITY DatePeriod "Period">
+<!ENTITY Date "Date">
+<!ENTITY DateWeek "Week">
+<!ENTITY DateCalendarMonth "Calendar by Month">
+<!ENTITY DateMonth "Month">
+
+<!ENTITY Schema "xTuple">
+
+<!ENTITY CRQuote "Quotes">
+<!ENTITY CROpportunity "Opportunities">
+<!ENTITY CROpportunityForecast "Opportunity Forecast">
+
+<!ENTITY DaysNowToExpiration "Days, Now to Expiration">
+
+<!ENTITY GLAccount "GL Account Transactions">
+<!ENTITY GLAccountbyPeriod "GL Account By Period">
+<!ENTITY GLBudgetbyPeriod "GL Budget By Period">
+<!ENTITY GLFactsbyPeriod "GL Facts By Period">
+
