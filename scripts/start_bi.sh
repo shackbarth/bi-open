@@ -15,8 +15,10 @@ log "Start BI server listening on port 8843                "
 log "######################################################"
 log "######################################################"
 log ""
-cdir ../../ErpBI/biserver-ce/
-./start-pentaho.sh
+cdir ../../ErpBI/biserver-ce/tomcat/bin/
+export CATALINA_OPTS="-Djava.awt.headless=true -Xms256m -Xmx768m -XX:MaxPermSize=256m -Dsun.rmi.dgc.client.gcInterval=3600000 -Dsun.rmi.dgc.server.gcInterval=3600000"
+JAVA_HOME=$_PENTAHO_JAVA_HOME
+sh startup.sh
 
 log ""
 log "######################################################"
