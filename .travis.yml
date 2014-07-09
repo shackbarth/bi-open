@@ -1,10 +1,11 @@
 language: c
 
 before_install:
+  - echo "Removing nvm like this is a TravisCI-specific task that you won't need to do on a real box"
   - rm -rf ~/.nvm
-  - wget git.io/hikK5g -qO- | sudo bash
 
 script:
+  - wget git.io/hikK5g -qO- | sudo bash
   - npm install -g xtuple-server
   - cd /usr/local/lib/node_modules/xtuple-server
   - nex install && nex install xtuple --nodeVersion 0.8.27
