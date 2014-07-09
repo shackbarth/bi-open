@@ -10,6 +10,7 @@ script:
   - cd /usr/local/lib/node_modules/xtuple-server
   - nex install && nex install xtuple --nodeVersion 0.8.27
   - sudo find / -type d -name xtuple
+  - ls /home/travis/.npm/xtuple
   - sudo xtuple-server install-dev --xt-version 4.5.1 --xt-name bitest --xt-quickstart --local-workspace /home/travis/.npm/xtuple
 
 after_failure:
