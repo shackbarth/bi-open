@@ -8,8 +8,13 @@ script:
   - npm install -g xtuple-server
   - cd ~/dev
   - ls -l 
-  - ls -l dev
-  - ls -l travis
+  - cd root 
+  - ls -l
+  - cd ../travis
+  - ls -l
+  - cd ~
+  - ls -l
+  - sudo find / -name preliminaries.js
   - sudo xtuple-server install-dev --xt-version 4.5.1 --xt-name bitest --xt-quickstart --local-workspace ~/dev/xtuple
 
 after_failure:
