@@ -6,7 +6,7 @@ before_install:
 
 script:
   - npm install -g xtuple-server
-  - sudo xtuple-server install-dev --xt-version 4.5.1 --xt-name cloudinator --xt-quickstart
+  - sudo xtuple-server install-dev --xt-version 4.5.1 --xt-name bitest --xt-quickstart --local-workspace ~/dev/xtuple
 
 after_failure:
   - cat /var/spool/cron/crontabs/travis
