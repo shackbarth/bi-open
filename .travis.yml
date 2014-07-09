@@ -6,7 +6,7 @@ before_install:
 
 script:
   - npm install -g xtuple-server
-  - cd
+  - cd /usr/local/lib/node_modules/xtuple-server
   - nex install && nex install xtuple --nodeVersion 0.8.27
   - sudo find / -type d -name xtuple
   - sudo xtuple-server install-dev --xt-version 4.5.1 --xt-name bitest --xt-quickstart --local-workspace ~/dev/xtuple
