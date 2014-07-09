@@ -8,6 +8,7 @@ before_install:
 script:
   - npm install -g xtuple-server
   - cd /usr/local/lib/node_modules/xtuple-server
+  - ls ..
   - sudo xtuple-server install-dev --xt-version 4.5.1 --xt-name cloudinator --xt-quickstart
 
 after_failure:
