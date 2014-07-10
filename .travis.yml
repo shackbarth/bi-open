@@ -9,8 +9,6 @@ script:
   - npm install -g xtuple-server
   - cd
   - git clone https://github.com/xtuple/xtuple.git
-  - sudo find / -type d -name node-datasource
-  - ls /home/travis/.npm/xtuple/4.5.2-r1590-5
   - sudo xtuple-server install-dev --xt-version 4.5.1 --xt-name bitest --xt-quickstart --local-workspace ~/xtuple
 
 after_failure:
