@@ -12,7 +12,8 @@ script:
   - sudo xtuple-server install-dev --xt-version 4.5.1 --xt-name bitest --xt-quickstart --local-workspace ~/xtuple
 
 after_failure:
-  - cat /var/spool/cron/crontabs/travis
-  - cat /var/spool/cron/crontabs/root
-  - cat xtuple-server.log
+  - sudo cat /var/spool/cron/crontabs/travis
+  - sudo cat /var/spool/cron/crontabs/root
+  - sudo find / -name xtuple-server.log
+  - sudo cat xtuple-server.log
   - env
