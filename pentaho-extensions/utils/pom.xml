@@ -1,0 +1,107 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.xtuple</groupId>
+  <artifactId>utils</artifactId>
+  <version>1.0</version>
+  <packaging>jar</packaging>
+
+  <name>utils</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  
+  <build>
+    <plugins>
+	<plugin>
+		<groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-compiler-plugin</artifactId>
+		<configuration>
+ 		<source>1.6</source>
+ 		<target>1.6</target>
+		</configuration>
+	</plugin>
+      <plugin>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>2.6</version>
+        <executions>
+          <execution>
+            <id>copy-resources-to-lib</id>
+            <phase>validate</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+            <overwrite>true</overwrite>
+              <outputDirectory>/${env.BISERVER_HOME}/biserver-ce/tomcat/webapps/pentaho/WEB-INF/lib</outputDirectory>
+              <resources>          
+                <resource>
+                  <directory>target</directory>
+                  <filtering>false</filtering>
+                  <includes><include>utils-1.0.jar</include></includes>
+                </resource>
+              </resources>             
+            </configuration>
+          </execution>
+          <execution>
+            <id>copy-resources-to-web-inf</id>
+            <phase>validate</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+            <overwrite>true</overwrite>
+              <outputDirectory>/${env.BISERVER_HOME}/biserver-ce/tomcat/webapps/pentaho/WEB-INF</outputDirectory>
+              <resources>          
+                <resource>
+                  <directory>src/main/resources</directory>
+                  <filtering>false</filtering>
+                  <includes><include>web.xml</include></includes>
+                </resource>
+              </resources>             
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>	
+	</plugins>
+   </build>
+  
+  	<repositories>
+  		<repository>
+    		<id>java.net</id>
+    		<url>http://download.java.net/maven/2</url>
+		</repository>
+		<repository>
+			<id>pentaho-repo</id>
+			<name>pentaho repository</name>
+			<url>http://repository.pentaho.org/artifactory/pentaho</url>
+		</repository>
+		<repository>
+			<id>pentaho-third-party</id>
+			<url>http://repo.pentaho.org/artifactory/third-party/</url>
+		</repository>
+	</repositories>
+
+  <dependencies>
+  		<dependency>
+    		<groupId>javax</groupId>
+    		<artifactId>javaee-api</artifactId>
+    		<version>6.0</version>
+    		<scope>provided</scope>
+		</dependency>
+    	<dependency>
+      		<groupId>junit</groupId>
+      		<artifactId>junit</artifactId>
+      		<version>3.8.1</version>
+      		<scope>test</scope>
+    	</dependency>
+    	<dependency>
+			<groupId>pentaho</groupId>
+			<artifactId>pentaho-bi-platform-plugin-actions</artifactId>
+			<version>4.8.0-stable</version>
+		</dependency>
+  </dependencies>
+</project>

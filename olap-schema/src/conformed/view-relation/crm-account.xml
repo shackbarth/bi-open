@@ -1,0 +1,5 @@
+ 	<View alias="CRM_ACCOUNT"> 
+		<SQL dialect="generic"> 
+			<![CDATA[select * from "ERPI"."CRM_ACCOUNT" WHERE "TENANT" = '[organization]']]> 
+		</SQL> 
+	</View>

@@ -1,0 +1,17 @@
+<!-- 
+	Copyright 2012 Jeff Gunderson
+	Licensed under the GNU Public License, Version 3.0
+-->
+<!--
+	Mondrian does not support more than one role per user.  Results are
+	unpredictable with more than one role.  Note that pentaho supports
+	multiple roles.  Mondrian roles are mapped to pentaho roles in
+	pentahoObjects.spring.xml
+-->
+<Role name="Sales">
+	<SchemaGrant access="none">
+		<CubeGrant cube="CRQuote" access="all"></CubeGrant>
+		<CubeGrant cube="CROpportunity" access="all"></CubeGrant>
+		<CubeGrant cube="CROpportunityForecast" access="all"></CubeGrant>
+	</SchemaGrant>
+</Role>

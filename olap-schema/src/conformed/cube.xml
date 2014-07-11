@@ -1,0 +1,533 @@
+  <!-- 
+	Copyright 2012 Jeff Gunderson
+	Licensed under the GNU Public License, Version 3.0
+-->  
+  <Dimension highCardinality="false" name="Company" caption="&Company;">
+    <Hierarchy hasAll="true" allMemberName="All Companies" allMemberCaption="&CompanyAll;" primaryKey="COMPANY_K" caption="&CompanyByName;">
+	&company-relation;
+      <Level name="Company Name" caption="&CompanyName;" column="COMPANY_NAME" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        <Property name="Company Key" caption="&CompanyKey;" column="COMPANY_K" type="String">
+        </Property>
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Company Code" hasAll="true" allMemberName="All Companies by Code" allMemberCaption="&CompanyCodeAll;" primaryKey="COMPANY_K" caption="&CompanyByCode;">
+	&company-relation;
+      <Level name="Company Code" caption="&CompanyCode;" column="COMPANY_NK" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        <Property name="Company Code" caption="&CompanyKey;" column="COMPANY_NK" type="String">
+		</Property>
+        <Property name="Company Name" caption="&CompanyName;" column="COMPANY_NAME" type="String">
+		</Property>
+      </Level>
+      <Level name="Company Name" caption="&CompanyName;" column="COMPANY_NAME" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension> 
+  <Dimension highCardinality="false" name="Business Unit" caption ="&BusinessUnit;">
+    <Hierarchy hasAll="true" allMemberName="All Business Units" allMemberCaption="&BusinessUnitAll;" primaryKey="BUSINESS_UNIT_K" caption="Business Units by Name">
+	&business-unit-relation;
+      <Level name="Business Unit" caption="&BusinessUnitName;" column="BUSINESS_UNIT" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        <Property name="Business Unit Key" column="BUSINESS_UNIT_K" type="String">
+        </Property>
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Business Unit Code" hasAll="true" allMemberCaption="&BusinessUnitCodeAll;" allMemberName="All Business Units by Code" primaryKey="BUSINESS_UNIT_K" caption="&BusinessUnitByCode;">
+	&business-unit-relation;
+      <Level name="Business Unit Code" caption="&BusinessUnitCode;" column="BUSINESS_UNIT_NK" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        <Property name="Business Unit Key" caption="&BusinessUnitKey;" column="BUSINESS_UNIT_K" type="String">
+        </Property>
+      </Level>
+      <Level name="Business Unit" caption= "&BusinessUnitName;" column="BUSINESS_UNIT" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        <Property name="Business Unit Key" caption="&BusinessUnitKey;" column="BUSINESS_UNIT_K" type="String">
+        </Property>
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension highCardinality="false" name="Profit Center" caption="&ProfitCenter;">
+    <Hierarchy hasAll="true" allMemberName="All Profit Centers" allMemberCaption="&ProfitCenterAll;" primaryKey="PROFIT_CENTER_K" caption="&ProfitCenterByName;">
+	&profit-center-relation;
+      <Level name="Profit Center" caption="&ProfitCenterName;" column="NAME" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        <Property name="Profit Center Key" caption="&ProfitCenterKey;" column="PROFIT_CENTER_K" type="String">
+		</Property>
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Profit Centers by Code" hasAll="true" allMemberCaption="&ProfitCenterCodeAll;" allMemberName="All Profit Centers by Code" primaryKey="PROFIT_CENTER_K" caption="Profit Centers by Code">
+	&profit-center-relation;
+      <Level name="Profit Center Code" caption="&ProfitCenterCode;" column="PROFIT_CENTER_NK" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        <Property name="Profit Center Key" column="PROFIT_CENTER_K" type="String">
+		</Property>
+      </Level>
+      <Level name="Profit Center" caption="&ProfitCenterName;" column="NAME" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        <Property name="Profit Center Key" column="PROFIT_CENTER_K" type="String">
+		</Property>
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension highCardinality="false" name="Product" caption="&Product;">
+	<!-- Simplify dimension
+    <Hierarchy hasAll="true" allMemberName="All Products" allMemberCaption="&ProductAll;" primaryKey="PRODUCT_K" caption="&ProductByName;">
+	&product-relation;
+      <Level name="Product" caption="&ProductName;" column="PRODUCT_NAME" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+	-->
+    <Hierarchy name="Product Code" hasAll="true" allMemberName="All Products by Code" allMemberCaption="&ProductCodeAll;" primaryKey="PRODUCT_K" caption="&ProductByCode;">
+	&product-relation;
+      <Level name="Product Code" caption="&ProductCode;" column="PRODUCT_NK" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        <Property name="Product Code" caption="&ProductKey;" column="PRODUCT_NK" type="String">
+        </Property>
+        <Property name="Product Name" caption="&ProductName;" column="PRODUCT_NAME" type="String">
+        </Property>
+      </Level>
+      <Level name="Product" caption="&ProductName;" column="PRODUCT_NAME" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+	<!-- Simplify dimension
+    <Hierarchy name="Product by Category" allMemberCaption="&ProductCategoryAll;" hasAll="true" allMemberName="All Products by Category" primaryKey="PRODUCT_K" caption="&ProductByCategory;">
+	&product-relation;
+      <Level name="Category" caption="&ProductCategory;" column="CATEGORY" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        <Property name="Category Name" column="CATEGORY" type="String">
+        </Property>
+      </Level>
+      <Level name="Product" caption="&ProductName;" column="PRODUCT_NAME" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+	-->
+    <Hierarchy name="Products by Category by Code" allMemberCaption="&ProductCategoryCodeAll;" hasAll="true" allMemberName="All Products by Category by Code" primaryKey="PRODUCT_K" caption="&ProductByCategoryCode;">
+	&product-relation;
+      <Level name="Category" caption="&ProductCategory;" column="CATEGORY" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        <Property name="Category Name" column="CATEGORY" type="String">
+        </Property>
+      </Level>
+      <Level name="Product Code" caption="&ProductCode;" column="PRODUCT_NK" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="Product" caption="&ProductName;" column="PRODUCT_NAME" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+	<!-- Simplify dimension
+    <Hierarchy name="Product by Class" allMemberCatpion="&ProductClassAll;" hasAll="true" allMemberName="All Products by Class" primaryKey="PRODUCT_K" caption="&ProductByClass;">
+	&product-relation;
+      <Level name="Class" caption="&ProductClass;" column="CLASS" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        <Property name="Class Name" column="CLASS" type="String">
+        </Property>      
+	</Level>
+      <Level name="Product" caption="&ProductName;" column="PRODUCT_NAME" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+	-->
+    <Hierarchy name="Products by Class by Code" allMemberCaption="&ProductClassCodeAll;" hasAll="true" allMemberName="All Products by Class by Code" primaryKey="PRODUCT_K" caption="&ProductByClassCode;">
+	&product-relation;
+      <Level name="Class" caption="&ProductClass;" column="CLASS" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        <Property name="Class Name" column="CLASS" type="String">
+        </Property> 
+      </Level>
+      <Level name="Product Code" caption="&ProductCode;" column="PRODUCT_NK" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="Product" caption="&ProductName;" column="PRODUCT_NAME" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+	<!-- Simplify dimension
+    <Hierarchy name="Product by Type" allMemberCatpion="&ProductTypeAll;" hasAll="true" allMemberName="All Products by Type" primaryKey="PRODUCT_K" caption="&ProductByType;">
+	&product-relation;
+      <Level name="Type" caption="&ProductType;" column="TYPE" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        <Property name="Type Name" column="TYPE" type="String">
+        </Property>
+      </Level>
+      <Level name="Product" caption="&ProductName;" column="PRODUCT_NAME" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+	-->
+    <Hierarchy name="Products by Type by Code" allMemberCatpion="&ProductTypeCodeAll;" hasAll="true" allMemberName="All Products by Type by Code" primaryKey="PRODUCT_K" caption="&ProductByTypeCode;">
+	&product-relation;
+      <Level name="Type" caption="&ProductType;" column="TYPE" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        <Property name="Type Name" column="TYPE" type="String">
+        </Property>
+      </Level>
+      <Level name="Product Code" caption="&ProductCode;" column="PRODUCT_NK" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="Product" caption="&ProductName;" column="PRODUCT_NAME" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+
+  <Dimension highCardinality="false" name="Account" caption="&Account;">
+    <Hierarchy hasAll="true" allMemberName="All Accounts" allMemberCaption="&AccountAll;" primaryKey="ACCOUNT_K" caption="&AccountByName;">
+      <Table name="GL_ACCOUNT" schema="ERPI">
+      </Table>
+      <Level name="Account" caption="&AccountName;" column="NAME" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        <Property name="Account Key" column="ACCOUNT_K" caption="&AccountKey;" type="String">
+        </Property>
+        <Property name="Account Name" caption="&AccountName;" column="NAME" type="String">
+        </Property>
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Account Number" hasAll="true" allMemberName="All Accounts by Number" allMemberCaption="&AccountNumberAll;" primaryKey="ACCOUNT_K" caption="&AccountByNumber;">
+      <Table name="GL_ACCOUNT" schema="ERPI">
+      </Table>
+      <Level name="Account Number" caption="&AccountNumber;" column="ACCOUNT_NK" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        <Property name="Account Key" column="ACCOUNT_K" caption="&AccountKey;" type="String">
+        </Property>
+        <Property name="Account Name" caption="&AccountName;" column="NAME" type="String">
+        </Property>
+      </Level>
+      <Level name="Account" caption="&AccountName;" column="NAME" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        <Property name="Account Key" column="ACCOUNT_K" caption="&AccountKey;" type="String">
+        </Property>
+      </Level>
+    </Hierarchy>
+
+    <Hierarchy name="Accounts by Type by Subtype" allMemberCaption="&AccountTypeSubtypeAll;" hasAll="true" allMemberName="All Accounts by Type by Subtype" primaryKey="ACCOUNT_K" caption="&AccountByTypeSubtype;">
+      <Table name="GL_ACCOUNT" schema="ERPI">
+      </Table>
+      <Level name="Type" caption="&AccountType;" column="TYPE" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="Subtype" caption="&AccountSubtype;" column="SUBTYPE" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="Account" caption="&AccountName;" column="NAME" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        <Property name="Account Key" column="ACCOUNT_K" caption="&AccountKey;" type="String">
+        </Property>
+      </Level>
+    </Hierarchy>
+
+    <Hierarchy name="Accounts by CFType" allMemberCaption="&AccountCFTypeAll;" hasAll="true" allMemberName="All Accounts by CFType" primaryKey="ACCOUNT_K" caption="&AccountByCFType;">
+      <Table name="GL_ACCOUNT" schema="ERPI">
+      </Table>
+      <Level name="CFType" caption="&AccountCFType;" column="CFTYPE" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="Account" caption="&AccountName;" column="NAME" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        <Property name="Account Key" column="ACCOUNT_K" caption="&AccountKey;" type="String">
+        </Property>
+      </Level>
+    </Hierarchy>
+  </Dimension>
+
+  <Dimension highCardinality="false" name="Division" caption="&Division;">
+    <Hierarchy hasAll="true" allMemberCaption="&DivisionAll;" allMemberName="All Divisions" primaryKey="DIVISION_K" caption="&DivisionByName;">
+	&division-relation;
+      <Level name="Division" caption="&DivisionName;" column="DIVISION_NAME" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        <Property name="Division Key" caption="&DivisionKey;" column="DIVISION_K" type="String">
+        </Property>
+      </Level>
+    </Hierarchy>
+    <Hierarchy name="Division Code" allMemberCaption="&DivisionCodeAll;" hasAll="true" allMemberName="All Divisions by Code" primaryKey="DIVISION_K" caption="&DivisionByCode;">
+	&division-relation;
+      <Level name="Division Code" catpion="&DivisionCode;" column="DIVISION_CODE" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        <Property name="Division Key" caption="&DivisionKey;" column="DIVISION_K" type="String">
+        </Property>
+      </Level>
+      <Level name="Division" caption="&DivisionName;" column="DIVISION_NAME" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        <Property name="Division Key" caption="&DivisionKey;" column="DIVISION_K" type="String">
+        </Property>
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension highCardinality="false" name="Customer" catpion="&Customer;">
+	<!-- Simplify dimension
+    <Hierarchy hasAll="true" allMemberCaption="&CustomerAll;" allMemberName="All Customers" primaryKey="CUSTOMER_K" caption="&CustomerByName;">
+	&customer-relation;
+      <Level name="Customer Name" caption="&CustomerName;" column="CUSTOMER_NAME" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        <Property name="Payment Terms" caption="&PaymentTerms;" column="PAYMENT_TERMS" type="String">
+        </Property>
+        <Property name="Credit Limit" caption="&CreditLimit;" column="CREDIT_LIMIT" type="String">
+        </Property>
+      </Level>
+    </Hierarchy>
+	-->
+    <Hierarchy name="Customer Code" allMemberCatpion="&CustomerCodeAll;" hasAll="true" allMemberName="All Customers by Code" primaryKey="CUSTOMER_K" caption="&CustomerByCode;">
+	&customer-relation;
+      <Level name="Customer Code" caption="&CustomerCode;" column="CUSTOMER_NK" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        <Property name="Customer Name" caption="&CustomerName;" column="CUSTOMER_NAME" type="String">
+		</Property>
+        <Property name="Payment Terms" caption="&PaymentTerms;" column="PAYMENT_TERMS" type="String">
+		</Property>
+        <Property name="Credit Limit" caption="&CreditLimit;" column="CREDIT_LIMIT" type="String">
+		</Property>
+        <Property name="Customer Code" caption="&CustomerKey;" column="CUSTOMER_NK" type="String">
+		</Property>
+      </Level>
+      <Level name="Customer Name" caption="&CustomerName;" column="CUSTOMER_NAME" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        <Property name="Payment Terms" caption="&PaymentTerms;" column="PAYMENT_TERMS" type="String">
+        </Property>
+        <Property name="Credit Limit" caption="&CreditLimit;" column="CREDIT_LIMIT" type="String">
+        </Property>
+      </Level>
+    </Hierarchy>
+	
+    <Hierarchy name="Customers by Type" allMemberCatpion="&CustomerTypeAll;" hasAll="true" allMemberName="All Customers by Type" primaryKey="CUSTOMER_K" caption="&CustomerByType;">
+	&customer-relation;
+	  <Level name="Customer Type" caption="&CustomerType;" column="CUSTOMER_TYPE" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="Customer Code" caption="&CustomerCode;" column="CUSTOMER_NK" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        <Property name="Customer Name" caption="&CustomerName;" column="CUSTOMER_NAME" type="String">
+		</Property>
+        <Property name="Payment Terms" caption="&PaymentTerms;" column="PAYMENT_TERMS" type="String">
+		</Property>
+        <Property name="Credit Limit" caption="&CreditLimit;" column="CREDIT_LIMIT" type="String">
+		</Property>
+        <Property name="Customer Code" caption="&CustomerKey;" column="CUSTOMER_NK" type="String">
+		</Property>
+      </Level>
+      <Level name="Customer Name" caption="&CustomerName;" column="CUSTOMER_NAME" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        <Property name="Payment Terms" caption="&PaymentTerms;" column="PAYMENT_TERMS" type="String">
+        </Property>
+        <Property name="Credit Limit" caption="&CreditLimit;" column="CREDIT_LIMIT" type="String">
+        </Property>
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension highCardinality="false" name="Account Rep" caption="&AccountRep;">
+  	<!-- Simplify dimension
+    <Hierarchy hasAll="true" allMemberCaption="&AccountRepAll;" allMemberName="All Account Reps" primaryKey="SURROGATE_K" caption="&AccountRepByName;">
+	&account-rep-relation;
+      <Level name="Account Rep Name" caption="&AccountRepName;" column="NAME" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+	-->
+    <Hierarchy hasAll="true" name="Account Reps by Code" allMemberCaption="&AccountRepCodeAll;" allMemberName="All Account Reps by Code" primaryKey="SURROGATE_K" caption="&AccountRepByCode;">
+	&account-rep-relation;
+      <Level name="Account Rep Code" caption="&AccountRepCode;" column="ID_NK" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        <Property name="Account Rep Code" caption="&AccountRepKey;" column="ID_NK" type="String">
+        </Property>
+        <Property name="Account Rep Name" caption="&AccountRepName;" column="NAME" type="String">
+        </Property>
+      </Level>
+      <Level name="Account Rep Name" caption="&AccountRepName;" column="NAME" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  
+  <Dimension highCardinality="false" name="CRM Account" caption="&CrmAccount;">
+    <Hierarchy hasAll="true" name="Account Reps by Code" allMemberCaption="&CrmAccountCodeAll;" allMemberName="All CRM Accounts by Code" primaryKey="SURROGATE_K" caption="&CrmAccountByCode;">
+	&crm-account-relation;
+      <Level name="CRM Account Code" caption="&CrmAccountCode;" column="ID_NK" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        <Property name="CRM Account Code" caption="&CrmAccountKey;" column="ID_NK" type="String">
+        </Property>
+        <Property name="CRM Account Name" caption="&CrmAccountName;" column="NAME" type="String">
+        </Property>
+      </Level>
+      <Level name="CRM Account Name" caption="&CrmAccountName;" column="NAME" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension> 
+
+  <Dimension highCardinality="false" name="User" caption="&User;">
+    <Hierarchy hasAll="true" name="Users by Code" allMemberCaption="&UserCodeAll;" allMemberName="All Users by Code" primaryKey="SURROGATE_K" caption="&UserByCode;">
+	&crm-account-relation;
+      <Level name="User Code" caption="&UserCode;" column="ID_NK" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        <Property name="User Code" caption="&UserKey;" column="ID_NK" type="String">
+        </Property>
+        <Property name="User Name" caption="&UserName;" column="NAME" type="String">
+        </Property>
+      </Level>
+      <Level name="User Name" caption="&UserName;" column="NAME" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+
+  <Dimension highCardinality="false" name="Prospect" caption="&Prospect;">
+    <Hierarchy hasAll="true" name="Prospects by Code" allMemberCaption="&ProspectCodeAll;" allMemberName="All Propsects by Code" primaryKey="SURROGATE_K" caption="&ProspectByCode;">
+	&crm-account-relation;
+      <Level name="Prospect Code" caption="&PropsectCode;" column="ID_NK" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+        <Property name="Prospect Code" caption="&ProspectKey;" column="ID_NK" type="String">
+        </Property>
+        <Property name="Prospect Name" caption="&ProspectName;" column="NAME" type="String">
+        </Property>
+      </Level>
+      <Level name="Prospect Name" caption="&ProspectName;" column="NAME" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>  
+  
+  <Dimension type="TimeDimension" highCardinality="false" name="Fiscal Period" caption="&FiscalPeriod;">
+    <Hierarchy name="Fiscal Period CL" hasAll="true" allMemberName="All Years" allMemberCaption="&DatesAllYears;" primaryKey="FISCAL_PERIOD_K" caption="&FiscalPeriodCL;">
+	&fiscal-period-relation;
+      <Level name="Fiscal Year" caption="&FiscalYear;" column="FISCAL_YEAR" type="Numeric" uniqueMembers="true" levelType="TimeYears" hideMemberIf="Never">
+        <Property name="Fiscal Variant" caption="&FiscalVariant;" column="FISCAL_VARIANT" type="String">
+        </Property>
+      </Level>
+      <Level name="Fiscal Period" caption="&FiscalPeriod;" column="FISCAL_PERIOD" type="Numeric" uniqueMembers="false" levelType="TimeMonths" hideMemberIf="Never">
+        <Property name="Fiscal Variant" caption="&FiscalVariant;" column="FISCAL_VARIANT" type="String">
+        </Property>
+        <Property name="Date" caption="&FiscalDate;" column="END_DATE" type="String">
+        </Property>
+        <Property name="Days Date" caption="&FiscalDays;" column="END_DAYS_DATE" type="Numeric">
+        </Property>
+        <Property name="JBegin Days Date" caption="&FiscalDaysBegin;" column="BEGIN_DAYS_DATE" type="Numeric">
+        </Property>
+        <Property name="Fiscal Period Key" caption="&FiscalPeriodKey;" column="FISCAL_PERIOD_K" type="Numeric">
+        </Property>
+        <Property name="Fiscal Year" caption="&FiscalYear;" column="FISCAL_YEAR" type="Numeric">
+        </Property>
+        <Property name="Fiscal Period" caption="&FiscalPeriod;" column="FISCAL_PERIOD" type="Numeric">
+        </Property>
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="TimeDimension" highCardinality="false" name="Period" caption="&Period;">
+    <Hierarchy name="Fiscal Period CL" hasAll="true" allMemberName="All Years" allMemberCaption="&DatesAllYears;" primaryKey="FISCAL_PERIOD_K" caption="&PeriodCL;">
+	&period-relation;
+      <Level name="Fiscal Year" caption="&PeriodYear;" column="FISCAL_YEAR" type="Numeric" uniqueMembers="true" levelType="TimeYears" hideMemberIf="Never">
+        <Property name="Fiscal Variant" caption="&FiscalVariant;" column="FISCAL_VARIANT" type="String">
+        </Property>
+      </Level>
+      <Level name="Fiscal Period" caption="&PeriodPeriod;" column="FISCAL_PERIOD" type="Numeric" uniqueMembers="false" levelType="TimeMonths" hideMemberIf="Never">
+        <Property name="Fiscal Variant" caption="&FiscalVariant;" column="FISCAL_VARIANT" type="String">
+        </Property>
+        <Property name="Date" caption="&FiscalDate;" column="END_DATE" type="String">
+        </Property>
+        <Property name="Days Date" caption="&FiscalDays;" column="END_DAYS_DATE" type="Numeric">
+        </Property>
+        <Property name="JBegin Days Date" caption="&FiscalDaysBegin;" column="BEGIN_DAYS_DATE" type="Numeric">
+        </Property>
+        <Property name="Fiscal Period Key" caption="&FiscalPeriodKey;" column="FISCAL_PERIOD_K" type="Numeric">
+        </Property>
+        <Property name="Fiscal Year" caption="&FiscalYear;" column="FISCAL_YEAR" type="Numeric">
+        </Property>
+        <Property name="Fiscal Period" caption="&FiscalPeriod;" column="FISCAL_PERIOD" type="Numeric">
+        </Property>
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  
+    <Dimension name="Issue Date" type="TimeDimension" highCardinality="false" >
+      <Hierarchy name="Calendar" hasAll="true" allMemberName="All Years" allMemberCaption="&DateAllYears;" primaryKey="DAYS_DATE" caption="&DateCalendarPeriod;">
+		&issue-date-relation;
+        <Level name="Year" column="YEAR" type="Numeric" uniqueMembers="true" levelType="TimeYears" hideMemberIf="Never" caption="&DateYear;">
+        </Level>
+        <Level name="Period" column="PERIOD" type="Numeric" uniqueMembers="false" levelType="TimeMonths" hideMemberIf="Never" caption="&DatePeriod;">
+          <Property name="Month" column="PERIOD" type="Numeric">
+          </Property>
+        </Level>
+        <Level name="Date" type="Date" uniqueMembers="false" levelType="TimeDays" hideMemberIf="Never" caption="&Date;">
+          <KeyExpression>
+            <SQL dialect="mssql">
+              <![CDATA[SUBSTRING(CONVERT(CHAR, "THE_DATE", 120), 1, 10)]]>
+            </SQL>
+            <SQL dialect="generic">
+              <![CDATA["ISSUE_DATE"."THE_DATE"]]>
+            </SQL>
+          </KeyExpression>
+          <Property name="Date" column="THE_DATE" type="String">
+          </Property>
+          <Property name="Days Date" column="DAYS_DATE" type="Numeric">
+          </Property>
+        </Level>
+      </Hierarchy>
+	  <Hierarchy name="Calendar Months" hasAll="true" allMemberName="All Years" allMemberCaption="&DateAllYears;" primaryKey="DAYS_DATE" caption="&DateCalendarMonth;">
+		&issue-date-relation;
+        <Level name="Year" column="YEAR" type="Numeric" uniqueMembers="true" levelType="TimeYears" hideMemberIf="Never" caption="&DateYear;">
+        </Level>
+        <Level name="Month" column="MONTH" type="Numeric" uniqueMembers="false" levelType="TimeMonths" hideMemberIf="Never" caption="&DateMonth;">
+          <Property name="Month" column="PERIOD" type="Numeric">
+          </Property>
+        </Level>
+        <Level name="Date" type="Date" uniqueMembers="false" levelType="TimeDays" hideMemberIf="Never" caption="&Date;">
+          <KeyExpression>
+            <SQL dialect="mssql">
+              <![CDATA[SUBSTRING(CONVERT(CHAR, "THE_DATE", 120), 1, 10)]]>
+            </SQL>
+            <SQL dialect="generic">
+              <![CDATA["ISSUE_DATE"."THE_DATE"]]>
+            </SQL>
+          </KeyExpression>
+          <Property name="Date" column="THE_DATE" type="String">
+          </Property>
+          <Property name="Days Date" column="DAYS_DATE" type="Numeric">
+          </Property>
+        </Level>
+      </Hierarchy>
+      <Hierarchy name="Calendar Weeks" hasAll="true" allMemberName="All Years" allMemberCaption="&DateAllYears;" primaryKey="DAYS_DATE" caption="&DateCalendarWeek;">
+		&issue-date-relation;
+        <Level name="Year" column="YEAR" type="Numeric" uniqueMembers="true" levelType="TimeYears" hideMemberIf="Never" caption="&DateYear;">
+        </Level>
+        <Level name="Week" column="WEEK" type="Numeric" uniqueMembers="false" levelType="TimeWeeks" hideMemberIf="Never" caption="&DateWeek;">
+          <Property name="Week" column="WEEK" type="Numeric">
+          </Property>
+        </Level>
+        <Level name="Date" type="Date" uniqueMembers="false" levelType="TimeDays" hideMemberIf="Never" caption="&Date;">
+          <KeyExpression>
+            <SQL dialect="mssql">
+              <![CDATA[SUBSTRING(CONVERT(CHAR, "THE_DATE", 120), 1, 10)]]>
+            </SQL>
+            <SQL dialect="generic">
+              <![CDATA["ISSUE_DATE"."THE_DATE"]]>
+            </SQL>
+          </KeyExpression>
+          <Property name="Date" column="THE_DATE" type="String">
+          </Property>
+          <Property name="Days Date" column="DAYS_DATE" type="Numeric">
+          </Property>
+        </Level>
+      </Hierarchy>
+    </Dimension>
+	
+	<Dimension type="TimeDimension" highCardinality="false" name="Promise Date" >
+      <Hierarchy name="Calendar" hasAll="true" allMemberName="All Years" allMemberCaption="&DatesAllYears;" primaryKey="DAYS_DATE" caption="&DateCalendarPeriod;">
+		&promise-date-relation;
+        <Level name="Year" column="YEAR" type="Numeric" uniqueMembers="true" levelType="TimeYears" hideMemberIf="Never" caption="&DateYear;">
+        </Level>
+        <Level name="Period" column="PERIOD" type="Numeric" uniqueMembers="false" levelType="TimeMonths" hideMemberIf="Never" caption="&DatePeriod;">
+          <Property name="Month" column="PERIOD" type="Numeric">
+          </Property>
+        </Level>
+        <Level name="Date" type="Date" uniqueMembers="false" levelType="TimeDays" hideMemberIf="Never" caption="&Date;">
+          <KeyExpression>
+            <SQL dialect="mssql">
+              <![CDATA[SUBSTRING(CONVERT(CHAR, "THE_DATE", 120), 1, 10)]]>
+            </SQL>
+            <SQL dialect="generic">
+              <![CDATA["PROMISE_DATE"."THE_DATE"]]>
+            </SQL>
+          </KeyExpression>
+          <Property name="Date" column="THE_DATE" type="String">
+          </Property>
+          <Property name="Days Date" column="DAYS_DATE" type="Numeric">
+          </Property>
+        </Level>
+      </Hierarchy>
+	  <Hierarchy name="Calendar Months" hasAll="true" allMemberName="All Years" allMemberCaption="&DateAllYears;" primaryKey="DAYS_DATE" caption="&DateCalendarMonth;">
+		&promise-date-relation;
+        <Level name="Year" column="YEAR" type="Numeric" uniqueMembers="true" levelType="TimeYears" hideMemberIf="Never" caption="&DateYear;">
+        </Level>
+        <Level name="Month" column="MONTH" type="Numeric" uniqueMembers="false" levelType="TimeMonths" hideMemberIf="Never" caption="&DateMonth;">
+          <Property name="Month" column="PERIOD" type="Numeric">
+          </Property>
+        </Level>
+        <Level name="Date" type="Date" uniqueMembers="false" levelType="TimeDays" hideMemberIf="Never" caption="&Date;">
+          <KeyExpression>
+            <SQL dialect="mssql">
+              <![CDATA[SUBSTRING(CONVERT(CHAR, "THE_DATE", 120), 1, 10)]]>
+            </SQL>
+            <SQL dialect="generic">
+              <![CDATA["ISSUE_DATE"."THE_DATE"]]>
+            </SQL>
+          </KeyExpression>
+          <Property name="Date" column="THE_DATE" type="String">
+          </Property>
+          <Property name="Days Date" column="DAYS_DATE" type="Numeric">
+          </Property>
+        </Level>
+      </Hierarchy>
+      <Hierarchy name="Calendar Weeks" hasAll="true" allMemberName="All Years" allMemberCaption="&DatesAllYears;" primaryKey="DAYS_DATE" caption="&DateCalendarWeek;">
+		&promise-date-relation;
+        <Level name="Year" column="YEAR" type="Numeric" uniqueMembers="true" levelType="TimeYears" hideMemberIf="Never" caption="&DateYear;">
+        </Level>
+        <Level name="Week" column="WEEK" type="Numeric" uniqueMembers="false" levelType="TimeWeeks" hideMemberIf="Never" caption="&DateWeek;">
+          <Property name="Week" column="WEEK" type="Numeric">
+          </Property>
+        </Level>
+        <Level name="Date" type="Date" uniqueMembers="false" levelType="TimeDays" hideMemberIf="Never" caption="&Date;">
+          <KeyExpression>
+            <SQL dialect="mssql">
+              <![CDATA[SUBSTRING(CONVERT(CHAR, "THE_DATE", 120), 1, 10)]]>
+            </SQL>
+            <SQL dialect="generic">
+              <![CDATA["PROMISE_DATE"."THE_DATE"]]>
+            </SQL>
+          </KeyExpression>
+          <Property name="Date" column="THE_DATE" type="String">
+          </Property>
+          <Property name="Days Date" column="DAYS_DATE" type="Numeric">
+          </Property>
+        </Level>
+      </Hierarchy>
+    </Dimension>

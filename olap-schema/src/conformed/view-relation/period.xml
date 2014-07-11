@@ -1,0 +1,5 @@
+ 	<View alias="FISCAL_PERIOD"> 
+		<SQL dialect="generic"> 
+			<![CDATA[select * from "ERPI"."PERIODS_CL" WHERE "TENANT" = '[organization]']]> 
+		</SQL> 
+	</View>

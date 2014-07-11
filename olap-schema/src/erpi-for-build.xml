@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+     Cubes using views for tenant support and xTuple strings.  
+     Note that entity definitions including other entity defintions must be defined in the
+	 DTD using % and referenced in the DTD.  They can then subtituted in the XML and in 
+	 XML included via entities.
+-->
+<!DOCTYPE Schema SYSTEM "dtd/mondrian.dtd" 
+[
+  <!ENTITY % strings SYSTEM "strings/strings-xtuple.xml">
+  <!ENTITY % sales-strings SYSTEM "../../../bi/olap-schema/src/strings/strings-xtuple.xml">
+  <!ENTITY % conformed SYSTEM "conformed/views.xml">
+  <!ENTITY conformed-cube SYSTEM "conformed/cube.xml">
+  <!ENTITY % crm SYSTEM "crm/views.xml">
+  <!ENTITY crm-cube SYSTEM "crm/cube.xml">
+  <!ENTITY % sales SYSTEM "../../../bi/olap-schema/src/sales/views.xml">
+  <!ENTITY sales-cube SYSTEM "../../../bi/olap-schema/src/sales/cube.xml">
+  <!ENTITY erpbi-role SYSTEM "../../../bi/olap-schema/src/roles/erpbi-role.xml">
+  <!ENTITY crm-role SYSTEM "roles/erpbi-role.xml">
+  <!ENTITY authenticated-role SYSTEM "roles/authenticated-role.xml">
+  %strings;
+  %sales-strings;
+  %conformed;
+  %sales;
+  %crm;
+]>
+
+<Schema name="&Schema;">
+    <!-- 
+	      Careful, there are issues with the schema parser.  UserDefinedFunctions must be last.
+	      For some reason sales must be after crm or the UserDefinedFuctions aren't found when
+		  used by sales.
+	-->
+	<Parameter name="APRValue" type="Numeric" modifiable="false" defaultValue=".065"/>
+	<!-- Conformed Dimensions -->
+	&conformed-cube;
+	<!-- CRM Cubes -->
+	&crm-cube;
+	<!-- Sales Cubes -->
+	&sales-cube;
+	<!-- User Roles --> 
+	&erpbi-role;
+	&authenticated-role;
+	<UserDefinedFunction name="getDateString" className="com.erpbi.GetDateInfo"/>
+	<UserDefinedFunction name="getCurrentDays" className="com.erpbi.GetDateInfo"/>
+</Schema>

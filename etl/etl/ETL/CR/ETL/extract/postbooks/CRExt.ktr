@@ -1,0 +1,1602 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformation>
+  <info>
+    <name>CRExt</name>
+    <description/>
+    <extended_description/>
+    <trans_version/>
+    <trans_type>Normal</trans_type>
+    <trans_status>0</trans_status>
+    <directory>&#47;</directory>
+    <parameters>
+    </parameters>
+    <log>
+<trans-log-table><connection/>
+<schema/>
+<table/>
+<size_limit_lines/>
+<interval/>
+<timeout_days/>
+<field><id>ID_BATCH</id><enabled>Y</enabled><name>ID_BATCH</name></field><field><id>CHANNEL_ID</id><enabled>N</enabled><name>CHANNEL_ID</name></field><field><id>TRANSNAME</id><enabled>Y</enabled><name>TRANSNAME</name></field><field><id>STATUS</id><enabled>Y</enabled><name>STATUS</name></field><field><id>LINES_READ</id><enabled>Y</enabled><name>LINES_READ</name><subject/></field><field><id>LINES_WRITTEN</id><enabled>Y</enabled><name>LINES_WRITTEN</name><subject/></field><field><id>LINES_UPDATED</id><enabled>Y</enabled><name>LINES_UPDATED</name><subject/></field><field><id>LINES_INPUT</id><enabled>Y</enabled><name>LINES_INPUT</name><subject/></field><field><id>LINES_OUTPUT</id><enabled>Y</enabled><name>LINES_OUTPUT</name><subject/></field><field><id>LINES_REJECTED</id><enabled>N</enabled><name>LINES_REJECTED</name><subject/></field><field><id>ERRORS</id><enabled>Y</enabled><name>ERRORS</name></field><field><id>STARTDATE</id><enabled>Y</enabled><name>STARTDATE</name></field><field><id>ENDDATE</id><enabled>Y</enabled><name>ENDDATE</name></field><field><id>LOGDATE</id><enabled>Y</enabled><name>LOGDATE</name></field><field><id>DEPDATE</id><enabled>Y</enabled><name>DEPDATE</name></field><field><id>REPLAYDATE</id><enabled>Y</enabled><name>REPLAYDATE</name></field><field><id>LOG_FIELD</id><enabled>N</enabled><name>LOG_FIELD</name></field></trans-log-table>
+<perf-log-table><connection/>
+<schema/>
+<table/>
+<interval/>
+<timeout_days/>
+<field><id>ID_BATCH</id><enabled>Y</enabled><name>ID_BATCH</name></field><field><id>SEQ_NR</id><enabled>Y</enabled><name>SEQ_NR</name></field><field><id>LOGDATE</id><enabled>Y</enabled><name>LOGDATE</name></field><field><id>TRANSNAME</id><enabled>Y</enabled><name>TRANSNAME</name></field><field><id>STEPNAME</id><enabled>Y</enabled><name>STEPNAME</name></field><field><id>STEP_COPY</id><enabled>Y</enabled><name>STEP_COPY</name></field><field><id>LINES_READ</id><enabled>Y</enabled><name>LINES_READ</name></field><field><id>LINES_WRITTEN</id><enabled>Y</enabled><name>LINES_WRITTEN</name></field><field><id>LINES_UPDATED</id><enabled>Y</enabled><name>LINES_UPDATED</name></field><field><id>LINES_INPUT</id><enabled>Y</enabled><name>LINES_INPUT</name></field><field><id>LINES_OUTPUT</id><enabled>Y</enabled><name>LINES_OUTPUT</name></field><field><id>LINES_REJECTED</id><enabled>Y</enabled><name>LINES_REJECTED</name></field><field><id>ERRORS</id><enabled>Y</enabled><name>ERRORS</name></field><field><id>INPUT_BUFFER_ROWS</id><enabled>Y</enabled><name>INPUT_BUFFER_ROWS</name></field><field><id>OUTPUT_BUFFER_ROWS</id><enabled>Y</enabled><name>OUTPUT_BUFFER_ROWS</name></field></perf-log-table>
+<channel-log-table><connection/>
+<schema/>
+<table/>
+<timeout_days/>
+<field><id>ID_BATCH</id><enabled>Y</enabled><name>ID_BATCH</name></field><field><id>CHANNEL_ID</id><enabled>Y</enabled><name>CHANNEL_ID</name></field><field><id>LOG_DATE</id><enabled>Y</enabled><name>LOG_DATE</name></field><field><id>LOGGING_OBJECT_TYPE</id><enabled>Y</enabled><name>LOGGING_OBJECT_TYPE</name></field><field><id>OBJECT_NAME</id><enabled>Y</enabled><name>OBJECT_NAME</name></field><field><id>OBJECT_COPY</id><enabled>Y</enabled><name>OBJECT_COPY</name></field><field><id>REPOSITORY_DIRECTORY</id><enabled>Y</enabled><name>REPOSITORY_DIRECTORY</name></field><field><id>FILENAME</id><enabled>Y</enabled><name>FILENAME</name></field><field><id>OBJECT_ID</id><enabled>Y</enabled><name>OBJECT_ID</name></field><field><id>OBJECT_REVISION</id><enabled>Y</enabled><name>OBJECT_REVISION</name></field><field><id>PARENT_CHANNEL_ID</id><enabled>Y</enabled><name>PARENT_CHANNEL_ID</name></field><field><id>ROOT_CHANNEL_ID</id><enabled>Y</enabled><name>ROOT_CHANNEL_ID</name></field></channel-log-table>
+<step-log-table><connection/>
+<schema/>
+<table/>
+<timeout_days/>
+<field><id>ID_BATCH</id><enabled>Y</enabled><name>ID_BATCH</name></field><field><id>CHANNEL_ID</id><enabled>Y</enabled><name>CHANNEL_ID</name></field><field><id>LOG_DATE</id><enabled>Y</enabled><name>LOG_DATE</name></field><field><id>TRANSNAME</id><enabled>Y</enabled><name>TRANSNAME</name></field><field><id>STEPNAME</id><enabled>Y</enabled><name>STEPNAME</name></field><field><id>STEP_COPY</id><enabled>Y</enabled><name>STEP_COPY</name></field><field><id>LINES_READ</id><enabled>Y</enabled><name>LINES_READ</name></field><field><id>LINES_WRITTEN</id><enabled>Y</enabled><name>LINES_WRITTEN</name></field><field><id>LINES_UPDATED</id><enabled>Y</enabled><name>LINES_UPDATED</name></field><field><id>LINES_INPUT</id><enabled>Y</enabled><name>LINES_INPUT</name></field><field><id>LINES_OUTPUT</id><enabled>Y</enabled><name>LINES_OUTPUT</name></field><field><id>LINES_REJECTED</id><enabled>Y</enabled><name>LINES_REJECTED</name></field><field><id>ERRORS</id><enabled>Y</enabled><name>ERRORS</name></field><field><id>LOG_FIELD</id><enabled>N</enabled><name>LOG_FIELD</name></field></step-log-table>
+    </log>
+    <maxdate>
+      <connection/>
+      <table/>
+      <field/>
+      <offset>0.0</offset>
+      <maxdiff>0.0</maxdiff>
+    </maxdate>
+    <size_rowset>10000</size_rowset>
+    <sleep_time_empty>50</sleep_time_empty>
+    <sleep_time_full>50</sleep_time_full>
+    <unique_connections>N</unique_connections>
+    <feedback_shown>Y</feedback_shown>
+    <feedback_size>50000</feedback_size>
+    <using_thread_priorities>Y</using_thread_priorities>
+    <shared_objects_file/>
+    <capture_step_performance>N</capture_step_performance>
+    <step_performance_capturing_delay>1000</step_performance_capturing_delay>
+    <step_performance_capturing_size_limit/>
+    <dependencies>
+    </dependencies>
+    <partitionschemas>
+    </partitionschemas>
+    <slaveservers>
+         <slaveserver><name>Data Center</name><hostname>localhost</hostname><port>8082</port><webAppName/><username>cluster</username><password>Encrypted 2be98afc86aa7f2e4cb1aa265cd86aac8</password><proxy_hostname/><proxy_port/><non_proxy_hosts/><master>Y</master></slaveserver>
+         <slaveserver><name>Cloud</name><hostname>10.5.5.65</hostname><port>8083</port><webAppName/><username>cluster</username><password>Encrypted 2be98afc86aa7f2e4cb1aa265cd86aac8</password><proxy_hostname/><proxy_port/><non_proxy_hosts/><master>N</master></slaveserver>
+    </slaveservers>
+    <clusterschemas>
+        <clusterschema>
+          <name>Cloud Schema</name>
+          <base_port>40000</base_port>
+          <sockets_buffer_size>2000</sockets_buffer_size>
+          <sockets_flush_interval>5000</sockets_flush_interval>
+          <sockets_compressed>Y</sockets_compressed>
+          <dynamic>N</dynamic>
+          <slaveservers>
+            <name>Cloud</name>
+            <name>Data Center</name>
+          </slaveservers>
+        </clusterschema>
+    </clusterschemas>
+  <created_user/>
+  <created_date>2011&#47;06&#47;28 15:06:26.065</created_date>
+  <modified_user>-</modified_user>
+  <modified_date>2010&#47;11&#47;01 12:42:33.145</modified_date>
+  </info>
+  <notepads>
+  </notepads>
+  <connection>
+    <name>source</name>
+    <server/>
+    <type>GENERIC</type>
+    <access>Native</access>
+    <database/>
+    <port>-1</port>
+    <username>${erpi.source.user}</username>
+    <password>${erpi.source.password}</password>
+    <servername/>
+    <data_tablespace/>
+    <index_tablespace/>
+    <attributes>
+      <attribute><code>CUSTOM_DRIVER_CLASS</code><attribute>${erpi.source.driver}</attribute></attribute>
+      <attribute><code>CUSTOM_URL</code><attribute>${erpi.source.url}</attribute></attribute>
+      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>Y</attribute></attribute>
+      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>-1</attribute></attribute>
+      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>Y</attribute></attribute>
+      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>N</attribute></attribute>
+      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
+    </attributes>
+  </connection>
+  <order>
+  <hop> <from>Check quhead duplicates</from><to>Abort</to><enabled>Y</enabled> </hop>  <hop> <from>Delete QuoteFacts.txt</from><to>Extract QuoteTransactions</to><enabled>Y</enabled> </hop>  <hop> <from>Extract QuoteTransactions</from><to>QuoteFacts.txt</to><enabled>Y</enabled> </hop>  <hop> <from>Delete OpportunityFacts.txt</from><to>Extract Opportunity Transactions</to><enabled>Y</enabled> </hop>  <hop> <from>Check ophead duplicates</from><to>Abort 2</to><enabled>Y</enabled> </hop>  <hop> <from>Set status and actual date.</from><to>OpportunityFacts.txt</to><enabled>Y</enabled> </hop>  <hop> <from>Extract Opportunity Transactions</from><to>Select values to get types correct for script</to><enabled>Y</enabled> </hop>  <hop> <from>Select values to get types correct for script</from><to>Set status and actual date.</to><enabled>Y</enabled> </hop>  </order>
+  <step>
+    <name>Abort</name>
+    <type>Abort</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+      <row_threshold>1</row_threshold>
+      <message>Duplicates extracted for order dimension</message>
+      <always_log_rows>Y</always_log_rows>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>281</xloc>
+      <yloc>48</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Abort 2</name>
+    <type>Abort</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+      <row_threshold>1</row_threshold>
+      <message>Duplicates extracted for order dimension</message>
+      <always_log_rows>Y</always_log_rows>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>287</xloc>
+      <yloc>129</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Check ophead duplicates</name>
+    <type>TableInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>source</connection>
+    <sql>SELECT COUNT from
+	(SELECT 	
+	ophead_number, count(*) as COUNT
+	FROM ophead
+	WHERE (ophead_start_date &gt;= &apos;${extractstartdate}&apos;)
+	GROUP BY ophead_number) counts
+WHERE COUNT &gt; 1;
+
+</sql>
+    <limit>0</limit>
+    <lookup/>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>Y</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>59</xloc>
+      <yloc>129</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Check quhead duplicates</name>
+    <type>TableInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>source</connection>
+    <sql>SELECT COUNT from
+	(SELECT 	
+	quhead_number, count(*) as COUNT
+	FROM quhead
+	WHERE (quhead_quotedate &gt;= &apos;${extractstartdate}&apos;)
+	GROUP BY quhead_number) counts
+WHERE COUNT &gt; 1;
+
+</sql>
+    <limit>0</limit>
+    <lookup/>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>Y</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>60</xloc>
+      <yloc>46</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Delete OpportunityFacts.txt</name>
+    <type>ProcessFiles</type>
+    <description/>
+    <distribute>N</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <sourcefilenamefield>${erpi.dir}&#47;ETL&#47;CR&#47;data&#47;OpportunityFacts.txt</sourcefilenamefield>
+    <targetfilenamefield/>
+    <operation_type>delete</operation_type>
+    <addresultfilenames>N</addresultfilenames>
+    <overwritetargetfile>N</overwritetargetfile>
+    <createparentfolder>N</createparentfolder>
+    <simulate>Y</simulate>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>59</xloc>
+      <yloc>294</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Delete QuoteFacts.txt</name>
+    <type>ProcessFiles</type>
+    <description/>
+    <distribute>N</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <sourcefilenamefield>${erpi.dir}&#47;ETL&#47;CR&#47;data&#47;QuoteFacts.txt</sourcefilenamefield>
+    <targetfilenamefield/>
+    <operation_type>delete</operation_type>
+    <addresultfilenames>N</addresultfilenames>
+    <overwritetargetfile>N</overwritetargetfile>
+    <createparentfolder>N</createparentfolder>
+    <simulate>Y</simulate>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>60</xloc>
+      <yloc>210</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Extract Opportunity Transactions</name>
+    <type>TableInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>source</connection>
+    <sql>--
+--  The start date is not required in opportunities so we can&apos;t extract based on date range (arg!)
+--  Also, there is no lastupdated date for incremental updates.
+--
+--  To clean dates:
+--		A null date is 01&#47;01&#47;1990.
+--		If a date is null and later phase date is not, we use it.
+--      The start date can never be null, we use current_date instead.
+--
+select
+	&apos;${erpi.tenant.id}&apos;															as &quot;Tenant&quot;,
+
+	regexp_replace(SUBSTR(COALESCE(&quot;ophead_name&quot;, &apos;&apos;), 0, 40) || &apos;, &apos; || &quot;ophead_number&quot;, E&apos;\r|\n|;&apos;, &apos;&apos;, &apos;g&apos;) as &quot;ID_Document_NK&quot;,
+	regexp_replace(SUBSTR(COALESCE(&quot;ophead_name&quot;, &apos;&apos;), 0, 40) || &apos;, &apos; || &quot;ophead_number&quot;, E&apos;\r|\n|;&apos;, &apos;&apos;, &apos;g&apos;) as &quot;ID_Trans_Doc_NK&quot;,
+
+	CASE WHEN ophead_active = true THEN &apos;Active&apos;
+		ELSE &apos;Closed&apos; END
+														as &quot;Status&quot;, 
+	COALESCE(to_char(ophead_actual_date,&apos;MM&#47;DD&#47;YYYY&apos;), &apos;01&#47;01&#47;1990&apos;)			as &quot;Actual_Date&quot;,
+
+    CASE
+            WHEN ophead_target_date IS NULL THEN COALESCE(to_char(ophead_actual_date,&apos;MM&#47;DD&#47;YYYY&apos;), &apos;01&#47;01&#47;1990&apos;)
+            ELSE to_char(ophead_target_date,&apos;MM&#47;DD&#47;YYYY&apos;)::text
+    END																			as &quot;Target_Date&quot;,
+
+    CASE
+            WHEN ophead_assigned_date IS NULL THEN
+				CASE
+					WHEN ophead_target_date IS NULL THEN COALESCE(to_char(ophead_actual_date,&apos;MM&#47;DD&#47;YYYY&apos;), &apos;01&#47;01&#47;1990&apos;)
+					ELSE to_char(ophead_target_date,&apos;MM&#47;DD&#47;YYYY&apos;)::text
+				END
+            ELSE to_char(ophead_assigned_date,&apos;MM&#47;DD&#47;YYYY&apos;)::text
+	END																			as &quot;Assign_Date&quot;,			
+
+    CASE
+            WHEN ophead_start_date IS NULL THEN
+
+				CASE
+					WHEN ophead_assigned_date IS NULL THEN
+
+						CASE
+							WHEN ophead_target_date IS NULL THEN COALESCE(to_char(ophead_actual_date,&apos;MM&#47;DD&#47;YYYY&apos;), to_char(CURRENT_DATE,&apos;MM&#47;DD&#47;YYYY&apos;))
+							ELSE to_char(ophead_target_date,&apos;MM&#47;DD&#47;YYYY&apos;)::text
+						END
+					ELSE to_char(ophead_assigned_date,&apos;MM&#47;DD&#47;YYYY&apos;)::text
+				END
+
+
+            ELSE to_char(ophead_start_date,&apos;MM&#47;DD&#47;YYYY&apos;)::text					
+	END																			as &quot;Issue_Date&quot;,	
+
+ 	COALESCE(ophead_amount, 0)												 	as &quot;Amount&quot;,
+	COALESCE(ophead_amount, 0)												 	as &quot;Amount_Local&quot;,
+ 	COALESCE(ophead_amount, 0) * COALESCE(ophead_probability_prcnt, 0) &#47; 100	as &quot;Amount_Weighted&quot;,
+ 	COALESCE(ophead_amount, 0) * COALESCE(ophead_probability_prcnt, 0) &#47; 100	as &quot;Amount_Local_Weighted&quot;,
+	COALESCE(ophead_probability_prcnt, 0)									 	as &quot;Probability&quot;,
+	(SELECT company_number FROM company ORDER BY company_number DESC LIMIT 1)	as &quot;Company&quot;,
+	(SELECT curr_abbr FROM curr_symbol WHERE curr_base = TRUE) 					as &quot;Local_Currency&quot;,
+	&apos;Unspecified&apos; 																as &quot;Division&quot;,
+	&apos;Unspecified&apos; 																as &quot;Business_Unit&quot;,
+	CASE WHEN ophead_username = &apos;&apos; THEN &apos;Unspecified&apos;
+		ELSE COALESCE(ophead_username, &apos;Unspecified&apos;) END						as &quot;User&quot;,
+	&apos;Unspecified&apos; 																as &quot;Profit_Center&quot;,
+	optype_name																	as &quot;Type&quot;,
+	opstage_name																as &quot;Stage&quot;,
+	crmacct_number																as &quot;CRM_Account&quot;
+
+from ophead
+  join optype on ophead_optype_id = optype_id									-- opportunity type
+  join opstage on ophead_opstage_id = opstage_id								-- opportunity stage
+  join crmacct on ophead_crmacct_id = crmacct_id								-- crm_account
+
+
+	--WHERE (ophead_start_date &gt;= &apos;${extractstartdate}&apos; )
+ 	-- AND ophead_lastupdated &gt;= &apos;${extractstartdate}&apos;))
+</sql>
+    <limit>0</limit>
+    <lookup/>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>Y</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>296</xloc>
+      <yloc>293</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Extract QuoteTransactions</name>
+    <type>TableInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>source</connection>
+    <sql>select
+	&apos;${erpi.tenant.id}&apos;																		as &quot;Tenant&quot;,
+	CASE WHEN quhead_number = &apos;&apos; THEN &apos;Unspecified&apos;
+		ELSE COALESCE(quhead_number, &apos;Unspecified&apos;) END 									as &quot;ID_Document_NK&quot;,
+	CASE WHEN quhead_number = &apos;&apos; THEN &apos;Unspecified&apos;
+		ELSE COALESCE(quhead_number, &apos;Unspecified&apos;) END 									as &quot;ID_Trans_Doc_NK&quot;, 	
+	(CASE WHEN quhead_number = &apos;&apos; THEN &apos;Unspecified&apos; 
+		ELSE COALESCE(CAST(quhead_number as varchar(30)), &apos;Unspecified&apos;) END) || &apos;-&apos; ||	quitem.quitem_id::character varying	as &quot;Line_NK&quot;,
+	CASE WHEN quhead_status = &apos;&apos; THEN &apos;Unspecified&apos;
+         WHEN quhead_status = &apos;O&apos; THEN &apos;Open&apos;
+         WHEN quhead_status = &apos;C&apos; THEN &apos;Converted&apos;
+		ELSE COALESCE(quhead_status, &apos;Unspecified&apos;) END										as &quot;Status&quot;, 
+	to_char(quhead_quotedate,&apos;MM&#47;DD&#47;YYYY&apos;)													as &quot;Issue_Date&quot;,
+--
+--  We can&apos;t allow null or nonsense promise dates.  An no earlier dates as they may not exist in the dates dimension
+-- 													
+    CASE
+            WHEN quitem_promdate IS NULL THEN to_char(quhead_quotedate,&apos;MM&#47;DD&#47;YYYY&apos;)::text
+            WHEN quitem_promdate &lt; quhead_quotedate THEN to_char(quhead_quotedate,&apos;MM&#47;DD&#47;YYYY&apos;)::text
+            WHEN to_char(quitem_promdate,&apos;MM&#47;DD&#47;YYYY&apos;) = &apos;01&#47;01&#47;2100&apos;::bpchar THEN to_char(quhead_quotedate,&apos;MM&#47;DD&#47;YYYY&apos;)::text
+            ELSE to_char(quitem_promdate,&apos;MM&#47;DD&#47;YYYY&apos;)::text
+    END 																					as &quot;Promise_Date&quot;,
+
+--    CASE
+--            WHEN quhead_expire IS NULL THEN COALESCE(to_char(quhead_expire,&apos;MM&#47;DD&#47;YYYY&apos;), &apos;01&#47;01&#47;1990&apos;)
+--            ELSE to_char(quhead_expire,&apos;MM&#47;DD&#47;YYYY&apos;)::text
+--    END																						as &quot;Expire_Date&quot;,
+
+	to_char(quhead_expire,&apos;MM&#47;DD&#47;YYYY&apos;)::text												as &quot;Expire_Date&quot;,
+
+	currtobase(quhead_curr_id, quitem_price, quhead_quotedate) 								as so_baseunitprice,
+	round((quitem_qtyord * currtobase(quhead_curr_id, quitem_custprice, quhead_quotedate)), 2) 	as &quot;Amount_List&quot;,
+	round((quitem_qtyord * currtobase(quhead_curr_id, quitem_custprice, quhead_quotedate)), 2) 	as &quot;Amount_List_Local&quot;,
+	round((quitem_qtyord * currtobase(quhead_curr_id, quitem_price, quhead_quotedate)), 2) 	as &quot;Amount&quot;,
+	round((quitem_qtyord * currtobase(quhead_curr_id, quitem_price, quhead_quotedate)), 2) 	as &quot;Amount_Local&quot;,
+	quitem_qtyord																			as &quot;Quantity_Order&quot;,					    
+	COALESCE(quitem_unitcost, 0)															as &quot;Cost&quot;,
+	cust_number 																			as &quot;Customer&quot;,
+	(SELECT company_number FROM company ORDER BY company_number DESC LIMIT 1)				as &quot;Company&quot;,
+	item_number																				as &quot;Item&quot;,
+	(SELECT curr_abbr FROM curr_symbol WHERE curr_base = TRUE) 								as &quot;Local_Currency&quot;,
+	&apos;Unspecified&apos; 																			as &quot;Division&quot;,
+	&apos;Unspecified&apos; 																			as &quot;Business_Unit&quot;,
+	salesrep_number 																		as &quot;Account_Rep&quot;,
+	&apos;Unspecified&apos; 																			as &quot;Profit_Center&quot;,
+	CASE WHEN quhead_shiptocity = &apos;&apos; THEN &apos;Unspecified&apos;
+		ELSE COALESCE(upper(regexp_replace(quhead_shiptocity, E&apos;\r|\n|;&apos;, &apos;&apos;, &apos;g&apos;)), &apos;Unspecified&apos;) 
+		END																					as &quot;Ship_City&quot;,
+	CASE WHEN quhead_shiptostate = &apos;&apos; THEN &apos;Unspecified&apos;
+		ELSE COALESCE(upper(regexp_replace(quhead_shiptostate, E&apos;\r|\n|;&apos;, &apos;&apos;, &apos;g&apos;)), &apos;Unspecified&apos;) 
+		END																					as &quot;Ship_Region&quot;,
+	CASE WHEN quhead_shiptocountry = &apos;&apos; THEN &apos;${erpi.defaultcountry}&apos;
+		ELSE COALESCE(upper(regexp_replace(quhead_shiptocountry, E&apos;\r|\n|;&apos;, &apos;&apos;, &apos;g&apos;)), &apos;${erpi.defaultcountry}&apos;) 
+		END																					as &quot;Ship_Country&quot;,
+	CASE WHEN quhead_billtocity = &apos;&apos; THEN &apos;Unspecified&apos;
+		ELSE COALESCE(upper(regexp_replace(quhead_billtocity, E&apos;\r|\n|;&apos;, &apos;&apos;, &apos;g&apos;)), &apos;Unspecified&apos;) 
+		END																					as &quot;Bill_City&quot;,
+	CASE WHEN quhead_billtostate = &apos;&apos; THEN &apos;Unspecified&apos;
+		ELSE COALESCE(upper(regexp_replace(quhead_billtostate, E&apos;\r|\n|;&apos;, &apos;&apos;, &apos;g&apos;)), &apos;Unspecified&apos;) 
+		END							as &quot;Bill_Region&quot;,
+	CASE WHEN quhead_billtocountry = &apos;&apos; THEN &apos;${erpi.defaultcountry}&apos;
+		ELSE COALESCE(upper(regexp_replace(quhead_billtocountry, E&apos;\r|\n|;&apos;, &apos;&apos;, &apos;g&apos;)), &apos;${erpi.defaultcountry}&apos;) 
+		END			as &quot;Bill_Country&quot;
+from quitem
+ join quhead on quitem_quhead_id=quhead_id													-- sales order 
+  join custinfo on cust_id=quhead_cust_id													-- customer 
+  join salesrep on salesrep_id=quhead_salesrep_id											-- sales rep
+  join itemsite on itemsite_id=quitem_itemsite_id											-- item inventory site
+  join whsinfo on warehous_id=itemsite_warehous_id											-- warehouse &#47; site
+  join item on item_id=itemsite_item_id
+
+WHERE (quhead_quotedate &gt;= &apos;${extractstartdate}&apos; OR (quhead_quotedate &gt;= &apos;${erpi.start.date}&apos;))
+ 	-- we need a lastupdated column in quotes.
+ 	-- AND quhead_lastupdated &gt;= &apos;${extractstartdate}&apos;))
+</sql>
+    <limit>0</limit>
+    <lookup/>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>Y</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>294</xloc>
+      <yloc>210</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Set status and actual date.</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <compatible>Y</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>&#47;&#47;
+&#47;&#47;  Clean opportunities more (after SQL select clean).  If stage is in closed list, 
+&#47;&#47;  make status closed.  We need to know which are won so if in won list make the 
+&#47;&#47;  status won.  If closed or won, make the actual date the last date set.
+&#47;&#47;
+
+var closedStages = getVariable(&quot;erpi.opportunity.closed&quot;, &quot;&quot;),
+  closedStagesList = closedStages.split(&quot;,&quot;),
+  wonStages = getVariable(&quot;erpi.opportunity.won&quot;, &quot;&quot;),
+  wonStagesList = wonStages.split(&quot;,&quot;);
+
+for (i = 0; i &lt; closedStagesList.length; i++) {
+  if ( Stage.getString() == closedStagesList[i]) {
+    Status.setValue(&quot;Closed&quot;);
+  }
+}
+
+for (i = 0; i &lt; wonStagesList.length; i++) {
+  if ( Stage.getString() == wonStagesList[i]) {
+    Status.setValue(&quot;Won&quot;);
+  }
+}
+
+if ( (Status.getString() == &quot;Closed&quot;) || (Status.getString() == &quot;Won&quot;) ) {
+	if ( Assign_Date.getString() == &quot;01&#47;01&#47;1990&quot; ) {
+		Assign_Date.setValue(Issue_Date.getString());
+	}
+	if ( Target_Date.getString() == &quot;01&#47;01&#47;1990&quot; ) {
+		Target_Date.setValue(Assign_Date.getString());
+	}
+	if ( Actual_Date.getString() == &quot;01&#47;01&#47;1990&quot; ) {
+		Actual_Date.setValue(Target_Date.getString());
+	}
+}</jsScript_script>
+      </jsScript>    </jsScripts>    <fields>    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>302</xloc>
+      <yloc>491</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>OpportunityFacts.txt</name>
+    <type>TextFileOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <separator>;</separator>
+    <enclosure>&quot;</enclosure>
+    <enclosure_forced>N</enclosure_forced>
+    <enclosure_fix_disabled>Y</enclosure_fix_disabled>
+    <header>Y</header>
+    <footer>N</footer>
+    <format>DOS</format>
+    <compression>None</compression>
+    <encoding/>
+    <endedLine/>
+    <fileNameInField>N</fileNameInField>
+    <fileNameField/>
+    <create_parent_folder>N</create_parent_folder>
+    <file>
+      <name>${erpi.staging.dir}&#47;CR&#47;data&#47;OpportunityFacts</name>
+      <is_command>N</is_command>
+      <servlet_output>N</servlet_output>
+      <do_not_open_new_file_init>N</do_not_open_new_file_init>
+      <extention>txt</extention>
+      <append>N</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format/>
+      <add_to_result_filenames>Y</add_to_result_filenames>
+      <pad>N</pad>
+      <fast_dump>N</fast_dump>
+      <splitevery>0</splitevery>
+    </file>
+    <fields>
+      <field>
+        <name>Tenant</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>ID_Document_NK</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>ID_Trans_Doc_NK</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Status</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Issue_Date</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Assign_Date</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Target_Date</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Actual_Date</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Amount</name>
+        <type>Number</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Amount_Local</name>
+        <type>Number</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Amount_Weighted</name>
+        <type>Number</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Amount_Local_Weighted</name>
+        <type>Number</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Probability</name>
+        <type>Number</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Company</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Local_Currency</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Division</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Business_Unit</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>User</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Profit_Center</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Type</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Stage</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>CRM_Account</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>569</xloc>
+      <yloc>487</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>QuoteFacts.txt</name>
+    <type>TextFileOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <separator>;</separator>
+    <enclosure>&quot;</enclosure>
+    <enclosure_forced>N</enclosure_forced>
+    <enclosure_fix_disabled>Y</enclosure_fix_disabled>
+    <header>Y</header>
+    <footer>N</footer>
+    <format>DOS</format>
+    <compression>None</compression>
+    <encoding/>
+    <endedLine/>
+    <fileNameInField>N</fileNameInField>
+    <fileNameField/>
+    <create_parent_folder>N</create_parent_folder>
+    <file>
+      <name>${erpi.staging.dir}&#47;CR&#47;data&#47;QuoteFacts</name>
+      <is_command>N</is_command>
+      <servlet_output>N</servlet_output>
+      <do_not_open_new_file_init>N</do_not_open_new_file_init>
+      <extention>txt</extention>
+      <append>N</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format/>
+      <add_to_result_filenames>Y</add_to_result_filenames>
+      <pad>N</pad>
+      <fast_dump>N</fast_dump>
+      <splitevery>0</splitevery>
+    </file>
+    <fields>
+      <field>
+        <name>Tenant</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>ID_Document_NK</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>ID_Trans_Doc_NK</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Line_NK</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Status</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>left</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Issue_Date</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Promise_Date</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Expire_Date</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Amount</name>
+        <type>Number</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Amount_Local</name>
+        <type>Number</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Amount_List</name>
+        <type>Number</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Amount_List_Local</name>
+        <type>Number</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Quantity_Order</name>
+        <type>Number</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Cost</name>
+        <type>Number</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Customer</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Company</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Item</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Local_Currency</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Division</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Business_Unit</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Account_Rep</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Profit_Center</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Ship_City</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Ship_Region</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Ship_Country</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Bill_City</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Bill_Region</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Bill_Country</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>552</xloc>
+      <yloc>215</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Select values to get types correct for script</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>      <field>        <name>Tenant</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>ID_Document_NK</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>ID_Trans_Doc_NK</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Status</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Actual_Date</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Target_Date</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Assign_Date</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Issue_Date</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Amount</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Amount_Local</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Amount_Weighted</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Amount_Local_Weighted</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Probability</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Company</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Local_Currency</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Division</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Business_Unit</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>User</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Profit_Center</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Type</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Stage</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>CRM_Account</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>        <select_unspecified>N</select_unspecified>
+      <meta>        <name>Tenant</name>
+        <rename>Tenant</rename>
+        <type>String</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>ID_Document_NK</name>
+        <rename>ID_Document_NK</rename>
+        <type>String</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>ID_Trans_Doc_NK</name>
+        <rename>ID_Trans_Doc_NK</rename>
+        <type>String</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>Status</name>
+        <rename>Status</rename>
+        <type>String</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>Actual_Date</name>
+        <rename>Actual_Date</rename>
+        <type>String</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>Target_Date</name>
+        <rename>Target_Date</rename>
+        <type>String</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>Assign_Date</name>
+        <rename>Assign_Date</rename>
+        <type>String</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>Issue_Date</name>
+        <rename>Issue_Date</rename>
+        <type>String</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>Amount</name>
+        <rename>Amount</rename>
+        <type>Number</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>Amount_Local</name>
+        <rename>Amount_Local</rename>
+        <type>Number</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>Amount_Weighted</name>
+        <rename>Amount_Weighted</rename>
+        <type>Number</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>Amount_Local_Weighted</name>
+        <rename>Amount_Local_Weighted</rename>
+        <type>Number</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>Probability</name>
+        <rename>Probability</rename>
+        <type>Number</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>Company</name>
+        <rename>Company</rename>
+        <type>String</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>Local_Currency</name>
+        <rename>Local_Currency</rename>
+        <type>String</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>Division</name>
+        <rename>Division</rename>
+        <type>String</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>Business_Unit</name>
+        <rename>Business_Unit</rename>
+        <type>String</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>User</name>
+        <rename>User</rename>
+        <type>String</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>Profit_Center</name>
+        <rename>Profit_Center</rename>
+        <type>String</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>Type</name>
+        <rename>Type</rename>
+        <type>String</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>Stage</name>
+        <rename>Stage</rename>
+        <type>String</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>CRM_Account</name>
+        <rename>CRM_Account</rename>
+        <type>String</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>298</xloc>
+      <yloc>398</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step_error_handling>
+  </step_error_handling>
+   <slave-step-copy-partition-distribution>
+</slave-step-copy-partition-distribution>
+   <slave_transformation>N</slave_transformation>
+</transformation>

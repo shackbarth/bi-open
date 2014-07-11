@@ -1,0 +1,5 @@
+	<View alias="SO_FACTS_BY_PERIOD"> 
+		<SQL dialect="generic"> 
+			<![CDATA[select * from "ERPI"."SO_FACTS_BY_PERIOD" WHERE "TENANT" = '[organization]']]> 
+		</SQL> 
+	</View>
