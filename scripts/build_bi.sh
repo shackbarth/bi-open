@@ -323,6 +323,17 @@ load_pentaho() {
 	cdir $BISERVER_HOME/data-integration
 	export KETTLE_HOME=properties/psg-linux
 	
+	PSGLOCATION=$(sudo find /usr/lib -name psql)
+	if  ! [ $PSGLOCATION ]
+	then
+		log ""
+		log "###########################################################################"
+		log "Sorry we couldn't find psg which is needed by the ETL.  Looking in /usr/lib"
+		log "###########################################################################"
+		log ""
+		exit 1
+	fi	
+	
 	mv $KETTLE_HOME/.kettle/kettle.properties $KETTLE_HOME/.kettle/kettle.properties.sample  2>&1 | tee -a $LOG_FILE
 	cat $KETTLE_HOME/.kettle/kettle.properties.sample | \
 	sed s'#erpi.source.url=.*#erpi.source.url=jdbc\:postgresql\://'$DATABASEHOST'\:'$DATABASEPORT'/'$DATABASE$DATABASESSL'#' | \
@@ -333,9 +344,14 @@ load_pentaho() {
 	sed s'#erpi.cities.file.*#erpi.cities.file='$CITIES'#' | \
 	sed s'#erpi.tenant.id=.*#erpi.tenant.id='$TENANT'.'$DATABASE'#' | \
 	sed s'#erpi.datamart.create=.*#erpi.datamart.create='$CREATE'#' | \
+	sed s'#erpi.loaderpath=.*#erpi.loaderpath='$PSGLOCATION'#' | \
 	sed s'#erpi.incremental=.*#erpi.incremental='$INCREMENTAL'#' \
 	> $KETTLE_HOME/.kettle/kettle.properties  2>&1 | tee -a $LOG_FILE
 	
+	# Set PGPASSWORD to stop psg from prompting for password.  In case pg_hba.conf does not have
+	# local   all   all     trust 
+	# to trust local socket connections
+	export PGPASSWORD=$DATABASEPASSWORD	
 	sh kitchenkh.sh -file=../ErpBI/ETL/JOBS/Load.kjb -level=Basic
 }
 
