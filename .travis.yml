@@ -11,6 +11,9 @@ script:
   - cd
   - git clone https://github.com/xtuple/xtuple.git
   - sudo xtuple-server install-dev --xt-version 4.5.1 --xt-name bitest --xt-quickstart --local-workspace ~/xtuple
+  - cd /home/travis/build/bi-open/scripts
+  - bash install_bi.sh -eblm
+  - bash start_bi.sh
 
 after_failure:
   - sudo cat /var/spool/cron/crontabs/travis
