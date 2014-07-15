@@ -5,6 +5,7 @@ before_install:
   - rm -rf ~/.nvm
 
 script:
+  - pwd
   - wget git.io/hikK5g -qO- | sudo bash
   - npm install -g xtuple-server
   - cd
