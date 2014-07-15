@@ -12,11 +12,8 @@ script:
   - git clone https://github.com/xtuple/xtuple.git
   - sudo xtuple-server install-dev --xt-version 4.5.1 --xt-name bitest --xt-quickstart --local-workspace ./xtuple
   - cd bi-open/scripts
-  - sudo find / -name preliminaries.js
-  - sudo find / -name config.js
-  - sudo find / -type d -name node-datasource
-  - bash build_bi.sh -eblm -c /etc/xtuple/bitest-451-dev/config.js
-  - bash start_bi.sh
+  - sudo bash build_bi.sh -eblm -c /etc/xtuple/bitest-451-dev/config.js
+  - sudo bash start_bi.sh
 
 after_failure:
   - sudo cat /var/spool/cron/crontabs/travis
