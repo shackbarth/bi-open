@@ -8,10 +8,10 @@ script:
   - pwd
   - wget git.io/hikK5g -qO- | sudo bash
   - npm install -g xtuple-server
-  - cd
+  - cd ..
   - git clone https://github.com/xtuple/xtuple.git
-  - sudo xtuple-server install-dev --xt-version 4.5.1 --xt-name bitest --xt-quickstart --local-workspace ~/xtuple
-  - cd /home/travis/build/xtuple/bi-open/scripts
+  - sudo xtuple-server install-dev --xt-version 4.5.1 --xt-name bitest --xt-quickstart --local-workspace ./xtuple
+  - cd bi-open/scripts
   - bash build_bi.sh -eblm
   - bash start_bi.sh
 
