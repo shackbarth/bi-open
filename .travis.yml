@@ -12,7 +12,7 @@ script:
   - git clone https://github.com/xtuple/xtuple.git
   - sudo xtuple-server install-dev --xt-version 4.5.1 --xt-name bitest --xt-quickstart --local-workspace ~/xtuple
   - cd /home/travis/build/xtuple/bi-open/scripts
-  - bash install_bi.sh -eblm
+  - bash build_bi.sh -eblm
   - bash start_bi.sh
 
 after_failure:
