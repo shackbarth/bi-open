@@ -10,10 +10,17 @@ script:
   - npm install -g xtuple-server
   - cd ..
   - git clone https://github.com/xtuple/xtuple.git
+  - git clone https://github.com/xtuple/xtuple-extensions.git
   - sudo xtuple-server install-dev --xt-version 4.5.1 --xt-name bitest --xt-quickstart --local-workspace ./xtuple
+  - sudo find / -name preliminaries.js
   - cd bi-open/scripts
+  - tail /etc/xtuple/bitest-451-dev/config.js -n 500
   - sudo bash build_bi.sh -eblm -c /etc/xtuple/bitest-451-dev/config.js
   - sudo bash start_bi.sh
+  - cd ../../xtuple
+  - service xtuple status bitest 4.5.1 dev
+  - ./scripts/build_app.js -d bitest -e ../xtuple-extensions/bi-open
+  - service xtuple start bitest 4.5.1 dev
 
 after_failure:
   - sudo cat /var/spool/cron/crontabs/travis
