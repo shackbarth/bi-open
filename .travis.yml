@@ -10,6 +10,9 @@ script:
   - cd ..
   - git clone https://github.com/xtuple/xtuple.git
   - git clone https://github.com/xtuple/xtuple-extensions.git
+  - cd xtuple-extensions
+  - git checkout 4_6_x
+  - cd ..
   - sudo xtuple-server install-dev --xt-version 4.5.1 --xt-name bitest --xt-quickstart --local-workspace ./xtuple
   - sudo find / -name preliminaries.js
   - cd bi-open/scripts
