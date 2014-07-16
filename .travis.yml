@@ -18,11 +18,12 @@ script:
   - cd ..
 
   # Use the server to do an install
-  - sudo xtuple-server install-dev --xt-version 4.5.1 --xt-name bitest --xt-quickstart --local-workspace ./xtuple --xt-adminpw qwerty
+  - sudo xtuple-server install-dev --xt-name bitest --xt-quickstart --local-workspace ./xtuple --xt-adminpw qwerty --verbose
 
   # Install BI and perform ETL
   - cd bi-open/scripts
-  - sudo bash build_bi.sh -eblm -c /etc/xtuple/bitest-451-dev/config.js -d quickstart_dev -P qwerty
+  - ls -l ../../xtuple/node-datasource
+  - sudo bash build_bi.sh -eblm -c ../../xtuple/node-datasource/config.js -d quickstart_dev -P qwerty
   - sudo bash start_bi.sh
 
   # Install the bi-open extension. TODO: build this into the xtuple-server install as a flag
