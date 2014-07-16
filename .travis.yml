@@ -3,6 +3,7 @@ language: c
 script:
   # Basic setup of the xtuple-server, from the xtuple-server wiki
   - wget git.io/hikK5g -qO- | sudo bash
+  - n 0.8
   - npm install -g xtuple-server
   - cd ..
 
@@ -23,8 +24,8 @@ script:
   # Install BI and perform ETL
   - cd bi-open/scripts
   - ls -l ../../xtuple/node-datasource
-  - sudo bash build_bi.sh -eblm -c ../../xtuple/node-datasource/config.js -d quickstart_dev -P qwerty
-  - sudo bash start_bi.sh
+  - sudo -H bash build_bi.sh -eblm -c ../../xtuple/node-datasource/config.js -d quickstart_dev -P qwerty
+  - sudo -H bash start_bi.sh
 
   # Install the bi-open extension. TODO: build this into the xtuple-server install as a flag
   - cd ../../xtuple
