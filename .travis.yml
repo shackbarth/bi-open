@@ -1,7 +1,7 @@
 language: c
 
 before_install:
-  - echo "Removing nvm like this is a TravisCI-specific task that you won't need to do on a real box"
+  # Removing nvm like this is a TravisCI-specific task that you won't need to do on a real box
   - rm -rf ~/.nvm
 
 script:
@@ -12,12 +12,14 @@ script:
   - git clone https://github.com/xtuple/xtuple-extensions.git
   - cd xtuple-extensions
   - git checkout 4_6_x
+  - cd ../xtuple
+  - git checkout 4_6_x
   - cd ..
-  - sudo xtuple-server install-dev --xt-version 4.5.1 --xt-name bitest --xt-quickstart --local-workspace ./xtuple
+  - sudo xtuple-server install-dev --xt-version 4.5.1 --xt-name bitest --xt-quickstart --local-workspace ./xtuple --xt-adminpw qwerty
   - sudo find / -name preliminaries.js
   - cd bi-open/scripts
   - tail /etc/xtuple/bitest-451-dev/config.js -n 500
-  - sudo bash build_bi.sh -eblm -c /etc/xtuple/bitest-451-dev/config.js
+  - sudo bash build_bi.sh -eblm -c /etc/xtuple/bitest-451-dev/config.js -d quickstart_dev -P qwerty
   - sudo bash start_bi.sh
   - cd ../../xtuple
   - service xtuple status bitest 4.5.1 dev
