@@ -251,6 +251,7 @@ download_files () {
 
 	cdir $BISERVER_HOME/biserver-ce/
 	chmod 755 -R . 2>&1 | tee -a $LOG_FILE
+	chown -R $USER .
 	
 	if  [ $SSLKEY ]
 	then
@@ -273,6 +274,15 @@ download_files () {
 		keytool -export -alias tomcat -file server.cer -storepass changeit -keystore keystore_server.jks
 		keytool -import -alias tomcat -v -trustcacerts -file server.cer -keypass changeit -storepass changeit -keystore cacerts.jks -noprompt	
 	fi
+	
+	#
+	#  BI Server is set up to listen on 8443 for SSL.  We change to 8444 to not conflict with the app
+	#	
+	cdir $BISERVER_HOME/biserver-ce/tomcat/conf
+	mv server.xml server.xml.sample
+	cat server.xml.sample | \
+	sed s/port=\"8443\"/port=\"8444\"/ \
+	> server.xml  2>&1 | tee -a $LOG_FILE
 	
 	cdir $BISERVER_HOME/biserver-ce/tomcat/conf/Catalina/localhost
 	mv pentaho.xml pentaho.xml.sample
