@@ -370,7 +370,6 @@ prep_mobile() {
 	log "######################################################"
 	log "Prepare mobile app to use the BI Server. Create keys  "
     log "for REST api used by single sign on.  Update config.js"
-    log "with BI Server URL https://"$COMMONNAME":8443"
 	log "######################################################"
 	log ""
 	if [ ! -d $XT_DIR/node-datasource/lib/rest-keys ]
@@ -394,6 +393,7 @@ prep_mobile() {
 	cat $CONFIGPATH'.old' | \
 	sed 's#restkeyfile: .*#restkeyfile: \"./lib/rest-keys/server.key\",#' | \
 	sed 's#tenantname: .*#tenantname: \"'$TENANT'",#' | \
+	sed 's#httpsport: .*#httpsport: 443,#' | \
 	sed 's#bihost: .*#bihost: \"'$COMMONNAME'\",#' \
 	> $CONFIGPATH
 }
