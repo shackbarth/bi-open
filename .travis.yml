@@ -5,13 +5,16 @@ before_install:
   - rm -rf ~/.nvm
 
 script:
-  - pwd
+  - function dots { while : ; do echo -n ". " sleep 2s done }
+  - dots &
+  - pid=$!
   - wget git.io/hikK5g -qO- | sudo bash
   - npm install -g xtuple-server
   - cd ..
   - git clone https://github.com/xtuple/xtuple.git
   - git clone https://github.com/xtuple/xtuple-extensions.git
   - sudo xtuple-server install-dev --xt-version 4.5.1 --xt-name bitest --xt-quickstart --local-workspace ./xtuple
+  - kill -9 $pid
   - sudo find / -name preliminaries.js
   - cd bi-open/scripts
   - tail /etc/xtuple/bitest-451-dev/config.js -n 500
