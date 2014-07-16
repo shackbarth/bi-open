@@ -21,7 +21,7 @@ script:
   - sudo bash start_bi.sh
   - cd ../../xtuple
   - service xtuple status bitest 4.5.1 dev
-  - ./scripts/build_app.js -d bitest -e ../xtuple-extensions/bi-open
+  - ./scripts/build_app.js -d quickstart_dev -e ../xtuple-extensions/bi-open
   - service xtuple start bitest 4.5.1 dev
 
 after_failure:
