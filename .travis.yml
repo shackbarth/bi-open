@@ -5,12 +5,7 @@ before_install:
   - rm -rf ~/.nvm
 
 script:
-  - function dots {
-     while : ; do
-        echo -n ". "
-        sleep 2s
-     done
-  }
+  - 'function dots { while : ; do echo -n ". " sleep 2s done }'
   - dots &
   - pid=$!
   - wget git.io/hikK5g -qO- | sudo bash
