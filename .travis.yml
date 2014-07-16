@@ -3,7 +3,6 @@ language: c
 script:
   # Basic setup of the xtuple-server, from the xtuple-server wiki
   - wget git.io/hikK5g -qO- | sudo bash
-  - n 0.8
   - npm install -g xtuple-server
   - cd ..
 
@@ -29,6 +28,8 @@ script:
 
   # Install the bi-open extension. TODO: build this into the xtuple-server install as a flag
   - cd ../../xtuple
+  - chmod -R a+wx /usr/local/lib/n*
+  - n 0.8
   - ./scripts/build_app.js -d quickstart_dev -e ../xtuple-extensions/bi-open
 
   # Start the app.
