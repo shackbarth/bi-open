@@ -24,12 +24,16 @@ script:
   - sudo xtuple-server install-dev --xt-version 4.5.1 --xt-demo --local-workspace ./xtuple --xt-adminpw qwerty
 
   # Install BI and perform ETL
+  # export M2_HOME=/usr/share/maven2
   - cd bi-open/scripts
   - sudo bash build_bi.sh -eblm -c ../../xtuple/node-datasource/config.js -d demo_dev -P qwerty
+  - echo $M2_HOME
+  - ls /usr/share
+  
   - sudo bash start_bi.sh
 
   # Install the bi-open extension. TODO: build this into the xtuple-server install as a flag
-  - node n 0.8
+  - n 0.8
   - cd ../../xtuple
   - ./scripts/build_app.js -d demo_dev -e ../xtuple-extensions/bi-open
 
