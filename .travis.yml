@@ -24,11 +24,9 @@ script:
   - sudo xtuple-server install-dev --xt-version 4.5.1 --xt-demo --local-workspace ./xtuple --xt-adminpw qwerty
 
   # Install BI and perform ETL
-  # export M2_HOME=/usr/share/maven2
+  - export M2_HOME=/usr/share/maven2
   - cd bi-open/scripts
   - sudo bash build_bi.sh -eblm -c ../../xtuple/node-datasource/config.js -d demo_dev -P qwerty
-  - echo $M2_HOME
-  - ls /usr/share
   
   - sudo bash start_bi.sh
 
