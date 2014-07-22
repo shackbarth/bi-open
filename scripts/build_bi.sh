@@ -251,6 +251,7 @@ download_files () {
 
 	cdir $BISERVER_HOME/biserver-ce/
 	chmod 755 -R . 2>&1 | tee -a $LOG_FILE
+	chown -R $USER .
 	
 	if  [ $SSLKEY ]
 	then
@@ -273,6 +274,15 @@ download_files () {
 		keytool -export -alias tomcat -file server.cer -storepass changeit -keystore keystore_server.jks
 		keytool -import -alias tomcat -v -trustcacerts -file server.cer -keypass changeit -storepass changeit -keystore cacerts.jks -noprompt	
 	fi
+	
+	#
+	#  BI Server is set up to listen on 8443 for SSL.  We change to 8444 to not conflict with the app
+	#	
+	cdir $BISERVER_HOME/biserver-ce/tomcat/conf
+	mv server.xml server.xml.sample
+	cat server.xml.sample | \
+	sed s/port=\"8443\"/port=\"8444\"/ \
+	> server.xml  2>&1 | tee -a $LOG_FILE
 	
 	cdir $BISERVER_HOME/biserver-ce/tomcat/conf/Catalina/localhost
 	mv pentaho.xml pentaho.xml.sample
@@ -323,6 +333,17 @@ load_pentaho() {
 	cdir $BISERVER_HOME/data-integration
 	export KETTLE_HOME=properties/psg-linux
 	
+	PSGLOCATION=$(sudo find /usr/lib -name psql)
+	if  ! [ $PSGLOCATION ]
+	then
+		log ""
+		log "###########################################################################"
+		log "Sorry we couldn't find psg which is needed by the ETL.  Looking in /usr/lib"
+		log "###########################################################################"
+		log ""
+		exit 1
+	fi	
+	
 	mv $KETTLE_HOME/.kettle/kettle.properties $KETTLE_HOME/.kettle/kettle.properties.sample  2>&1 | tee -a $LOG_FILE
 	cat $KETTLE_HOME/.kettle/kettle.properties.sample | \
 	sed s'#erpi.source.url=.*#erpi.source.url=jdbc\:postgresql\://'$DATABASEHOST'\:'$DATABASEPORT'/'$DATABASE$DATABASESSL'#' | \
@@ -333,9 +354,14 @@ load_pentaho() {
 	sed s'#erpi.cities.file.*#erpi.cities.file='$CITIES'#' | \
 	sed s'#erpi.tenant.id=.*#erpi.tenant.id='$TENANT'.'$DATABASE'#' | \
 	sed s'#erpi.datamart.create=.*#erpi.datamart.create='$CREATE'#' | \
+	sed s'#erpi.loaderpath=.*#erpi.loaderpath='$PSGLOCATION'#' | \
 	sed s'#erpi.incremental=.*#erpi.incremental='$INCREMENTAL'#' \
 	> $KETTLE_HOME/.kettle/kettle.properties  2>&1 | tee -a $LOG_FILE
 	
+	# Set PGPASSWORD to stop psg from prompting for password.  In case pg_hba.conf does not have
+	# local   all   all     trust 
+	# to trust local socket connections
+	export PGPASSWORD=$DATABASEPASSWORD	
 	sh kitchenkh.sh -file=../ErpBI/ETL/JOBS/Load.kjb -level=Basic
 }
 
@@ -344,7 +370,6 @@ prep_mobile() {
 	log "######################################################"
 	log "Prepare mobile app to use the BI Server. Create keys  "
     log "for REST api used by single sign on.  Update config.js"
-    log "with BI Server URL https://"$COMMONNAME":8443"
 	log "######################################################"
 	log ""
 	if [ ! -d $XT_DIR/node-datasource/lib/rest-keys ]
@@ -368,6 +393,7 @@ prep_mobile() {
 	cat $CONFIGPATH'.old' | \
 	sed 's#restkeyfile: .*#restkeyfile: \"./lib/rest-keys/server.key\",#' | \
 	sed 's#tenantname: .*#tenantname: \"'$TENANT'",#' | \
+	sed 's#httpsport: .*#httpsport: 443,#' | \
 	sed 's#bihost: .*#bihost: \"'$COMMONNAME'\",#' \
 	> $CONFIGPATH
 }
