@@ -21,11 +21,11 @@ script:
   - cd ..
 
   # Use the server to do an install
-  - sudo xtuple-server install-dev --xt-version 4.5.1 --xt-demo --local-workspace ./xtuple --xt-adminpw qwerty
+  - sudo xtuple-server install-dev --xt-version 4.5.1 --xt-demo --local-workspace ./xtuple --xt-adminpw admin
 
   # Install BI and perform ETL
   - cd bi-open/scripts
-  - bash build_bi.sh -eblm -c ../../xtuple/node-datasource/config.js -d demo_dev -P qwerty
+  - bash build_bi.sh -eblm -c ../../xtuple/node-datasource/config.js -d demo_dev -P admin
   
   - bash start_bi.sh
 
@@ -40,7 +40,7 @@ script:
 
   # Run a test to make sure that BI is accessible and the ETL worked
   - cd ../xtuple-extensions
-  - cat test/lib/sample_login_data.js | sed s#pwd:.*#pwd: \"querty\",# | sed s#org:.*#org: \"demo_dev\",# > test/lib/login_data.js
+  - cat test/lib/sample_login_data.js | sed 's#org:.*#org: \"demo_dev\",#' > test/lib/login_data.js
   - npm run-script test-bi_open
 
 after_failure:
