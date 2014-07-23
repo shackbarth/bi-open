@@ -26,3 +26,25 @@ script:
   # Install BI and perform ETL
   - cd bi-open/scripts
   - bash build_bi.sh -eblm -c ../../xtuple/node-datasource/config.js -d demo_dev -P qwerty
+  
+  - ls ../../ErpBI/biserver-ce/tomcat/webapps/pentaho/WEB-INF/lib
+  
+  - bash start_bi.sh
+
+  # Install the bi-open extension. TODO: build this into the xtuple-server install as a flag
+  - n 0.8
+  - cd ../../xtuple
+  - ./scripts/build_app.js -d demo_dev -e ../xtuple-extensions/bi-open
+
+  # Start the app.
+  - npm start &
+  - sleep 10
+
+  # TODO: run a test to make sure that BI is accessible and the ETL worked
+
+after_failure:
+  - sudo cat /var/spool/cron/crontabs/travis
+  - sudo cat /var/spool/cron/crontabs/root
+  - sudo find / -name xtuple-server.log
+  - sudo cat xtuple-server.log
+  - env
