@@ -1,49 +1,14 @@
 language: c
 
 script:
-  # Basic setup of the xtuple-server, from the xtuple-server wiki
-  - wget git.io/hikK5g -qO- | sudo bash
-  - npm install -g xtuple-server
-  - cd ..
 
-  # The FOSS xtuple-server requires an existing xtuple directory to start working off of
-  - git clone https://github.com/xtuple/xtuple.git
-  - git clone https://github.com/xtuple/xtuple-extensions.git
-
-  # Temporary hack: we need the bleeding-edge code to access the BI reshuffle. XXX remove after 4.6 beta
-  - cd xtuple-extensions
-  - git checkout 4_6_x
-  - git submodule update --init --recursive
-  - npm install
-  
+  - git clone https://github.com/xtuple/xtuple.git  
   - cd ../xtuple
   - git checkout 4_6_x
   - cd ..
 
-  # Use the server to do an install
-  - sudo xtuple-server install-dev --xt-version 4.5.1 --xt-demo --local-workspace ./xtuple --xt-adminpw qwerty
-
-  # Install BI and perform ETL
-  - mvn -v
-  - export M2_HOME=/usr/share/maven2
-  - export M2=$M2_HOME/bin
-  - export PATH=$M2:$PATH
   - cd bi-open/scripts
-  - sudo bash build_bi.sh -eblm -c ../../xtuple/node-datasource/config.js -d demo_dev -P qwerty
-  - mvn -v
-  
-  - sudo bash start_bi.sh
-
-  # Install the bi-open extension. TODO: build this into the xtuple-server install as a flag
-  - n 0.8
-  - cd ../../xtuple
-  - ./scripts/build_app.js -d demo_dev -e ../xtuple-extensions/bi-open
-
-  # Start the app.
-  - npm start &
-  - sleep 10
-
-  # TODO: run a test to make sure that BI is accessible and the ETL worked
+  - bash build_bi.sh -eblm -c ../../xtuple/node-datasource/config.js -d demo_dev -P qwerty
 
 after_failure:
   - sudo cat /var/spool/cron/crontabs/travis
