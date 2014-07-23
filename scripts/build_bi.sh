@@ -341,7 +341,7 @@ load_pentaho() {
 	then
 		log ""
 		log "###########################################################################"
-		log "Sorry we couldn't find psg which is needed by the ETL.  Looking in /usr/lib"
+		log "Sorry we couldn't find psg which is needed by the ETL. Looking in /usr/lib "
 		log "###########################################################################"
 		log ""
 		exit 1
