@@ -40,9 +40,7 @@ script:
 
   # Run a test to make sure that BI is accessible and the ETL worked
   - cd ../xtuple-extensions
-  - cat test/lib/sample_login_data.js | \
-  - sed s#pwd:.*#pwd: \"querty\",# | \
-  - sed s#org:.*#org: \"demo_dev\",# > test/lib/login_data.js
+  - cat test/lib/sample_login_data.js | sed s#pwd:.*#pwd: \"querty\",# | sed s#org:.*#org: \"demo_dev\",# > test/lib/login_data.js
   - npm run-script test-bi_open
 
 after_failure:
