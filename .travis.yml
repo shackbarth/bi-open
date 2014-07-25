@@ -10,11 +10,12 @@ script:
   - git clone https://github.com/xtuple/xtuple.git
   - git clone https://github.com/xtuple/xtuple-extensions.git
 
-  # Temporary hack: we need the bleeding-edge code to access the BI reshuffle. XXX remove after 4.6 beta
+  # Use the bleeding-edge 
   - cd xtuple-extensions
   - git checkout 4_6_x
   - cd ../xtuple
   - git checkout 4_6_x
+  - npm install
   - cd ..
 
   # Use the server to do an install
