@@ -29,7 +29,7 @@ script:
 
   # Install the bi-open extension. TODO: build this into the xtuple-server install as a flag
   - cd ../../xtuple
-  - chmod -R a+wx /usr/local/lib/n*
+  - sudo chmod -R a+wx /usr/local/lib/n*
   - n 0.8
   - ./scripts/build_app.js -d quickstart_dev -e ../xtuple-extensions/bi-open
 
