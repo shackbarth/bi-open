@@ -11,6 +11,7 @@ script:
   - git clone https://github.com/xtuple/xtuple-extensions.git
 
   # Temporary hack: we need the bleeding-edge code to access the BI reshuffle. XXX remove after 4.6 beta
+  - n 0.8
   - cd xtuple-extensions
   - git checkout 4_6_x
   - git submodule update --init --recursive
@@ -18,9 +19,12 @@ script:
   
   - cd ../xtuple
   - git checkout 4_6_x
+  - git submodule update --init --recursive
+  - npm install 
   - cd ..
 
   # Use the server to do an install
+  - n 0.11
   - sudo xtuple-server install-dev --xt-version 4.5.1 --xt-demo --local-workspace ./xtuple --xt-adminpw admin
 
   # Install BI and perform ETL
