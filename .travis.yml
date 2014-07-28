@@ -36,7 +36,7 @@ script:
   - cd ../../xtuple
   - cat node-datasource/config.js
   - mv node-datasource/config.js node-datasource/config.js.old
-  - cat node-datasource/config.js.old | sed 's#restkeyfile: .*#restkeyfile: \"./lib/rest-keys/server.key\",#' > node-datasource/config.js  
+  - cat node-datasource/config.js.old | sed 's#restkeyfile:.*#restkeyfile: \"./lib/rest-keys/server.key\",#' > node-datasource/config.js  
   - cat xtuple/node-datasource/config.js
   - ls /home/travis/build/xtuple/xtuple-extensions/source/bi_open/client/lib/dimple/lib/
 
