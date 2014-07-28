@@ -386,7 +386,7 @@ prep_mobile() {
 	#
 	# Would be better to get multiline sed working to put commonname in:
 	# biserver: {
-	#    hostname: myname
+	#    hostname: myname 
 	#
 	# Something similar to:
 	#	sed 'N;s#biServer: {\n        hostname:.*#biServer: {\n        hostname: \"'$COMMONNAME'\",#' \
@@ -394,10 +394,10 @@ prep_mobile() {
 	cdir $XT_DIR/node-datasource
 	mv $CONFIGPATH $CONFIGPATH'.old' 2>&1 | tee -a $LOG_FILE
 	cat $CONFIGPATH'.old' | \
-	sed 's#restkeyfile: .*#restkeyfile: \"./lib/rest-keys/server.key\",#' | \
-	sed 's#tenantname: .*#tenantname: \"'$TENANT'",#' | \
-	sed 's#httpsport: .*#httpsport: 443,#' | \
-	sed 's#bihost: .*#bihost: \"'$COMMONNAME'\",#' \
+	sed 's#restkeyfile:.*#restkeyfile:\"./lib/rest-keys/server.key\",#' | \
+	sed 's#tenantname:.*#tenantname:\"'$TENANT'",#' | \
+	sed 's#httpsport:.*#httpsport:443,#' | \
+	sed 's#bihost:.*#bihost:\"'$COMMONNAME'\",#' \
 	> $CONFIGPATH
 }
 
