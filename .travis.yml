@@ -36,13 +36,13 @@ script:
   # Install the bi-open extension. TODO: build this into the xtuple-server install as a flag
   - n 0.8
   - cd ../../xtuple
-  - ./scripts/build_app.js -d demo_dev -e ../xtuple-extensions/bi-open
+  - ./scripts/build_app.js -d demo_dev -e ../xtuple-extensions/source/bi-open
 
   # Start the app.
   - npm start &
   - sleep 10
-  - ps -ef | grep node
-  - cat /home/travis/.xtuple/etc/xtuple/travis.451.dev/config.js
+  #- cat /home/travis/.xtuple/etc/xtuple/travis.451.dev/config.js
+  - cat node-datasource/config.js
 
   # Run a test to make sure that BI is accessible and the ETL worked
   - cd ../xtuple-extensions
