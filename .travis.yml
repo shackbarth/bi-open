@@ -30,25 +30,28 @@ script:
   # Install BI and perform ETL
   - cd bi-open/scripts
   - bash build_bi.sh -eblm -c ../../xtuple/node-datasource/config.js -d demo_dev -P admin
-  
   - bash start_bi.sh
+  
+  # Diagnostics
+  - cd ../../xtuple
+  - cat node-datasource/config.js
+  - mv node-datasource/config.js node-datasource/config.js.old
+  - cat node-datasource/config.js.old | sed 's#restkeyfile: .*#restkeyfile: \"./lib/rest-keys/server.key\",#' > node-datasource/config.js  
+  - cat xtuple/node-datasource/config.js
+  - ls /home/travis/build/xtuple/xtuple-extensions/source/bi_open/client/lib/dimple/lib/
 
   # Install the bi-open extension. TODO: build this into the xtuple-server install as a flag
   - n 0.8
-  - cd ../../xtuple
   - ./scripts/build_app.js -d demo_dev -e ../xtuple-extensions/source/bi_open
 
   # Start the app.
   - npm start &
   - sleep 10
-  #- cat /home/travis/.xtuple/etc/xtuple/travis.451.dev/config.js
-  - cat node-datasource/config.js
 
   # Run a test to make sure that BI is accessible and the ETL worked
   - cd ../xtuple-extensions
   #- cat test/lib/sample_login_data.js | sed 's#org:.*#org: \"demo_dev\",#' > test/lib/login_data.js
   - cp test/lib/sample_login_data.js test/lib/login_data.js
-  - ls -la ../xtuple/node-datasource
   - npm run-script test-bi_open
 
 after_failure:
