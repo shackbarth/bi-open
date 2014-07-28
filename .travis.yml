@@ -14,13 +14,13 @@ script:
   - n 0.8
   - cd xtuple-extensions
   - git checkout testyml
-  - git submodule update --init --recursive
-  - npm install
+  - git submodule update --init --recursive --quiet
+  - npm install --quiet
   
   - cd ../xtuple
   - git checkout 4_6_x
-  - git submodule update --init --recursive
-  - npm install 
+  - git submodule update --init --recursive --quiet
+  - npm install --quiet
   - cd ..
 
   # Use the server to do an install
@@ -30,7 +30,6 @@ script:
   # Install BI and perform ETL
   - cd bi-open/scripts
   - bash build_bi.sh -eblm -c ../../xtuple/node-datasource/config.js -d demo_dev -P admin
-  - mvn -v
   
   - bash start_bi.sh
 
@@ -42,6 +41,8 @@ script:
   # Start the app.
   - npm start &
   - sleep 10
+  - ps -ef | grep node
+  - cat /home/travis/.xtuple/etc/xtuple/travis.451.dev/config.js
 
   # Run a test to make sure that BI is accessible and the ETL worked
   - cd ../xtuple-extensions
