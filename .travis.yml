@@ -36,7 +36,7 @@ script:
   # Install the bi-open extension. TODO: build this into the xtuple-server install as a flag
   - n 0.8
   - cd ../../xtuple
-  - ./scripts/build_app.js -d demo_dev -e ../xtuple-extensions/source/bi-open
+  - ./scripts/build_app.js -d demo_dev -e ../xtuple-extensions/source/bi_open
 
   # Start the app.
   - npm start &
@@ -48,6 +48,7 @@ script:
   - cd ../xtuple-extensions
   #- cat test/lib/sample_login_data.js | sed 's#org:.*#org: \"demo_dev\",#' > test/lib/login_data.js
   - cp test/lib/sample_login_data.js test/lib/login_data.js
+  - ls -la ../xtuple/node-datasource
   - npm run-script test-bi_open
 
 after_failure:
