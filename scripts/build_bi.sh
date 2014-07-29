@@ -384,19 +384,20 @@ prep_mobile() {
 	openssl rsa -in server.key -pubout > server.pub 2>&1 | tee -a $LOG_FILE
 	
 	#
-	# Would be better to get multiline sed working to put commonname in:
-	# biserver: {
-	#    hostname: myname 
-	#
-	# Something similar to:
-	#	sed 'N;s#biServer: {\n        hostname:.*#biServer: {\n        hostname: \"'$COMMONNAME'\",#' \
-	
+	# Would be better to use a proper json parser if we could fish the json
+	# out of the javascript in config.js.  This would fix the nested keys problem
+	# and the problem of looking for quoted and unquoted keys.
+	#	
 	cdir $XT_DIR/node-datasource
 	mv $CONFIGPATH $CONFIGPATH'.old' 2>&1 | tee -a $LOG_FILE
 	cat $CONFIGPATH'.old' | \
+	sed 's#\"restkeyfile\":.*#restkeyfile:\"./lib/rest-keys/server.key\",#' | \
 	sed 's#restkeyfile:.*#restkeyfile:\"./lib/rest-keys/server.key\",#' | \
+	sed 's#\"tenantname\":.*#tenantname:\"'$TENANT'",#' | \
 	sed 's#tenantname:.*#tenantname:\"'$TENANT'",#' | \
+	sed 's#\"httpsport\":.*#httpsport:443,#' | \
 	sed 's#httpsport:.*#httpsport:443,#' | \
+	sed 's#\"bihost\":.*#bihost:\"'$COMMONNAME'\",#' | \
 	sed 's#bihost:.*#bihost:\"'$COMMONNAME'\",#' \
 	> $CONFIGPATH
 }
