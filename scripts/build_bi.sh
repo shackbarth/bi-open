@@ -299,27 +299,30 @@ run_scripts() {
 	log $BISERVER_HOME
 	log "######################################################"
 	log ""
+	# 
+	#  Running install goal and process-resource goal solved maven issue of not copying resources.  May now be fixed.
+	#	
 	cdir $BI_DIR/olap-schema
 	mvn install 2>&1 | tee -a $LOG_FILE
 	java -jar Saxon-HE-9.4.jar -s:src/erpi-tenant-xtuple.xml -xsl:style.xsl -o:target/erpi-schema.xml
 	mvn process-resources 2>&1 | tee -a $LOG_FILE
 
 	cdir ../pentaho-extensions/oauthsso
-	mvn clean 2>&1 | tee -a $LOG_FILE
-	mvn install 2>&1 | tee -a $LOG_FILE
-	mvn process-resources 2>&1 | tee -a $LOG_FILE
+	mvn -q clean 2>&1 | tee -a $LOG_FILE
+	mvn -q install 2>&1 | tee -a $LOG_FILE
+	mvn -q process-resources 2>&1 | tee -a $LOG_FILE
 
 	cdir ../dynschema
-	mvn install 2>&1 | tee -a $LOG_FILE
-	mvn process-resources 2>&1 | tee -a $LOG_FILE
+	mvn -q install 2>&1 | tee -a $LOG_FILE
+	mvn -q process-resources 2>&1 | tee -a $LOG_FILE
 	
 	cdir ../utils
-	mvn install 2>&1 | tee -a $LOG_FILE
-	mvn process-resources 2>&1 | tee -a $LOG_FILE
+	mvn -q install 2>&1 | tee -a $LOG_FILE
+	mvn -q process-resources 2>&1 | tee -a $LOG_FILE
 
 	cdir ../../etl
-	mvn install 2>&1 | tee -a $LOG_FILE
-	mvn process-resources 2>&1 | tee -a $LOG_FILE
+	mvn -q install 2>&1 | tee -a $LOG_FILE
+	mvn -q process-resources 2>&1 | tee -a $LOG_FILE
 }
 
 load_pentaho() {
@@ -338,7 +341,7 @@ load_pentaho() {
 	then
 		log ""
 		log "###########################################################################"
-		log "Sorry we couldn't find psg which is needed by the ETL.  Looking in /usr/lib"
+		log "Sorry we couldn't find psg which is needed by the ETL. Looking in /usr/lib "
 		log "###########################################################################"
 		log ""
 		exit 1
@@ -352,7 +355,7 @@ load_pentaho() {
 	sed s'#erpi.datamart.port.*#erpi.datamart.port='$DATABASELOADPORT'#' | \
 	sed s'#erpi.datamart.url=.*#erpi.datamart.url=jdbc\:postgresql\://localhost\:'$DATABASELOADPORT'/erpbi#' | \
 	sed s'#erpi.cities.file.*#erpi.cities.file='$CITIES'#' | \
-	sed s'#erpi.tenant.id=.*#erpi.tenant.id='$TENANT'.'$DATABASE'#' | \
+	sed s'#erpi.tenant.id=.*#erpi.tenant.id='$TENANT'.dev#' | \
 	sed s'#erpi.datamart.create=.*#erpi.datamart.create='$CREATE'#' | \
 	sed s'#erpi.loaderpath=.*#erpi.loaderpath='$PSGLOCATION'#' | \
 	sed s'#erpi.incremental=.*#erpi.incremental='$INCREMENTAL'#' \
@@ -381,20 +384,21 @@ prep_mobile() {
 	openssl rsa -in server.key -pubout > server.pub 2>&1 | tee -a $LOG_FILE
 	
 	#
-	# Would be better to get multiline sed working to put commonname in:
-	# biserver: {
-	#    hostname: myname
-	#
-	# Something similar to:
-	#	sed 'N;s#biServer: {\n        hostname:.*#biServer: {\n        hostname: \"'$COMMONNAME'\",#' \
-	
+	# Would be better to use a proper json parser if we could fish the json
+	# out of the javascript in config.js.  This would fix the nested keys problem
+	# and the problem of looking for quoted and unquoted keys.
+	#	
 	cdir $XT_DIR/node-datasource
 	mv $CONFIGPATH $CONFIGPATH'.old' 2>&1 | tee -a $LOG_FILE
 	cat $CONFIGPATH'.old' | \
-	sed 's#restkeyfile: .*#restkeyfile: \"./lib/rest-keys/server.key\",#' | \
-	sed 's#tenantname: .*#tenantname: \"'$TENANT'",#' | \
-	sed 's#httpsport: .*#httpsport: 443,#' | \
-	sed 's#bihost: .*#bihost: \"'$COMMONNAME'\",#' \
+	sed 's#\"restkeyfile\":.*#restkeyfile:\"./lib/rest-keys/server.key\",#' | \
+	sed 's#restkeyfile:.*#restkeyfile:\"./lib/rest-keys/server.key\",#' | \
+	sed 's#\"tenantname\":.*#tenantname:\"'$TENANT'",#' | \
+	sed 's#tenantname:.*#tenantname:\"'$TENANT'",#' | \
+	sed 's#\"httpsport\":.*#httpsport:443,#' | \
+	sed 's#httpsport:.*#httpsport:443,#' | \
+	sed 's#\"bihost\":.*#bihost:\"'$COMMONNAME'\",#' | \
+	sed 's#bihost:.*#bihost:\"'$COMMONNAME'\",#' \
 	> $CONFIGPATH
 }
 
