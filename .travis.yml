@@ -31,14 +31,6 @@ script:
   - cd bi-open/scripts
   - bash build_bi.sh -eblm -c ../../xtuple/node-datasource/config.js -d demo_dev -P admin
   - bash start_bi.sh
-  
-  # Diagnostics
-  - cd ../../xtuple
-  - cat node-datasource/config.js
-  - mv node-datasource/config.js node-datasource/config.js.old
-  - cat node-datasource/config.js.old | sed 's#restkeyfile:.*#restkeyfile: \"./lib/rest-keys/server.key\",#' > node-datasource/config.js  
-  - cat xtuple/node-datasource/config.js
-  - ls /home/travis/build/xtuple/xtuple-extensions/source/bi_open/client/lib/dimple/lib/
 
   # Install the bi-open extension. TODO: build this into the xtuple-server install as a flag
   - n 0.8
