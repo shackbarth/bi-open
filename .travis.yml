@@ -13,7 +13,7 @@ script:
   # Temporary hack: we need the bleeding-edge code to access the BI reshuffle. XXX remove after 4.6 beta
   - n 0.8
   - cd xtuple-extensions
-  - git checkout testyml
+  - git checkout ch-chg2
   - git submodule update --init --recursive --quiet
   - npm install --quiet
   
@@ -33,6 +33,7 @@ script:
   - bash start_bi.sh
 
   # Install the bi-open extension. TODO: build this into the xtuple-server install as a flag
+  - cd ../../xtuple
   - n 0.8
   - ./scripts/build_app.js -d demo_dev -e ../xtuple-extensions/source/bi_open
 
