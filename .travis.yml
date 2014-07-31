@@ -11,7 +11,7 @@ script:
   - git clone https://github.com/jgunderson/xtuple-extensions.git
 
   # Temporary hack: we need the bleeding-edge code to access the BI reshuffle. XXX remove after 4.6 beta
-  - n 0.8
+  # - n 0.8  - we had to do this?  now xtuple only builds with 11
   - cd xtuple-extensions
   - git checkout ch-chg2
   - git submodule update --init --recursive --quiet
@@ -43,9 +43,13 @@ script:
 
   # Run a test to make sure that BI is accessible and the ETL worked
   - cd ../xtuple-extensions
-  #- cat test/lib/sample_login_data.js | sed 's#org:.*#org: \"demo_dev\",#' > test/lib/login_data.js
   - cp ../xtuple/test/lib/login_data.js test/lib/login_data.js
   - npm run-script test-bi_open
+  
+  # diagostics
+  - cat test/lib/login_data.js
+  - cat ../ErpBI/biserver-ce/tomcat/logs/catalina.out
+  - find / -name xtuple-server.log
 
 after_failure:
   - sudo cat /var/spool/cron/crontabs/travis
