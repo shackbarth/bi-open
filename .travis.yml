@@ -38,7 +38,7 @@ script:
   - ./scripts/build_app.js -d demo_dev -e ../xtuple-extensions/source/bi_open
 
   # Start the app.
-  - npm start &
+  - npm start > console.log &
   - sleep 10
 
   # Run a test to make sure that BI is accessible and the ETL worked
@@ -50,6 +50,7 @@ script:
   - cat test/lib/login_data.js
   - cat ../ErpBI/data-integration/properties/psg-linux/.kettle/kettle.properties
   - cat ../ErpBI/biserver-ce/tomcat/logs/catalina.out
+  - cat ../xtuple/console.log
 
 after_failure:
   - sudo cat /var/spool/cron/crontabs/travis
