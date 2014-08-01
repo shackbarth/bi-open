@@ -49,7 +49,6 @@ script:
   # diagostics
   - cat test/lib/login_data.js
   - cat ../ErpBI/biserver-ce/tomcat/logs/catalina.out
-  - find / -name xtuple-server.log
 
 after_failure:
   - sudo cat /var/spool/cron/crontabs/travis
