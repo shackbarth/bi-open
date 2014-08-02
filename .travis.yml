@@ -1,7 +1,7 @@
 language: c
 
 script:
-  # Basic setup of the xtuple-server, from the xtuple-server wiki
+  # Boostrap and install xtuple-server
   - wget git.io/hikK5g -qO- | sudo bash
   - npm install -g xtuple-server
   - cd ..
