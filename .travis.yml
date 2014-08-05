@@ -9,6 +9,9 @@ script:
   # The FOSS xtuple-server requires an existing xtuple directory to start working off of
   - git clone https://github.com/xtuple/xtuple.git
   - git clone https://github.com/jgunderson/xtuple-extensions.git
+  
+  # bcrpyt won't install with node 0.11.13?   try node 0.10
+  - n 0.10
 
   # Temporary hack: we need the bleeding-edge code to access the BI reshuffle. XXX remove after 4.6 beta
   # - n 0.8  - we had to do this?  now xtuple only builds with 11
