@@ -46,7 +46,7 @@ script:
   - cp ../xtuple/test/lib/login_data.js test/lib/login_data.js
   - npm run-script test-bi_open
   
-  # diagostics
+  # diagostics (move to after failure)
   - cat test/lib/login_data.js
   - cat ../ErpBI/data-integration/properties/psg-linux/.kettle/kettle.properties
   - cat ../ErpBI/biserver-ce/tomcat/logs/catalina.out
