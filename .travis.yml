@@ -1,49 +1,44 @@
 language: c
 
 script:
-  # Boostrap and install xtuple-server
+  # Boostrap 
   - wget git.io/hikK5g -qO- | sudo bash
-  - npm install -g xtuple-server
   - cd ..
 
-  # The FOSS xtuple-server requires an existing xtuple directory to start working off of
-  - git clone https://github.com/xtuple/xtuple.git
-  - git clone https://github.com/jgunderson/xtuple-extensions.git
-  
-  # bcrpyt won't install with node 0.11.13?   try node 0.10 adnd bcrypt installs, but its the wrong version for install-dev (needs 0.8?)
-  # n 0.10
-  - node --version
- 
-  # Temporary hack: we need the bleeding-edge code to access the BI reshuffle. XXX remove after 4.6 beta
-  # - n 0.8  - we had to do this?  now xtuple only builds with 11
-  - cd xtuple-extensions
-  - git checkout ch-chg2
-  - git submodule update --init --recursive --quiet
-  - npm install --quiet
-  
+  # The FOSS xtuple-server requires an existing xtuple 
+  - git clone https://github.com/xtuple/xtuple.git  
   - cd ../xtuple
   - git checkout 4_6_x
   - git submodule update --init --recursive --quiet
   - npm install --quiet
   - cd ..
-
-  # Use the server to do an install
-  # n 0.11
-  - sudo xtuple-server install-dev --xt-version 4.5.1 --xt-demo --local-workspace ./xtuple --xt-adminpw admin
-
+  
+  # And we need extensions for bi-open
+  - git clone https://github.com/xtuple/xtuple-extensions.git  
+  - cd xtuple-extensions
+  - git checkout 4_6_x
+  - git submodule update --init --recursive --quiet
+  - npm install --quiet
+  
+  # Install the bi-open extension. TODO: build this into the xtuple-server install as a flag
+  - cd ../xtuple
+  - ./scripts/build_app.js -d demo_dev -e ../xtuple-extensions/source/bi_open
+  
   # Install BI and perform ETL
-  - cd bi-open/scripts
+  - cd ../bi-open/scripts
   - bash build_bi.sh -eblm -c ../../xtuple/node-datasource/config.js -d demo_dev -P admin
   - bash start_bi.sh
-
-  # Install the bi-open extension. TODO: build this into the xtuple-server install as a flag
-  - cd ../../xtuple
-  - n 0.8
-  - ./scripts/build_app.js -d demo_dev -e ../xtuple-extensions/source/bi_open
-
+  
   # Start the app.
+  - cd ../xtuple
   - npm start > console.log &
   - sleep 10
+  
+  # Install xtuple-server
+  - npm install -g xtuple-server
+
+  # Use the server to do an install
+  - sudo xtuple-server install-dev --xt-version 4.5.1 --xt-demo --local-workspace ./xtuple --xt-adminpw admin
 
   # Run a test to make sure that BI is accessible and the ETL worked
   - cd ../xtuple-extensions
