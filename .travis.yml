@@ -12,8 +12,8 @@ script:
   
   # bcrpyt won't install with node 0.11.13?   try node 0.10 adnd bcrypt installs, but its the wrong version for install-dev (needs 0.8?)
   # n 0.10
-  node --version
-
+  - node --version
+ 
   # Temporary hack: we need the bleeding-edge code to access the BI reshuffle. XXX remove after 4.6 beta
   # - n 0.8  - we had to do this?  now xtuple only builds with 11
   - cd xtuple-extensions
