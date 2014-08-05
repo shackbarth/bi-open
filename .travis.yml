@@ -7,7 +7,7 @@ script:
 
   # The FOSS xtuple-server requires an existing xtuple 
   - git clone https://github.com/xtuple/xtuple.git  
-  - cd ../xtuple
+  - cd xtuple
   - git checkout 4_6_x
   - git submodule update --init --recursive --quiet
   - npm install --quiet
