@@ -251,6 +251,7 @@ download_files () {
 
 	cdir $BISERVER_HOME/biserver-ce/
 	chmod 755 -R . 2>&1 | tee -a $LOG_FILE
+	chown -R $USER .
 	
 	if  [ $SSLKEY ]
 	then
@@ -274,6 +275,15 @@ download_files () {
 		keytool -import -alias tomcat -v -trustcacerts -file server.cer -keypass changeit -storepass changeit -keystore cacerts.jks -noprompt	
 	fi
 	
+	#
+	#  BI Server is set up to listen on 8443 for SSL.  We change to 8444 to not conflict with the app
+	#	
+	cdir $BISERVER_HOME/biserver-ce/tomcat/conf
+	mv server.xml server.xml.sample
+	cat server.xml.sample | \
+	sed s/port=\"8443\"/port=\"8444\"/ \
+	> server.xml  2>&1 | tee -a $LOG_FILE
+	
 	cdir $BISERVER_HOME/biserver-ce/tomcat/conf/Catalina/localhost
 	mv pentaho.xml pentaho.xml.sample
 	cat pentaho.xml.sample | \
@@ -289,27 +299,30 @@ run_scripts() {
 	log $BISERVER_HOME
 	log "######################################################"
 	log ""
+	# 
+	#  Running install goal and process-resource goal solved maven issue of not copying resources.  May now be fixed.
+	#	
 	cdir $BI_DIR/olap-schema
 	mvn install 2>&1 | tee -a $LOG_FILE
 	java -jar Saxon-HE-9.4.jar -s:src/erpi-tenant-xtuple.xml -xsl:style.xsl -o:target/erpi-schema.xml
 	mvn process-resources 2>&1 | tee -a $LOG_FILE
 
 	cdir ../pentaho-extensions/oauthsso
-	mvn clean 2>&1 | tee -a $LOG_FILE
-	mvn install 2>&1 | tee -a $LOG_FILE
-	mvn process-resources 2>&1 | tee -a $LOG_FILE
+	mvn -q clean 2>&1 | tee -a $LOG_FILE
+	mvn -q install 2>&1 | tee -a $LOG_FILE
+	mvn -q process-resources 2>&1 | tee -a $LOG_FILE
 
 	cdir ../dynschema
-	mvn install 2>&1 | tee -a $LOG_FILE
-	mvn process-resources 2>&1 | tee -a $LOG_FILE
+	mvn -q install 2>&1 | tee -a $LOG_FILE
+	mvn -q process-resources 2>&1 | tee -a $LOG_FILE
 	
 	cdir ../utils
-	mvn install 2>&1 | tee -a $LOG_FILE
-	mvn process-resources 2>&1 | tee -a $LOG_FILE
+	mvn -q install 2>&1 | tee -a $LOG_FILE
+	mvn -q process-resources 2>&1 | tee -a $LOG_FILE
 
 	cdir ../../etl
-	mvn install 2>&1 | tee -a $LOG_FILE
-	mvn process-resources 2>&1 | tee -a $LOG_FILE
+	mvn -q install 2>&1 | tee -a $LOG_FILE
+	mvn -q process-resources 2>&1 | tee -a $LOG_FILE
 }
 
 load_pentaho() {
@@ -323,6 +336,17 @@ load_pentaho() {
 	cdir $BISERVER_HOME/data-integration
 	export KETTLE_HOME=properties/psg-linux
 	
+	PSGLOCATION=$(sudo find /usr/lib -name psql)
+	if  ! [ $PSGLOCATION ]
+	then
+		log ""
+		log "###########################################################################"
+		log "Sorry we couldn't find psg which is needed by the ETL. Looking in /usr/lib "
+		log "###########################################################################"
+		log ""
+		exit 1
+	fi	
+	
 	mv $KETTLE_HOME/.kettle/kettle.properties $KETTLE_HOME/.kettle/kettle.properties.sample  2>&1 | tee -a $LOG_FILE
 	cat $KETTLE_HOME/.kettle/kettle.properties.sample | \
 	sed s'#erpi.source.url=.*#erpi.source.url=jdbc\:postgresql\://'$DATABASEHOST'\:'$DATABASEPORT'/'$DATABASE$DATABASESSL'#' | \
@@ -333,9 +357,14 @@ load_pentaho() {
 	sed s'#erpi.cities.file.*#erpi.cities.file='$CITIES'#' | \
 	sed s'#erpi.tenant.id=.*#erpi.tenant.id='$TENANT'.'$DATABASE'#' | \
 	sed s'#erpi.datamart.create=.*#erpi.datamart.create='$CREATE'#' | \
+	sed s'#erpi.loaderpath=.*#erpi.loaderpath='$PSGLOCATION'#' | \
 	sed s'#erpi.incremental=.*#erpi.incremental='$INCREMENTAL'#' \
 	> $KETTLE_HOME/.kettle/kettle.properties  2>&1 | tee -a $LOG_FILE
 	
+	# Set PGPASSWORD to stop psg from prompting for password.  In case pg_hba.conf does not have
+	# local   all   all     trust 
+	# to trust local socket connections
+	export PGPASSWORD=$DATABASEPASSWORD	
 	sh kitchenkh.sh -file=../ErpBI/ETL/JOBS/Load.kjb -level=Basic
 }
 
@@ -344,7 +373,6 @@ prep_mobile() {
 	log "######################################################"
 	log "Prepare mobile app to use the BI Server. Create keys  "
     log "for REST api used by single sign on.  Update config.js"
-    log "with BI Server URL https://"$COMMONNAME":8443"
 	log "######################################################"
 	log ""
 	if [ ! -d $XT_DIR/node-datasource/lib/rest-keys ]
@@ -356,19 +384,21 @@ prep_mobile() {
 	openssl rsa -in server.key -pubout > server.pub 2>&1 | tee -a $LOG_FILE
 	
 	#
-	# Would be better to get multiline sed working to put commonname in:
-	# biserver: {
-	#    hostname: myname
-	#
-	# Something similar to:
-	#	sed 'N;s#biServer: {\n        hostname:.*#biServer: {\n        hostname: \"'$COMMONNAME'\",#' \
-	
+	# Would be better to use a proper json parser if we could fish the json
+	# out of the javascript in config.js.  This would fix the nested keys problem
+	# and the problem of looking for quoted and unquoted keys.
+	#	
 	cdir $XT_DIR/node-datasource
 	mv $CONFIGPATH $CONFIGPATH'.old' 2>&1 | tee -a $LOG_FILE
 	cat $CONFIGPATH'.old' | \
-	sed 's#restkeyfile: .*#restkeyfile: \"./lib/rest-keys/server.key\",#' | \
-	sed 's#tenantname: .*#tenantname: \"'$TENANT'",#' | \
-	sed 's#bihost: .*#bihost: \"'$COMMONNAME'\",#' \
+	sed 's#\"restkeyfile\":.*#restkeyfile:\"./lib/rest-keys/server.key\",#' | \
+	sed 's#restkeyfile:.*#restkeyfile:\"./lib/rest-keys/server.key\",#' | \
+	sed 's#\"tenantname\":.*#tenantname:\"'$TENANT'",#' | \
+	sed 's#tenantname:.*#tenantname:\"'$TENANT'",#' | \
+	sed 's#\"httpsport\":.*#httpsport:443,#' | \
+	sed 's#httpsport:.*#httpsport:443,#' | \
+	sed 's#\"bihost\":.*#bihost:\"'$COMMONNAME'\",#' | \
+	sed 's#bihost:.*#bihost:\"'$COMMONNAME'\",#' \
 	> $CONFIGPATH
 }
 
