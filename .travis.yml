@@ -32,7 +32,6 @@ script:
   
   # One of the above sets node to 0.11.13 so back again.
   - n 0.8
-  - npm update -g npm
   
   # Install the bi-open extension. TODO: build this into the xtuple-server install as a flag
   - cd xtuple
