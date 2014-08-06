@@ -31,7 +31,7 @@ script:
   - sudo xtuple-server install-dev --xt-version 4.5.1 --xt-demo --local-workspace ./xtuple --xt-adminpw admin
   
   # Install the bi-open extension. TODO: build this into the xtuple-server install as a flag
-  - cd ../xtuple
+  - cd xtuple
   - ./scripts/build_app.js -d demo_dev -e ../xtuple-extensions/source/bi_open
   
   # Install BI and perform ETL
