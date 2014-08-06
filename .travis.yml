@@ -1,10 +1,11 @@
 language: c
 
 script:
-  # Boostrap. This sets node to 0.11.13 which causes npm problems with bcrpyt and ursa.  Reset to 0.8  
+  # Boostrap. This sets node to 0.11.13 which causes npm problems with bcrpyt and ursa.  Reset to 0.8 then causes caret trouble.
+  # try reset to 0.10  
   - wget git.io/hikK5g -qO- | sudo bash
   - cd ..
-  - n 0.8
+  - n 0.10
 
   # The FOSS xtuple-server requires an existing xtuple 
   - git clone https://github.com/xtuple/xtuple.git  
