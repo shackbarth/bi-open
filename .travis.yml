@@ -1,7 +1,7 @@
 language: c
 
 script:
-  # Boostrap 
+  # Boostrap  
   - wget git.io/hikK5g -qO- | sudo bash
   - cd ..
 
