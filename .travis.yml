@@ -44,7 +44,7 @@ script:
   - bash start_bi.sh
   
   # Start the app.
-  - cd ../xtuple
+  - cd ../../xtuple
   - npm start > console.log &
   - sleep 10
 
