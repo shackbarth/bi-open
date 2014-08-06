@@ -22,6 +22,7 @@ script:
   - git checkout 4_6_x
   - git submodule update --init --recursive --quiet
   - npm install --quiet
+  - cd ..
   
   # Install xtuple-server
   - npm install -g xtuple-server
