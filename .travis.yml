@@ -30,6 +30,10 @@ script:
   # Use the server to do an install and build xtuple
   - sudo xtuple-server install-dev --xt-version 4.5.1 --xt-demo --local-workspace ./xtuple --xt-adminpw admin
   
+  # One of the above sets node to 0.11.13 so back again.
+  - n 0.8
+  - npm update -g npm
+  
   # Install the bi-open extension. TODO: build this into the xtuple-server install as a flag
   - cd xtuple
   - ./scripts/build_app.js -d demo_dev -e ../xtuple-extensions/source/bi_open
