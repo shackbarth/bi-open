@@ -4,9 +4,6 @@ script:
   # Boostrap. This sets node to 0.11.13 which causes npm problems with bcrpyt and ursa.  Reset to 0.8 then causes caret trouble.
   # try reset to 0.10  
   - wget git.io/hikK5g -qO- | sudo bash
-  - cd ..
-  - n 0.8
-  - npm update -g npm
 
   # The FOSS xtuple-server requires an existing xtuple 
   - git clone https://github.com/xtuple/xtuple.git  
@@ -28,7 +25,7 @@ script:
   - npm install -g xtuple-server
 
   # Use the server to do an install and build xtuple
-  - sudo xtuple-server install-dev --xt-version 4.5.1 --xt-demo --local-workspace ./xtuple --xt-adminpw admin
+  - sudo xtuple-server install-dev --xt-demo --local-workspace ./xtuple --xt-adminpw admin
   
   # One of the above sets node to 0.11.13 so back again.
   - n 0.8
@@ -49,18 +46,14 @@ script:
 
   # Run a test to make sure that BI is accessible and the ETL worked
   - cd ../xtuple-extensions
-  - cp ../xtuple/test/lib/login_data.js test/lib/login_data.js
-  - npm run-script test-bi_open
+  - cp ../xtuple/test/lib/login_data.js* test/lib/login_data.js
+  - npm run test-bi_open
   
   # diagostics (move to after failure)
+
+after_failure:
   - cat test/lib/login_data.js
   - cat ../ErpBI/data-integration/properties/psg-linux/.kettle/kettle.properties
   - cat ../ErpBI/biserver-ce/tomcat/logs/catalina.out
   - cat ../xtuple/console.log
-
-after_failure:
-  - sudo cat /var/spool/cron/crontabs/travis
-  - sudo cat /var/spool/cron/crontabs/root
-  - sudo find / -name xtuple-server.log
-  - sudo cat xtuple-server.log
   - env
