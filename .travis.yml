@@ -6,6 +6,7 @@ script:
   - wget git.io/hikK5g -qO- | sudo bash
 
   # The FOSS xtuple-server requires an existing xtuple 
+  - n 0.8
   - git clone https://github.com/xtuple/xtuple.git  
   - cd xtuple
   - git checkout 4_6_x
