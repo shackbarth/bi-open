@@ -43,11 +43,12 @@ script:
   # Start the app.
   - cd ../../xtuple
   - npm start > console.log &
-  - sleep 10
+  - sleep 20
 
   # Run a test to make sure that BI is accessible and the ETL worked
   - cd ../xtuple-extensions
   - cp ../xtuple/test/lib/login_data.js* test/lib/login_data.js
+  - date
   - npm run test-bi_open
   
   # diagostics (move to after failure)
