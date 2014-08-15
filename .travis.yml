@@ -22,7 +22,6 @@ script:
   
   # Do we need to be back to node 11 for xtuple npm?  of can we use:
   # npm update -g npm
-  - n 0.11
   - cd ../xtuple
   - git checkout 4_6_x
   - git submodule update --init --recursive --quiet
