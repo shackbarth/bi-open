@@ -53,10 +53,10 @@ script:
   - sleep 10
 
   # Run a test to make sure that BI is accessible and the ETL worked
-  - cd ../private-extensions
+  - cd ../xtuple-extensions
   #- cat test/lib/sample_login_data.js | sed 's#org:.*#org: \"demo_dev\",#' > test/lib/login_data.js
   - cp ../xtuple/test/lib/login_data.js test/lib/login_data.js
-  - npm run-script test-bi
+  - npm run-script test-bi_open
 
 after_failure:
   - sudo cat /var/spool/cron/crontabs/travis
