@@ -240,7 +240,7 @@ download_files () {
 		unzip -q $ERPBIPATH -d ../..
 	else
 		rm ../../ErpBI.zip
-		wget http://sourceforge.net/projects/erpbi/files/candidate-release/ErpBI.zip/download -O -nv ../../ErpBI.zip
+		wget http://sourceforge.net/projects/erpbi/files/candidate-release/ErpBI.zip/download -O  ../../ErpBI.zip -nv
 		log ""
 		log "######################################################"
 		log "Unzipping ErpBI.zip"
