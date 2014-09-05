@@ -41,7 +41,7 @@ script:
 
   # Install bi-open.
   - cd ../../xtuple
-  - n 0.8
+  - sudo n 0.8
   - ./scripts/build_app.js -d demo_dev -e ../xtuple-extensions/source/bi_open
 
   # Start the app.
