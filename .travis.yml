@@ -33,11 +33,9 @@ script:
   - cd bi-open/scripts
   - git checkout ci-chg2
   - bash build_bi.sh -ebm -c ../../xtuple/node-datasource/config.js -d demo_dev -P admin
-  - cd ../../bi/scripts
-  - bash install.sh
   - cd ../../bi-open/scripts
-  - bash build_bi.sh -l -c ../../xtuple/node-datasource/config.js -d demo_dev -P admin
-  - bash start_bi.sh
+  - sudo bash build_bi.sh -l -c ../../xtuple/node-datasource/config.js -d demo_dev -P admin
+  - sudo bash start_bi.sh
 
   # Install bi-open.
   - cd ../../xtuple
