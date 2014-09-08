@@ -15,7 +15,7 @@ script:
   # Temporary hack: we need the bleeding-edge code to access the BI reshuffle. XXX remove after 4.6 beta
   - n 0.8
   - cd xtuple-extensions
-  - git checkout ci-chg2
+  - git checkout 4_7_x
   - git submodule update --init --recursive --quiet
   - npm install --quiet
   
