@@ -31,7 +31,7 @@ script:
 
   # Install BI and perform ETL
   - cd bi-open/scripts
-  - bash build_bi.sh -ebm -c ../../xtuple/node-datasource/config.js -d demo_dev -P admin
+  - sudo bash build_bi.sh -ebm -c ../../xtuple/node-datasource/config.js -d demo_dev -P admin
   - cd ../../bi-open/scripts
   - sudo bash build_bi.sh -l -c ../../xtuple/node-datasource/config.js -d demo_dev -P admin
   - sudo bash start_bi.sh
