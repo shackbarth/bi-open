@@ -13,8 +13,7 @@ script:
   - git clone https://github.com/xtuple/xtuple.git
   - git clone https://github.com/xtuple/xtuple-extensions.git
 
-  # Temporary hack: we need the bleeding-edge code to access the BI reshuffle. XXX remove after 4.6 beta
-  - n 0.8
+  - sudo n 0.8  # TODO no sudo here!
   - cd xtuple-extensions
   - git checkout 4_7_x
   - git submodule update --init --recursive --quiet
@@ -32,7 +31,6 @@ script:
 
   # Install BI and perform ETL
   - cd bi-open/scripts
-  - git checkout 4_7_x
   - bash build_bi.sh -ebm -c ../../xtuple/node-datasource/config.js -d demo_dev -P admin
   - cd ../../bi-open/scripts
   - sudo bash build_bi.sh -l -c ../../xtuple/node-datasource/config.js -d demo_dev -P admin
