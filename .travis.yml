@@ -1,5 +1,9 @@
 language: c
 
+env:
+  global:
+    - M2_HOME=/usr/share/maven
+
 script:
   # Bootstrap
   - wget git.io/hikK5g -qO- | sudo bash
