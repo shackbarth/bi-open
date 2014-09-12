@@ -1,10 +1,18 @@
-language: c
+language: java
+jdk:
+  - openjdk6
+
+cache:
+  directories:
+      - ../ErpBI.zip
 
 env:
   global:
     - M2_HOME=/usr/share/maven
+    - JAVA_HOME=/usr/lib/jvm/java-6-openjdk-amd64/
 
 script:
+  - sudo apt-get remove maven -yy
   # Bootstrap
   - wget git.io/hikK5g -qO- | sudo bash
   
