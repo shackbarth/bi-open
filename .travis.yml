@@ -5,6 +5,7 @@ jdk:
 cache:
   directories:
       - ../ErpBI.zip
+      - ~/.npm
 
 env:
   global:
