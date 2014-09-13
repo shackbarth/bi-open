@@ -1,19 +1,11 @@
-language: java
-jdk:
-  - openjdk6
+language: c
 
 cache:
   directories:
       - ../ErpBI.zip
       - ~/.npm
 
-env:
-  global:
-    - M2_HOME=/usr/share/maven
-    - JAVA_HOME=/usr/lib/jvm/java-6-openjdk-amd64/
-
 script:
-  - sudo apt-get remove maven -yy
   # Bootstrap
   - wget git.io/hikK5g -qO- | sudo bash
   
@@ -35,23 +27,19 @@ script:
   - git checkout v4.6.0-1
   - git submodule update --init --recursive --quiet
   - npm install --quiet
-  - cd ..
 
   # Use the server to do an install
   # must be n 0.11
-  - sudo xtuple-server install-dev --xt-version 4.5.1 --xt-demo --local-workspace ./xtuple --xt-adminpw admin
+  - sudo xtuple-server install-dev --xt-demo --xt-adminpw admin
+  - sudo n 0.8
+  - ./scripts/build_app.js -d demo_dev -e ../xtuple-extensions/source/bi_open
 
   # Install BI and perform ETL
   - cd bi-open/scripts
-  - sudo bash build_bi.sh -ebm -c ../../xtuple/node-datasource/config.js -d demo_dev -P admin
-  - cd ../../bi-open/scripts
-  - sudo bash build_bi.sh -l -c ../../xtuple/node-datasource/config.js -d demo_dev -P admin
-  - sudo bash start_bi.sh
-
-  # Install bi-open.
-  - cd ../../xtuple
-  - sudo n 0.8
-  - ./scripts/build_app.js -d demo_dev -e ../xtuple-extensions/source/bi_open
+  - 
+  - bash build_bi.sh -ebm -c ../../xtuple/node-datasource/config.js -d demo_dev -P admin
+  - bash build_bi.sh -l -c ../../xtuple/node-datasource/config.js -d demo_dev -P admin
+  - bash start_bi.sh
 
   # Start the app.
   - node node-datasource/main.js &
