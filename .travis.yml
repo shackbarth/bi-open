@@ -33,10 +33,10 @@ script:
   - sudo xtuple-server install-dev --xt-demo --xt-adminpw admin
   - sudo n 0.8
   - ./scripts/build_app.js -d demo_dev -e ../xtuple-extensions/source/bi_open
+  - cd ..
 
   # Install BI and perform ETL
   - cd bi-open/scripts
-  - 
   - bash build_bi.sh -ebm -c ../../xtuple/node-datasource/config.js -d demo_dev -P admin
   - bash build_bi.sh -l -c ../../xtuple/node-datasource/config.js -d demo_dev -P admin
   - bash start_bi.sh
