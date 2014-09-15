@@ -22,14 +22,12 @@ script:
   - git checkout 4_7_x
   - git submodule update --init --recursive --quiet
   - npm install --quiet
+  - cd ..
   
-  - cd ../xtuple
+  - cd xtuple
   - git checkout v4.6.0-1
   - git submodule update --init --recursive --quiet
   - npm install --quiet
-
-  # Use the server to do an install
-  # must be n 0.11
   - sudo xtuple-server install-dev --xt-demo --xt-adminpw admin
   - sudo n 0.8
   - ./scripts/build_app.js -d demo_dev -e ../xtuple-extensions/source/bi_open
@@ -40,13 +38,16 @@ script:
   - bash build_bi.sh -ebm -c ../../xtuple/node-datasource/config.js -d demo_dev -P admin
   - bash build_bi.sh -l -c ../../xtuple/node-datasource/config.js -d demo_dev -P admin
   - bash start_bi.sh
+  - cd ../../
 
   # Start the app.
+  - cd xtuple
   - node node-datasource/main.js &
   - sleep 10
+  - cd ..
 
   # Run a test to make sure that BI is accessible and the ETL worked
-  - cd ../xtuple-extensions
+  - cd xtuple-extensions
   #- cat test/lib/sample_login_data.js | sed 's#org:.*#org: \"demo_dev\",#' > test/lib/login_data.js
   - cp ../xtuple/test/lib/login_data.js test/lib/login_data.js
   - npm run-script test-bi_open
