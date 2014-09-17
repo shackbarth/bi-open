@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/xtuple/bi-open.svg?branch=master)](https://travis-ci.org/xtuple/bi-open)
+
 xTuple Open Business Intelligence is powered by Pentaho technology and is implemented by the following projects:
 
 * ErpBI Solutions (http://sourceforge.net/projects/erpbi/) provides a pre-configured Pentaho installation  with a business intelligence server, reporting engine and ETL technology.
