@@ -275,7 +275,8 @@ we need to use the actual date or the end of period date.</note>
 		&quot;ISS_FISCAL_PERIOD_K&quot;,  
        	&quot;ACT_FISCAL_PERIOD_K&quot;, 
 		&quot;ENDDATE_K&quot;, 
-		&quot;ID_DOCUMENT_NK&quot;, 
+		&quot;ID_DOCUMENT_NK&quot;,
+        &quot;ID_DOCUMENT_NAME&quot;,  
        	&quot;ID_TRANS_DOC_NK&quot;, 
 		&quot;STATUS&quot;, 
 		&quot;TYPE&quot;, 
@@ -434,10 +435,11 @@ function writeCache(fromTime, toTime)
 			newCache[i][3] = Number(cache[i][3]);
 			newCache[i][4] = String(cache[i][4]);
 			newCache[i][5] = String(cache[i][5]);
-			newCache[i][6] = String(cache[i][6]);
-			newCache[i][7] = String(cache[i][7]);
-			newCache[i][8] = String(cache[i][8]);
-			for (j = 9; j &lt; 24; j++)
+			newCache[i][6] = String(cache[i][5]);
+			newCache[i][7] = String(cache[i][6]);
+			newCache[i][8] = String(cache[i][7]);
+			newCache[i][9] = String(cache[i][8]);
+			for (j = 10; j &lt; 25; j++)
 			{
 				newCache[i][j] = Number(cache[i][j]);			
 			}
@@ -505,7 +507,7 @@ cache.push(row);
 &#47;&#47;	If this is the last row, or the fiscal code changes write the cache through erpi.endate.  
 &#47;&#47;  If the fiscal code changes start over again at the begining of time with a new cache
 &#47;&#47;
-if ((row[25] == true) || (row[0] != fiscalCode))
+if ((row[26] == true) || (row[0] != fiscalCode))
 {
 	writeCache(currTime, endTime + 1);
 	var currTime = Number(row[1]);
@@ -641,6 +643,18 @@ trans_Status = SKIP_TRANSFORMATION;
       </field>
       <field>
         <name>ID_DOCUMENT_NK</name>
+        <type>String</type>
+        <format/>
+        <currency>N</currency>
+        <decimal/>
+        <group>N</group>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>ID_DOCUMENT_NAME</name>
         <type>String</type>
         <format/>
         <currency>N</currency>
@@ -942,6 +956,10 @@ trans_Status = SKIP_TRANSFORMATION;
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
+      </field>      <field>        <name>ID_DOCUMENT_NAME</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
       </field>      <field>        <name>ID_TRANS_DOC_NK</name>
         <rename/>
         <length>-2</length>
@@ -1077,6 +1095,18 @@ trans_Status = SKIP_TRANSFORMATION;
         <storage_type/>
       </meta>      <meta>        <name>ID_DOCUMENT_NK</name>
         <rename>ID_DOCUMENT_NK</rename>
+        <type>String</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type>normal</storage_type>
+      </meta>      <meta>        <name>ID_DOCUMENT_NAME</name>
+        <rename>ID_DOCUMENT_NAME</rename>
         <type>String</type>
         <length>-2</length>
         <precision>-2</precision>
