@@ -288,10 +288,10 @@ WHERE COUNT &gt; 1;
 --
 select
 	&apos;${erpi.tenant.id}&apos;															as &quot;Tenant&quot;,
-
-	regexp_replace(SUBSTR(COALESCE(&quot;ophead_name&quot;, &apos;&apos;), 0, 40) || &apos;, &apos; || &quot;ophead_number&quot;, E&apos;\r|\n|;&apos;, &apos;&apos;, &apos;g&apos;) as &quot;ID_Document_NK&quot;,
-	regexp_replace(SUBSTR(COALESCE(&quot;ophead_name&quot;, &apos;&apos;), 0, 40) || &apos;, &apos; || &quot;ophead_number&quot;, E&apos;\r|\n|;&apos;, &apos;&apos;, &apos;g&apos;) as &quot;ID_Trans_Doc_NK&quot;,
-
+	CASE WHEN ophead_number = &apos;&apos; THEN &apos;Unspecified&apos;
+		ELSE COALESCE(ophead_number, &apos;Unspecified&apos;) END 									as &quot;ID_Document_NK&quot;,
+	CASE WHEN ophead_number = &apos;&apos; THEN &apos;Unspecified&apos;
+		ELSE COALESCE(ophead_number, &apos;Unspecified&apos;) END 									as &quot;ID_Trans_Doc_NK&quot;,
 	CASE WHEN ophead_active = true THEN &apos;Active&apos;
 		ELSE &apos;Closed&apos; END
 														as &quot;Status&quot;, 
@@ -461,62 +461,6 @@ WHERE (quhead_quotedate &gt;= &apos;${extractstartdate}&apos; OR (quhead_quoteda
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>294</xloc>
       <yloc>210</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Set status and actual date.</name>
-    <type>ScriptValueMod</type>
-    <description/>
-    <distribute>Y</distribute>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <compatible>Y</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>&#47;&#47;
-&#47;&#47;  Clean opportunities more (after SQL select clean).  If stage is in closed list, 
-&#47;&#47;  make status closed.  We need to know which are won so if in won list make the 
-&#47;&#47;  status won.  If closed or won, make the actual date the last date set.
-&#47;&#47;
-
-var closedStages = getVariable(&quot;erpi.opportunity.closed&quot;, &quot;&quot;),
-  closedStagesList = closedStages.split(&quot;,&quot;),
-  wonStages = getVariable(&quot;erpi.opportunity.won&quot;, &quot;&quot;),
-  wonStagesList = wonStages.split(&quot;,&quot;);
-
-for (i = 0; i &lt; closedStagesList.length; i++) {
-  if ( Stage.getString() == closedStagesList[i]) {
-    Status.setValue(&quot;Closed&quot;);
-  }
-}
-
-for (i = 0; i &lt; wonStagesList.length; i++) {
-  if ( Stage.getString() == wonStagesList[i]) {
-    Status.setValue(&quot;Won&quot;);
-  }
-}
-
-if ( (Status.getString() == &quot;Closed&quot;) || (Status.getString() == &quot;Won&quot;) ) {
-	if ( Assign_Date.getString() == &quot;01&#47;01&#47;1990&quot; ) {
-		Assign_Date.setValue(Issue_Date.getString());
-	}
-	if ( Target_Date.getString() == &quot;01&#47;01&#47;1990&quot; ) {
-		Target_Date.setValue(Assign_Date.getString());
-	}
-	if ( Actual_Date.getString() == &quot;01&#47;01&#47;1990&quot; ) {
-		Actual_Date.setValue(Target_Date.getString());
-	}
-}</jsScript_script>
-      </jsScript>    </jsScripts>    <fields>    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>302</xloc>
-      <yloc>491</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1590,6 +1534,62 @@ if ( (Status.getString() == &quot;Closed&quot;) || (Status.getString() == &quot;
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>298</xloc>
       <yloc>398</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Set status and actual date.</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <compatible>Y</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>&#47;&#47;
+&#47;&#47;  Clean opportunities more (after SQL select clean).  If stage is in closed list, 
+&#47;&#47;  make status closed.  We need to know which are won so if in won list make the 
+&#47;&#47;  status won.  If closed or won, make the actual date the last date set.
+&#47;&#47;
+
+var closedStages = getVariable(&quot;erpi.opportunity.closed&quot;, &quot;&quot;),
+  closedStagesList = closedStages.split(&quot;,&quot;),
+  wonStages = getVariable(&quot;erpi.opportunity.won&quot;, &quot;&quot;),
+  wonStagesList = wonStages.split(&quot;,&quot;);
+
+for (i = 0; i &lt; closedStagesList.length; i++) {
+  if ( Stage.getString() == closedStagesList[i]) {
+    Status.setValue(&quot;Closed&quot;);
+  }
+}
+
+for (i = 0; i &lt; wonStagesList.length; i++) {
+  if ( Stage.getString() == wonStagesList[i]) {
+    Status.setValue(&quot;Won&quot;);
+  }
+}
+
+if ( (Status.getString() == &quot;Closed&quot;) || (Status.getString() == &quot;Won&quot;) ) {
+	if ( Assign_Date.getString() == &quot;01&#47;01&#47;1990&quot; ) {
+		Assign_Date.setValue(Issue_Date.getString());
+	}
+	if ( Target_Date.getString() == &quot;01&#47;01&#47;1990&quot; ) {
+		Target_Date.setValue(Assign_Date.getString());
+	}
+	if ( Actual_Date.getString() == &quot;01&#47;01&#47;1990&quot; ) {
+		Actual_Date.setValue(Target_Date.getString());
+	}
+}</jsScript_script>
+      </jsScript>    </jsScripts>    <fields>    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>302</xloc>
+      <yloc>491</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
