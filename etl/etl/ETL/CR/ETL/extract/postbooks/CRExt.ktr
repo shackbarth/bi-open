@@ -290,6 +290,8 @@ select
 	&apos;${erpi.tenant.id}&apos;															as &quot;Tenant&quot;,
 	CASE WHEN ophead_number = &apos;&apos; THEN &apos;Unspecified&apos;
 		ELSE COALESCE(ophead_number, &apos;Unspecified&apos;) END 									as &quot;ID_Document_NK&quot;,
+	CASE WHEN ophead_name = &apos;&apos; THEN &apos;Unspecified&apos;
+		ELSE COALESCE(ophead_name, &apos;Unspecified&apos;) END 									as &quot;ID_Document_Name&quot;,
 	CASE WHEN ophead_number = &apos;&apos; THEN &apos;Unspecified&apos;
 		ELSE COALESCE(ophead_number, &apos;Unspecified&apos;) END 									as &quot;ID_Trans_Doc_NK&quot;,
 	CASE WHEN ophead_active = true THEN &apos;Active&apos;
@@ -381,6 +383,8 @@ from ophead
 	&apos;${erpi.tenant.id}&apos;																		as &quot;Tenant&quot;,
 	CASE WHEN quhead_number = &apos;&apos; THEN &apos;Unspecified&apos;
 		ELSE COALESCE(quhead_number, &apos;Unspecified&apos;) END 									as &quot;ID_Document_NK&quot;,
+	CASE WHEN cust_name = &apos;&apos; THEN &apos;Unspecified&apos;
+		ELSE COALESCE(cust_name, &apos;Unspecified&apos;) END 									as &quot;ID_Document_Name&quot;,
 	CASE WHEN quhead_number = &apos;&apos; THEN &apos;Unspecified&apos;
 		ELSE COALESCE(quhead_number, &apos;Unspecified&apos;) END 									as &quot;ID_Trans_Doc_NK&quot;, 	
 	(CASE WHEN quhead_number = &apos;&apos; THEN &apos;Unspecified&apos; 
@@ -521,6 +525,18 @@ WHERE (quhead_quotedate &gt;= &apos;${extractstartdate}&apos; OR (quhead_quoteda
       </field>
       <field>
         <name>ID_Document_NK</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>ID_Document_Name</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -836,6 +852,18 @@ WHERE (quhead_quotedate &gt;= &apos;${extractstartdate}&apos; OR (quhead_quoteda
       </field>
       <field>
         <name>ID_Document_NK</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>ID_Document_Name</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1185,6 +1213,10 @@ WHERE (quhead_quotedate &gt;= &apos;${extractstartdate}&apos; OR (quhead_quoteda
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
+      </field>      <field>        <name>ID_Document_Name</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
       </field>      <field>        <name>ID_Trans_Doc_NK</name>
         <rename/>
         <length>-2</length>
@@ -1280,6 +1312,18 @@ WHERE (quhead_quotedate &gt;= &apos;${extractstartdate}&apos; OR (quhead_quoteda
         <storage_type/>
       </meta>      <meta>        <name>ID_Document_NK</name>
         <rename>ID_Document_NK</rename>
+        <type>String</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>ID_Document_Name</name>
+        <rename>ID_Document_Name</rename>
         <type>String</type>
         <length>-2</length>
         <precision>-2</precision>

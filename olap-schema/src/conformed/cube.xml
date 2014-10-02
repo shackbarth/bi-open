@@ -311,7 +311,7 @@
 
   <Dimension highCardinality="false" name="User" caption="&User;">
     <Hierarchy hasAll="true" name="Users by Code" allMemberCaption="&UserCodeAll;" allMemberName="All Users by Code" primaryKey="SURROGATE_K" caption="&UserByCode;">
-	&crm-account-relation;
+	&user-relation;
       <Level name="User Code" caption="&UserCode;" column="ID_NK" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
         <Property name="User Code" caption="&UserKey;" column="ID_NK" type="String">
         </Property>

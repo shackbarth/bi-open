@@ -27,7 +27,7 @@
     <Dimension type="StandardDimension" highCardinality="false" name="Quote" caption="&Quote;">
     <Hierarchy hasAll="true" allMemberCaption="&QuoteKeyAll;" allMemberName="All Quotes" caption ="&QuoteByKey;">
       <Level name="Quote"  caption="&QuoteKey;" column="ID_TRANS_DOC_NK" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
-	  	<Property name="Quote Name" caption="&QuoteName;" column="ID_TRANS_DOC_NK" >
+	  	<Property name="Quote Name" caption="&QuoteName;" column="ID_DOCUMENT_NAME" >
         </Property>
       </Level>
       <Level name="Quote Line Item" caption="&QuoteLineKey;" column="LINE_NK" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
@@ -312,7 +312,7 @@
     <Dimension type="StandardDimension" highCardinality="false" name="Opportunity" caption="&Opportunity;">	
     <Hierarchy hasAll="true" allMemberCaption="&OpportunityAll;" allMemberName="All Opportunities" caption ="&Opportunity;">	
 	  <Level name="Opportunity"  caption="&OpportunityKey;" column="ID_TRANS_DOC_NK" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
-	  	<Property name="Opportunity Name" caption="&OpportunityName;" column="ID_TRANS_DOC_NK" >
+	  	<Property name="Opportunity Name" caption="&OpportunityName;" column="ID_DOCUMENT_NAME" >
         </Property>
       </Level>	
     </Hierarchy>

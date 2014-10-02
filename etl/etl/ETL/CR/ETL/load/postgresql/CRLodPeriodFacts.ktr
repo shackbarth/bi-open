@@ -286,6 +286,21 @@
         <repeat>N</repeat>
       </field>
       <field>
+        <name>ID_DOCUMENT_NAME</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal>N</decimal>
+        <group>none</group>
+        <nullif/>
+        <ifnull/>
+        <position>-1</position>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
         <name>ID_TRANS_DOC_NK</name>
         <type>String</type>
         <format/>
@@ -675,6 +690,11 @@
       <mapping>
         <stream_name>ID_DOCUMENT_NK</stream_name>
         <field_name>ID_DOCUMENT_NK</field_name>
+        <date_mask/>
+      </mapping>
+      <mapping>
+        <stream_name>ID_DOCUMENT_NAME</stream_name>
+        <field_name>ID_DOCUMENT_NAME</field_name>
         <date_mask/>
       </mapping>
       <mapping>
