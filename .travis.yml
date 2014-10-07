@@ -17,19 +17,18 @@ script:
   - git clone https://github.com/xtuple/xtuple.git
   - git clone https://github.com/xtuple/xtuple-extensions.git
 
-  - sudo n 0.8  # TODO no sudo here!
+  # Need to sudo n 0.10 here?
   - cd xtuple-extensions
-  - git checkout 4_7_x
   - git submodule update --init --recursive --quiet
   - npm install --quiet
   - cd ..
   
   - cd xtuple
-  - git checkout v4.6.0-1
   - git submodule update --init --recursive --quiet
   - npm install --quiet
+    # Need to sudo n 0.11 here?
   - sudo xtuple-server install-dev --xt-demo --xt-adminpw admin
-  - sudo n 0.8
+  # Need to sudo n 0.10 here?
   - ./scripts/build_app.js -d demo_dev -e ../xtuple-extensions/source/bi_open
   - cd ..
 
