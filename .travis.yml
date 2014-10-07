@@ -15,9 +15,8 @@ script:
   # The FOSS xtuple-server requires an existing xtuple directory to start working off of
   - cd ..
   - git clone https://github.com/xtuple/xtuple.git
-  - git clone https://github.com/xtuple/xtuple-extensions.git
-
-  # Need to sudo n 0.10 here?
+  - git clone https://github.com/xtuple/xtuple-extensions.gi
+  - sudo n 0.10 here?
   - cd xtuple-extensions
   - git submodule update --init --recursive --quiet
   - npm install --quiet
