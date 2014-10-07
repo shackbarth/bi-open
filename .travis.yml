@@ -16,7 +16,7 @@ script:
   - cd ..
   - git clone https://github.com/xtuple/xtuple.git
   - git clone https://github.com/xtuple/xtuple-extensions.gi
-  - sudo n 0.10 here?
+  - sudo n 0.10
   - cd xtuple-extensions
   - git submodule update --init --recursive --quiet
   - npm install --quiet
@@ -25,9 +25,9 @@ script:
   - cd xtuple
   - git submodule update --init --recursive --quiet
   - npm install --quiet
-    # Need to sudo n 0.11 here?
+  - sudo n 0.11
   - sudo xtuple-server install-dev --xt-demo --xt-adminpw admin
-  # Need to sudo n 0.10 here?
+  - sudo n 0.10
   - ./scripts/build_app.js -d demo_dev -e ../xtuple-extensions/source/bi_open
   - cd ..
 
