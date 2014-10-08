@@ -50,7 +50,8 @@ script:
   - cp ../xtuple/test/lib/login_data.js test/lib/login_data.js
   - npm run-script test-bi_open
 
-after_failure:
+  - cd ..
+  - sudo cat ErpBI/biserver-ce/tomcat/logs/catalina.out
   - sudo cat /var/spool/cron/crontabs/travis
   - sudo cat /var/spool/cron/crontabs/root
   - sudo find / -name xtuple-server.log
