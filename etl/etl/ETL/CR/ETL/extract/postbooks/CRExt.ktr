@@ -344,12 +344,23 @@ select
 	&apos;Unspecified&apos; 																as &quot;Profit_Center&quot;,
 	optype_name																	as &quot;Type&quot;,
 	opstage_name																as &quot;Stage&quot;,
-	crmacct_number																as &quot;CRM_Account&quot;
+	crmacct_number																as &quot;CRM_Account&quot;,
+	CASE WHEN addr_city = &apos;&apos; THEN &apos;Unspecified&apos;
+		ELSE COALESCE(upper(regexp_replace(addr_city, E&apos;\r|\n|;&apos;, &apos;&apos;, &apos;g&apos;)), &apos;Unspecified&apos;) 
+		END																					as &quot;Contact_City&quot;,
+	CASE WHEN addr_state = &apos;&apos; THEN &apos;Unspecified&apos;
+		ELSE COALESCE(upper(regexp_replace(addr_state, E&apos;\r|\n|;&apos;, &apos;&apos;, &apos;g&apos;)), &apos;Unspecified&apos;) 
+		END																					as &quot;Contact_Region&quot;,
+	CASE WHEN addr_country = &apos;&apos; THEN &apos;${erpi.defaultcountry}&apos;
+		ELSE COALESCE(upper(regexp_replace(addr_country, E&apos;\r|\n|;&apos;, &apos;&apos;, &apos;g&apos;)), &apos;${erpi.defaultcountry}&apos;) 
+		END																					as &quot;Contact_Country&quot;
 
 from ophead
   join optype on ophead_optype_id = optype_id									-- opportunity type
   join opstage on ophead_opstage_id = opstage_id								-- opportunity stage
-  join crmacct on ophead_crmacct_id = crmacct_id								-- crm_account
+  join crmacct on ophead_crmacct_id = crmacct_id								-- crm account
+  join cntct on crmacct_cntct_id_1 = cntct_id									-- contact 1
+  join addr on cntct_addr_id = addr_id											-- address
 
 
 	--WHERE (ophead_start_date &gt;= &apos;${extractstartdate}&apos; )
@@ -777,6 +788,42 @@ WHERE (quhead_quotedate &gt;= &apos;${extractstartdate}&apos; OR (quhead_quoteda
       </field>
       <field>
         <name>CRM_Account</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Contact_City</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Contact_Region</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>Contact_Country</name>
         <type>String</type>
         <format/>
         <currency/>
@@ -1297,6 +1344,18 @@ WHERE (quhead_quotedate &gt;= &apos;${extractstartdate}&apos; OR (quhead_quoteda
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
+      </field>      <field>        <name>Contact_City</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Contact_Region</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Contact_Country</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
       </field>        <select_unspecified>N</select_unspecified>
       <meta>        <name>Tenant</name>
         <rename>Tenant</rename>
@@ -1574,10 +1633,46 @@ WHERE (quhead_quotedate &gt;= &apos;${extractstartdate}&apos; OR (quhead_quoteda
         <grouping_symbol/>
         <currency_symbol/>
         <storage_type/>
+      </meta>      <meta>        <name>Contact_City</name>
+        <rename>Contact_City</rename>
+        <type>String</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>Contact_Region</name>
+        <rename>Contact_Region</rename>
+        <type>String</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>Contact_Country</name>
+        <rename>Contact_Country</rename>
+        <type>String</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
       </meta>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>298</xloc>
-      <yloc>398</yloc>
+      <yloc>399</yloc>
       <draw>Y</draw>
       </GUI>
     </step>

@@ -296,7 +296,8 @@ we need to use the actual date or the end of period date.</note>
 		&quot;PROFIT_CENTER_K&quot;, 
        	&quot;CRM_ACCOUNT_K&quot;, 
 		&quot;USER_K&quot;, 
-		&quot;LOCAL_CURRENCY_K&quot;
+		&quot;LOCAL_CURRENCY_K&quot;,
+		&quot;CONTACT_CITY_K&quot;
 FROM 	&quot;ERPI&quot;.&quot;CRM_OPPORTUNITY_FACTS&quot;
 
 LEFT OUTER JOIN
@@ -439,7 +440,7 @@ function writeCache(fromTime, toTime)
 			newCache[i][7] = String(cache[i][6]);
 			newCache[i][8] = String(cache[i][7]);
 			newCache[i][9] = String(cache[i][8]);
-			for (j = 10; j &lt; 25; j++)
+			for (j = 10; j &lt; 26; j++)
 			{
 				newCache[i][j] = Number(cache[i][j]);			
 			}
@@ -507,7 +508,7 @@ cache.push(row);
 &#47;&#47;	If this is the last row, or the fiscal code changes write the cache through erpi.endate.  
 &#47;&#47;  If the fiscal code changes start over again at the begining of time with a new cache
 &#47;&#47;
-if ((row[26] == true) || (row[0] != fiscalCode))
+if ((row[27] == true) || (row[0] != fiscalCode))
 {
 	writeCache(currTime, endTime + 1);
 	var currTime = Number(row[1]);
@@ -906,6 +907,18 @@ trans_Status = SKIP_TRANSFORMATION;
         <precision>0</precision>
       </field>
       <field>
+        <name>CONTACT_CITY_K</name>
+        <type>Integer</type>
+        <format>0000000000000</format>
+        <currency>N</currency>
+        <decimal/>
+        <group>N</group>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>9</length>
+        <precision>0</precision>
+      </field>
+      <field>
         <name>ISSUE_PERIOD_ENDDATE_K</name>
         <type>Integer</type>
         <format>0000000000000</format>
@@ -1037,6 +1050,10 @@ trans_Status = SKIP_TRANSFORMATION;
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>LOCAL_CURRENCY_K</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>CONTACT_CITY_K</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
@@ -1347,6 +1364,18 @@ trans_Status = SKIP_TRANSFORMATION;
         <storage_type/>
       </meta>      <meta>        <name>LOCAL_CURRENCY_K</name>
         <rename>LOCAL_CURRENCY_K</rename>
+        <type>Number</type>
+        <length>9</length>
+        <precision>0</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>CONTACT_CITY_K</name>
+        <rename>CONTACT_CITY_K</rename>
         <type>Number</type>
         <length>9</length>
         <precision>0</precision>

@@ -254,7 +254,8 @@ CREATE TABLE &quot;ERPI&quot;.&quot;CRM_OPPORTUNITY_FACTS&quot;
     &quot;PROFIT_CENTER_K&quot; 			INTEGER NOT NULL,
     &quot;CRM_ACCOUNT_K&quot;     		INTEGER NOT NULL,
     &quot;USER_K&quot;     				INTEGER NOT NULL,
-    &quot;LOCAL_CURRENCY_K&quot; 			INTEGER NOT NULL
+    &quot;LOCAL_CURRENCY_K&quot; 			INTEGER NOT NULL,
+    &quot;CONTACT_CITY_K&quot; 	    	INTEGER NOT NULL
 );
 
  ALTER TABLE &quot;ERPI&quot;.&quot;CRM_OPPORTUNITY_FACTS&quot;
@@ -288,6 +289,10 @@ ADD CONSTRAINT &quot;CRM_OPPORTUNITY_PROFIT_CENTER_FK&quot; FOREIGN KEY (&quot;T
 ALTER TABLE &quot;ERPI&quot;.&quot;CRM_OPPORTUNITY_FACTS&quot;
 ADD CONSTRAINT &quot;CRM_OPPORTUNITY_USER_FK&quot; FOREIGN KEY (&quot;TENANT&quot;,&quot;USER_K&quot;)
     REFERENCES &quot;ERPI&quot;.&quot;USER&quot;(&quot;TENANT&quot;,&quot;SURROGATE_K&quot;);
+
+ALTER TABLE &quot;ERPI&quot;.&quot;CRM_OPPORTUNITY_FACTS&quot;
+ADD CONSTRAINT &quot;CRM_OPPORTUNITY_CONTACT_CITY_FK&quot; FOREIGN KEY (&quot;TENANT&quot;,&quot;CONTACT_CITY_K&quot;)
+    REFERENCES &quot;ERPI&quot;.&quot;GEO_CITIES_DATA&quot;(&quot;TENANT&quot;,&quot;GEO_DATA_K&quot;);
 
 
 &#47;*******************************************************************
@@ -323,7 +328,8 @@ CREATE TABLE &quot;ERPI&quot;.&quot;CRM_OPPORTUNITY_FACTS_BY_PERIOD&quot;
     &quot;CRM_ACCOUNT_K&quot;     		INTEGER NOT NULL,
     &quot;USER_K&quot;     				INTEGER NOT NULL,
     &quot;LOCAL_CURRENCY_K&quot; 			INTEGER NOT NULL,
-  	&quot;ISSUE_PERIOD_ENDDATE_K&quot; 	INTEGER NOT NULL
+  	&quot;ISSUE_PERIOD_ENDDATE_K&quot; 	INTEGER NOT NULL,
+    &quot;CONTACT_CITY_K&quot; 	    	INTEGER NOT NULL
 );
 
  ALTER TABLE &quot;ERPI&quot;.&quot;CRM_OPPORTUNITY_FACTS_BY_PERIOD&quot;
@@ -358,7 +364,11 @@ ADD CONSTRAINT &quot;CRM_OPPORTUNITY_PROFIT_CENTER_FK&quot; FOREIGN KEY (&quot;T
 
 ALTER TABLE &quot;ERPI&quot;.&quot;CRM_OPPORTUNITY_FACTS_BY_PERIOD&quot;
 ADD CONSTRAINT &quot;CRM_OPPORTUNITY_USER_FK&quot; FOREIGN KEY (&quot;TENANT&quot;,&quot;USER_K&quot;)
-    REFERENCES &quot;ERPI&quot;.&quot;USER&quot;(&quot;TENANT&quot;,&quot;SURROGATE_K&quot;);</sql>
+    REFERENCES &quot;ERPI&quot;.&quot;USER&quot;(&quot;TENANT&quot;,&quot;SURROGATE_K&quot;);
+
+ALTER TABLE &quot;ERPI&quot;.&quot;CRM_OPPORTUNITY_FACTS_BY_PERIOD&quot;
+ADD CONSTRAINT &quot;CRM_OPPORTUNITY_CONTACT_CITY_FK&quot; FOREIGN KEY (&quot;TENANT&quot;,&quot;CONTACT_CITY_K&quot;)
+    REFERENCES &quot;ERPI&quot;.&quot;GEO_CITIES_DATA&quot;(&quot;TENANT&quot;,&quot;GEO_DATA_K&quot;);</sql>
     <insert_field/>
     <update_field/>
     <delete_field/>

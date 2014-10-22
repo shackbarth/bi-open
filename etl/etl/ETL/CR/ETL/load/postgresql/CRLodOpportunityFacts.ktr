@@ -547,6 +547,21 @@ records.</note>
         <trim_type>none</trim_type>
         <repeat>N</repeat>
       </field>
+      <field>
+        <name>Contact_City_K</name>
+        <type>-</type>
+        <format>Integer</format>
+        <currency/>
+        <decimal>N</decimal>
+        <group/>
+        <nullif/>
+        <ifnull/>
+        <position>9</position>
+        <length>0</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
     </fields>
     <limit>0</limit>
     <error_ignored>N</error_ignored>
@@ -712,6 +727,11 @@ records.</note>
       <mapping>
         <stream_name>CRM_ACCOUNT_K</stream_name>
         <field_name>CRM_Account_K</field_name>
+        <date_mask/>
+      </mapping>
+      <mapping>
+        <stream_name>Contact_City_K</stream_name>
+        <field_name>Contact_City_K</field_name>
         <date_mask/>
       </mapping>
      <cluster_schema/>
