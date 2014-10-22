@@ -16,20 +16,18 @@ script:
   - cd ..
   - git clone https://github.com/xtuple/xtuple.git
   - git clone https://github.com/xtuple/xtuple-extensions.git
-
-  - sudo n 0.8  # TODO no sudo here!
+  - sudo n 0.10
   - cd xtuple-extensions
-  - git checkout 4_7_x
   - git submodule update --init --recursive --quiet
   - npm install --quiet
   - cd ..
   
   - cd xtuple
-  - git checkout v4.6.0-1
   - git submodule update --init --recursive --quiet
   - npm install --quiet
+  - sudo n 0.11
   - sudo xtuple-server install-dev --xt-demo --xt-adminpw admin
-  - sudo n 0.8
+  - sudo n 0.10
   - ./scripts/build_app.js -d demo_dev -e ../xtuple-extensions/source/bi_open
   - cd ..
 
@@ -48,13 +46,9 @@ script:
 
   # Run a test to make sure that BI is accessible and the ETL worked
   - cd xtuple-extensions
-  #- cat test/lib/sample_login_data.js | sed 's#org:.*#org: \"demo_dev\",#' > test/lib/login_data.js
   - cp ../xtuple/test/lib/login_data.js test/lib/login_data.js
   - npm run-script test-bi_open
 
-after_failure:
-  - sudo cat /var/spool/cron/crontabs/travis
-  - sudo cat /var/spool/cron/crontabs/root
-  - sudo find / -name xtuple-server.log
-  - sudo cat xtuple-server.log
+  - cd ..
+  - sudo cat ErpBI/biserver-ce/tomcat/logs/catalina.out
   - env

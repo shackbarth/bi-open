@@ -183,6 +183,11 @@ records.</note>
         <date_mask/>
       </mapping>
       <mapping>
+        <stream_name>ID_Document_Name</stream_name>
+        <field_name>ID_Document_Name</field_name>
+        <date_mask/>
+      </mapping>
+      <mapping>
         <stream_name>ID_Trans_Doc_NK</stream_name>
         <field_name>ID_Trans_Doc_NK</field_name>
         <date_mask/>
@@ -381,6 +386,21 @@ records.</note>
         <length>-1</length>
         <precision>-1</precision>
         <trim_type>both</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>ID_Document_Name</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <ifnull/>
+        <position>-1</position>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
         <repeat>N</repeat>
       </field>
       <field>

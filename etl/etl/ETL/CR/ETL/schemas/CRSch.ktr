@@ -156,6 +156,7 @@ CREATE TABLE &quot;ERPI&quot;.&quot;CRM_QUOTE_FACTS&quot;
 (
 	&quot;TENANT&quot;			VARCHAR(128) NOT NULL,
     &quot;ID_DOCUMENT_NK&quot; 	VARCHAR(30) NOT NULL DEFAULT &apos;Unspecified&apos;,		&#47;* quote document - degenerate *&#47;
+    &quot;ID_DOCUMENT_NAME&quot; 	VARCHAR(128) NOT NULL DEFAULT &apos;Unspecified&apos;,	&#47;* quote document name - degenerate dimension *&#47;
     &quot;ID_TRANS_DOC_NK&quot; 	VARCHAR(30) NOT NULL DEFAULT &apos;Unspecified&apos;,		&#47;* placeholder for opportunity document - degenerate *&#47;	
     &quot;LINE_NK&quot; 			VARCHAR(30) NOT NULL DEFAULT &apos;Unspecified&apos;,		&#47;* document line - degenerate  *&#47;
     &quot;STATUS&quot; 			VARCHAR(30) NOT NULL DEFAULT &apos;Unspecified&apos;,		&#47;* status - degenerate  *&#47;
@@ -233,6 +234,7 @@ CREATE TABLE &quot;ERPI&quot;.&quot;CRM_OPPORTUNITY_FACTS&quot;
 (
 	&quot;TENANT&quot;					VARCHAR(128) NOT NULL,
     &quot;ID_DOCUMENT_NK&quot; 			VARCHAR(128) NOT NULL DEFAULT &apos;Unspecified&apos;,		&#47;* opportunity document - degenerate dimension *&#47;
+    &quot;ID_DOCUMENT_NAME&quot; 			VARCHAR(128) NOT NULL DEFAULT &apos;Unspecified&apos;,		&#47;* opportunity document name - degenerate dimension *&#47;
     &quot;ID_TRANS_DOC_NK&quot; 			VARCHAR(128) NOT NULL DEFAULT &apos;Unspecified&apos;,		&#47;* placeholder for lead document - degenerate *&#47;	
     &quot;STATUS&quot; 					VARCHAR(30) NOT NULL DEFAULT &apos;Unspecified&apos;,		&#47;* level for degenerate opportunity dimension  *&#47;
     &quot;TYPE&quot; 						VARCHAR(30) NOT NULL DEFAULT &apos;Unspecified&apos;,		&#47;* level for degenerate opportunity dimension  *&#47;
@@ -300,6 +302,7 @@ CREATE TABLE &quot;ERPI&quot;.&quot;CRM_OPPORTUNITY_FACTS_BY_PERIOD&quot;
 	&quot;ACTUAL_FISCAL_PERIOD_K&quot; 	INTEGER NOT NULL,
 	&quot;ENDDATE_K&quot; 				INTEGER NOT NULL,
     &quot;ID_DOCUMENT_NK&quot; 			VARCHAR(128) NOT NULL DEFAULT &apos;Unspecified&apos;,		&#47;* opportunity document - degenerate dimension *&#47;
+    &quot;ID_DOCUMENT_NAME&quot; 			VARCHAR(128) NOT NULL DEFAULT &apos;Unspecified&apos;,		&#47;* opportunity document name - degenerate dimension *&#47;
     &quot;ID_TRANS_DOC_NK&quot; 			VARCHAR(128) NOT NULL DEFAULT &apos;Unspecified&apos;,		&#47;* placeholder for lead document - degenerate *&#47;	
     &quot;STATUS&quot; 					VARCHAR(30) NOT NULL DEFAULT &apos;Unspecified&apos;,		&#47;* level for degenerate opportunity dimension  *&#47;
     &quot;TYPE&quot; 						VARCHAR(30) NOT NULL DEFAULT &apos;Unspecified&apos;,		&#47;* level for degenerate opportunity dimension  *&#47;
