@@ -34,7 +34,7 @@ COMMONNAME=$(hostname)
 CREATE=Y
 INCREMENTAL=N
 
-while getopts ":ieblmuxyd:U:g:P:t:n:j:z:h:p:c:o:r:k:" opt; do
+while getopts ":ieblmuxydz:U:g:P:t:n:j:h:p:c:o:r:k:" opt; do
   case $opt in
     e)
       # Install ErpBI and configure
