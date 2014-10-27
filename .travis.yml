@@ -33,7 +33,7 @@ script:
 
   # Install BI and perform ETL
   - cd bi-open/scripts
-  - travis_wait bash build_bi.sh -ebm -c ../../xtuple/node-datasource/config.js -d demo_dev -P admin
+  - bash build_bi.sh -ebm -c ../../xtuple/node-datasource/config.js -d demo_dev -P admin
   - bash build_bi.sh -l -c ../../xtuple/node-datasource/config.js -d demo_dev -P admin
   - bash start_bi.sh
   - cd ../../
