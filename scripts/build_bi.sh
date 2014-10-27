@@ -27,6 +27,7 @@ DATABASEPASSWORD=admin
 DATABASEPORT=5432
 DATABASELOADPORT=5432
 DATABASESSL=
+DOWNLOAD=Y
 TENANT=default
 CITIES=democities.txt
 COMMONNAME=$(hostname)
@@ -120,8 +121,8 @@ while getopts ":ieblmuxyd:U:g:P:t:n:j:z:h:p:c:o:r:k:" opt; do
       CREATE=N
       ;;
     z)
-      # ErpBI.zip path
-      export ERPBIPATH=$OPTARG
+      # Do not download Pentaho zip files
+      DOWNLOAD=N
       ;;  
     \?)
       log "Invalid option: -"$OPTARG
@@ -223,31 +224,40 @@ install_packages () {
 download_files () {
 	log ""
 	log "######################################################"
-	log "Download ErpBI, set permissions and generate keystore "
+	log "Download ErpBI zip files, generate keystore "
 	log "and truststore for SSL with self signed cert using    "
 	log "common name "$COMMONNAME
 	log "######################################################"
 	log ""
-
-	rm -R ../../ErpBI	
-	if  [ $ERPBIPATH ]
+	
+	rm -rf ../../ErpBI	
+	if  [ "$DOWNLOAD" = "Y" ]
 	then
-		log ""
-		log "######################################################"
-		log "Unzipping "$ERPBIPATH
-		log "######################################################"
-		log ""
-		unzip -q $ERPBIPATH -d ../..
-	else
-		rm ../../ErpBI.zip
-		wget http://sourceforge.net/projects/erpbi/files/candidate-release/ErpBI.zip/download -O  ../../ErpBI.zip -nv
-		log ""
-		log "######################################################"
-		log "Unzipping ErpBI.zip"
-		log "######################################################"
-		log ""
-		unzip -q ../../ErpBI.zip -d ../..
-	fi		
+		rm  -f ../../ErpBI.zip
+		wget http://sourceforge.net/projects/erpbi/files/bundles/ErpBI.zip/download -O  ../../ErpBI.zip -nv
+		rm  -f ../../biserver-ce.zip
+		wget http://sourceforge.net/projects/erpbi/files/bundles/biserver-ce.zip/download -O  ../../biserver-ce.zip -nv
+		rm  -f ../../data-integration.zip
+		wget http://sourceforge.net/projects/erpbi/files/bundles/data-integration.zip/download -O  ../../data-integration.zip -nv
+	fi
+	log ""
+	log "######################################################"
+	log "Unzipping ErpBI.zip"
+	log "######################################################"
+	log ""
+	unzip -q ../../ErpBI.zip -d ../..
+	log ""
+	log "######################################################"
+	log "Unzipping biserver-ce.zip"
+	log "######################################################"
+	log ""
+	unzip -q ../../biserver-ce.zip -d ../../ErpBI
+	log ""
+	log "######################################################"
+	log "Unzipping data-integration.zip"
+	log "######################################################"
+	log ""
+	unzip -q ../../data-integration.zip -d ../../ErpBI
 
 	cdir $BISERVER_HOME/biserver-ce/
 	chmod 755 -R . 2>&1 | tee -a $LOG_FILE
@@ -355,7 +365,8 @@ load_pentaho() {
 	sed s'#erpi.datamart.port.*#erpi.datamart.port='$DATABASELOADPORT'#' | \
 	sed s'#erpi.datamart.url=.*#erpi.datamart.url=jdbc\:postgresql\://localhost\:'$DATABASELOADPORT'/erpbi#' | \
 	sed s'#erpi.cities.file.*#erpi.cities.file='$CITIES'#' | \
-	sed s'#erpi.tenant.id=.*#erpi.tenant.id='$TENANT'.'$DATABASE'#' | \
+	#sed s'#erpi.tenant.id=.*#erpi.tenant.id='$TENANT'.'$DATABASE'#' | 
+	sed s'#erpi.tenant.id=.*#erpi.tenant.id='default.dev'#' | \
 	sed s'#erpi.datamart.create=.*#erpi.datamart.create='$CREATE'#' | \
 	sed s'#erpi.loaderpath=.*#erpi.loaderpath='$PSGLOCATION'#' | \
 	sed s'#erpi.incremental=.*#erpi.incremental='$INCREMENTAL'#' \
