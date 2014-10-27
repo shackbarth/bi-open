@@ -34,7 +34,7 @@ COMMONNAME=$(hostname)
 CREATE=Y
 INCREMENTAL=N
 
-while getopts ":ieblmuxydz:U:g:P:t:n:j:h:p:c:o:r:k:" opt; do
+while getopts ":ieblmuxyzd:U:g:P:t:n:j:h:p:c:o:r:k:" opt; do
   case $opt in
     e)
       # Install ErpBI and configure
@@ -122,7 +122,7 @@ while getopts ":ieblmuxydz:U:g:P:t:n:j:h:p:c:o:r:k:" opt; do
       ;;
     z)
       # Do not download Pentaho zip files
-      DOWNLOAD=N
+      GETZIPS=N
       ;;  
     \?)
       log "Invalid option: -"$OPTARG
@@ -148,13 +148,31 @@ then
 	CREATE=N
 fi
 
-if  [ $ERPBIPATH ]
+if  [ "$GETZIPS" = "N" ]
 then
-	if   ! test -f $ERPBIPATH  
+	if   ! test -f ../../ErpBI.zip  
 	then
 		log ""
 		log "####################################################################################"
-		log "Sorry can't find ErpBI.zip at "$ERPBIPATH
+		log "Sorry can't find ErpBI.zip
+		log "####################################################################################"
+		log ""
+		exit 1
+	fi
+	if   ! test -f ../../biserver-ce.zip  
+	then
+		log ""
+		log "####################################################################################"
+		log "Sorry can't find biserver-ce.zip
+		log "####################################################################################"
+		log ""
+		exit 1
+	fi
+	if   ! test -f ../../data-integration.zip  
+	then
+		log ""
+		log "####################################################################################"
+		log "Sorry can't find ../../data-integration.zip
 		log "####################################################################################"
 		log ""
 		exit 1
