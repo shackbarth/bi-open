@@ -27,7 +27,7 @@ DATABASEPASSWORD=admin
 DATABASEPORT=5432
 DATABASELOADPORT=5432
 DATABASESSL=
-DOWNLOAD=Y
+GETZIPS=Y
 TENANT=default
 CITIES=democities.txt
 COMMONNAME=$(hostname)
@@ -231,7 +231,7 @@ download_files () {
 	log ""
 	
 	rm -rf ../../ErpBI	
-	if  [ "$DOWNLOAD" = "Y" ]
+	if  [ "$GETZIPS" = "Y" ]
 	then
 		rm  -f ../../ErpBI.zip
 		wget http://sourceforge.net/projects/erpbi/files/bundles/ErpBI.zip/download -O  ../../ErpBI.zip -nv
