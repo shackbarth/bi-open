@@ -365,8 +365,8 @@ load_pentaho() {
 	sed s'#erpi.datamart.port.*#erpi.datamart.port='$DATABASELOADPORT'#' | \
 	sed s'#erpi.datamart.url=.*#erpi.datamart.url=jdbc\:postgresql\://localhost\:'$DATABASELOADPORT'/erpbi#' | \
 	sed s'#erpi.cities.file.*#erpi.cities.file='$CITIES'#' | \
-	sed s'#erpi.tenant.id=.*#erpi.tenant.id='$TENANT'.'$DATABASE'#' | \ 
-	#sed s'#erpi.tenant.id=.*#erpi.tenant.id='default.dev'#' | 
+	sed s'#erpi.tenant.id=.*#erpi.tenant.id='$TENANT'.'$DATABASE'#' | \
+	#sed s'#erpi.tenant.id=.*#erpi.tenant.id='default.dev'#' |
 	sed s'#erpi.datamart.create=.*#erpi.datamart.create='$CREATE'#' | \
 	sed s'#erpi.loaderpath=.*#erpi.loaderpath='$PSGLOCATION'#' | \
 	sed s'#erpi.incremental=.*#erpi.incremental='$INCREMENTAL'#' \
