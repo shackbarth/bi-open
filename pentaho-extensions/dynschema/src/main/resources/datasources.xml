@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<DataSources> 
+  <DataSource> 
+    <DataSourceName>Provider=Mondrian;DataSource=Pentaho</DataSourceName>  
+    <DataSourceDescription>Pentaho BI Platform Datasources</DataSourceDescription>  
+    <URL>http://localhost:8080/pentaho/Xmla?userid=joe&amp;password=password</URL>  
+    <DataSourceInfo>Provider=mondrian</DataSourceInfo>  
+    <ProviderName>PentahoXMLA</ProviderName>  
+    <ProviderType>MDP</ProviderType>  
+    <AuthenticationMode>Unauthenticated</AuthenticationMode>  
+    <Catalogs> 
+    <!--
+      <Catalog name="SteelWheels"> 
+        <DataSourceInfo>Provider=mondrian;DataSource=SampleData</DataSourceInfo>  
+        <Definition>solution:steel-wheels/analysis/steelwheels.mondrian.xml</Definition> 
+      </Catalog>  
+      <Catalog name="SampleData"> 
+        <DataSourceInfo>Provider=mondrian;DataSource=SampleData</DataSourceInfo>  
+        <Definition>solution:steel-wheels/analysis/SampleData.mondrian.xml</Definition> 
+      </Catalog>
+     -->
+     <!--
+     	Define xTuple datasource with support for dynamic schema generation.  Datasource must be
+     	enabled for xmla:
+     		 - ProviderName : PentahoXMLA, ProviderType : MDP 
+     		 - Catalog name must match the Schema name (in the schema)
+     		 - Only solution: paths are supported.
+     		 - Don't ask me how I learned this.
+     -->
+		<Catalog name="xTuple"> 
+			<DataSourceInfo>Provider=mondrian;DataSource=erpi;DynamicSchemaProcessor=com.xtuple.dynschema.ParameterDynamicSchemaProcessor;UseContentChecksum=true</DataSourceInfo>  
+	        <Definition>solution:/erpbi-reports/olap-schema/erpi-schema.xml</Definition> 
+		</Catalog>
+ 
+    </Catalogs> 
+  </DataSource> 
+</DataSources>

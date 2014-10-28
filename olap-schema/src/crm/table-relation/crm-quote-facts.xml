@@ -1,0 +1,46 @@
+    <Table name="CRM_QUOTE_FACTS" schema="ERPI">
+			<AggName name="AGG_NOITEM_CRM_QUOTE_FACTS" schema="ERPI">
+				<AggFactCount column="FACT_COUNT">
+				</AggFactCount>
+				<AggForeignKey factColumn="CUSTOMER_K" aggColumn="CUSTOMER_K">
+				</AggForeignKey>
+				<!-- xTuple does not have these dimensions
+				<AggForeignKey factColumn="COMPANY_K" aggColumn="COMPANY_K">
+				</AggForeignKey>
+				<AggForeignKey factColumn="DIVISION_K" aggColumn="DIVISION_K">
+				</AggForeignKey>
+				<AggForeignKey factColumn="BUSINESS_UNIT_K" aggColumn="BUSINESS_UNIT_K">
+				</AggForeignKey>
+				<AggForeignKey factColumn="PROFIT_CENTER_K" aggColumn="PROFIT_CENTER_K">
+				</AggForeignKey>
+				-->
+				<AggForeignKey factColumn="ACCOUNT_REP_K" aggColumn="ACCOUNT_REP_K">
+				</AggForeignKey>
+				<AggForeignKey factColumn="BILL_CITY_K" aggColumn="BILL_CITY_K">
+				</AggForeignKey>
+				<AggForeignKey factColumn="SHIP_CITY_K" aggColumn="SHIP_CITY_K">
+				</AggForeignKey>
+				<AggMeasure column="AMOUNT" name="[Measures].[Amount, Order Gross]">
+				</AggMeasure>
+				<!-- This actually the "customer's" list do the the term might be confusing
+				<AggMeasure column="AMOUNT_LIST" name="[Measures].[Amount, Order Gross List]">
+				</AggMeasure>
+				-->
+				<AggMeasure column="QUANTITY_ORDER" name="[Measures].[Amount, Order Quantity]">
+				</AggMeasure>
+				<AggMeasure column="ID_DOCUMENT_NK" name="[Measures].[Count, Orders]">
+				</AggMeasure>
+				<AggMeasure column="DAYS_ORDER_DATE" name="[Measures].[Days Order Date]">
+				</AggMeasure>
+				<AggMeasure column="DAYS_PROMISE_DATE" name="[Measures].[Days Promise Date]">
+				</AggMeasure>
+				<AggLevel column="ORDERDATE_YEAR" name="[Order Date.Calendar].[Year]">
+				</AggLevel>
+				<AggLevel column="ORDERDATE_PERIOD" name="[Order Date.Calendar].[Period]">
+				</AggLevel>
+				<AggLevel column="PROMISEDATE_YEAR" name="[Promise Date.Calendar].[Year]">
+				</AggLevel>
+				<AggLevel column="PROMISEDATE_PERIOD" name="[Promise Date.Calendar].[Period]">
+				</AggLevel>
+			</AggName>
+	</Table>

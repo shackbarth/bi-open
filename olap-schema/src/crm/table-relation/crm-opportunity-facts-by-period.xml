@@ -1,0 +1,5 @@
+    <Table name="CRM_OPPORTUNITY_FACTS_BY_PERIOD" schema="ERPI">
+			<AggName name="AGG_NO?_CRM_QUOTE_FACTS" schema="ERPI">
+
+			</AggName>
+	</Table>

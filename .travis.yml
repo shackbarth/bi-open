@@ -1,0 +1,54 @@
+language: c
+
+cache:
+  directories:
+      - ../ErpBI.zip
+      - ~/.npm
+
+script:
+  # Bootstrap
+  - wget git.io/hikK5g -qO- | sudo bash
+  
+  # Install server. Can't use npm because of user propmt?
+  - npm install -g xtuple-server
+
+  # The FOSS xtuple-server requires an existing xtuple directory to start working off of
+  - cd ..
+  - git clone https://github.com/xtuple/xtuple.git
+  - git clone https://github.com/xtuple/xtuple-extensions.git
+  - sudo n 0.10
+  - cd xtuple-extensions
+  - git submodule update --init --recursive --quiet
+  - npm install --quiet
+  - cd ..
+  
+  - cd xtuple
+  - git submodule update --init --recursive --quiet
+  - npm install --quiet
+  - sudo n 0.11
+  - sudo xtuple-server install-dev --xt-demo --xt-adminpw admin
+  - sudo n 0.10
+  - ./scripts/build_app.js -d demo_dev -e ../xtuple-extensions/source/bi_open
+  - cd ..
+
+  # Install BI and perform ETL
+  - cd bi-open/scripts
+  - bash build_bi.sh -ebm -c ../../xtuple/node-datasource/config.js -d demo_dev -P admin
+  - bash build_bi.sh -l -c ../../xtuple/node-datasource/config.js -d demo_dev -P admin
+  - bash start_bi.sh
+  - cd ../../
+
+  # Start the app.
+  - cd xtuple
+  - node node-datasource/main.js &
+  - sleep 10
+  - cd ..
+
+  # Run a test to make sure that BI is accessible and the ETL worked
+  - cd xtuple-extensions
+  - cp ../xtuple/test/lib/login_data.js test/lib/login_data.js
+  - npm run-script test-bi_open
+
+  - cd ..
+  - sudo cat ErpBI/biserver-ce/tomcat/logs/catalina.out
+  - env
