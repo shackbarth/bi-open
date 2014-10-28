@@ -553,6 +553,52 @@
       </Hierarchy>
     </Dimension>
 	
+	  <Dimension name="Contact City" caption="&CityContact;" foreignKey="CONTACT_CITY_K" highCardinality="false" >
+		<Hierarchy hasAll="true" allMemberCaption="&CityContactAll;" allMemberName="All Contact Cities" primaryKey="GEO_DATA_K" caption="&CityContactByRegionByCountry;">
+			&contact-city-relation;
+		  <Level name="Country Name" caption="&CityCountryName;" column="COUNTRY_NAME" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+			<Annotations>
+				<Annotation name="Data.Role">Geography</Annotation>
+				<Annotation name="Geo.Role">country</Annotation>
+			</Annotations>
+		  </Level>
+		  <Level name="Region Code" caption="&CityRegionCode;" column="REGION_CODE_ISO" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+			<Annotations>
+				<Annotation name="Data.Role">Geography</Annotation>
+				<Annotation name="Geo.Role">state</Annotation>
+			</Annotations>
+			<Property name="Region Name" caption="&RegionName;" column="REGION_CODE" type="String">
+			</Property>
+		  </Level>
+		  <Level name="City Name" caption="&CityName;" column="CITY_ACCENT_NAME" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+			<Property name="Longitude" caption="&CityLogitude;" column="LONGITUDE" type="Numeric">
+			</Property>
+			<Property name="Latitude" caption="&CityLatitude;" column="LATITUDE" type="Numeric">
+			</Property>
+			<Property name="Name" caption="&CityName;" column="CITY_NAME" >
+			</Property>
+			<Property name="Region" caption="&CityRegionCode;" column="REGION_CODE_ISO" >
+			</Property>
+		<Annotations>
+				<Annotation name="Data.Role">Geography</Annotation>
+				<Annotation name="Geo.Role">city</Annotation>
+		</Annotations>
+		  </Level>
+		</Hierarchy>
+		<Hierarchy name="Contact Region" hasAll="true" allMemberCaption="&RegionContactAll;" allMemberName="All Contact Regions" primaryKey="GEO_DATA_K" caption="&RegionContact;">
+			&bill-city-relation;
+		  <Level name="Region Code" caption="&CityRegionCode;" column="REGION_CODE" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
+			<Property name="Region Name" caption="&RegionName;" column="REGION_CODE" type="String">
+			</Property>
+		<Annotations>
+				<Annotation name="Data.Role">Geography</Annotation>
+				<Annotation name="Geo.Role">state</Annotation>
+		</Annotations> 
+		  </Level>
+		</Hierarchy>
+	  </Dimension>
+
+	
     <Measure name="Amount, Opportunity Gross" caption="&OpportunityAmount;" column="AMOUNT" formatString="&FormatCurrency;" aggregator="sum">
     </Measure>
     <Measure name="Amount, Opportunity Weighted" caption="&OpportunityAmountWeighted;" column="AMOUNT_WEIGHTED" formatString="&FormatCurrency;" aggregator="sum">

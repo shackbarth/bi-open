@@ -126,6 +126,10 @@
 <!ENTITY CityShipAll "All Ship-To Cities">
 <!ENTITY CityShipByRegionByCountry "Ship-To Cities by Region by Country">
 <!ENTITY CityShipName "City">
+<!ENTITY CityContact "Contact City">
+<!ENTITY CityContactAll "All Contact Cities">
+<!ENTITY CityContactByRegionByCountry "Contact Cities by Region by Country">
+<!ENTITY CityContactName "City">
 <!ENTITY CityCountryName "Country">
 <!ENTITY CityRegionCode "Region">
 <!ENTITY CityName "City">
@@ -136,6 +140,8 @@
 <!ENTITY RegionBillAll "All Bill-To States">
 <!ENTITY RegionShip "Ship-To Region">
 <!ENTITY RegionShipAll "All Ship-To Regions">
+<!ENTITY RegionContact "Contact Region">
+<!ENTITY RegionContactAll "All Contact Regions">
 <!ENTITY RegionName "Region">
 
 <!ENTITY BusinessUnit "Business Unit">

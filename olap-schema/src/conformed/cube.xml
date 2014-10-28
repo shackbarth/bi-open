@@ -296,7 +296,7 @@
   </Dimension>
   
   <Dimension highCardinality="false" name="CRM Account" caption="&CrmAccount;">
-    <Hierarchy hasAll="true" name="Account Reps by Code" allMemberCaption="&CrmAccountCodeAll;" allMemberName="All CRM Accounts by Code" primaryKey="SURROGATE_K" caption="&CrmAccountByCode;">
+    <Hierarchy hasAll="true" name="CRM Accounts by Code" allMemberCaption="&CrmAccountCodeAll;" allMemberName="All CRM Accounts by Code" primaryKey="SURROGATE_K" caption="&CrmAccountByCode;">
 	&crm-account-relation;
       <Level name="CRM Account Code" caption="&CrmAccountCode;" column="ID_NK" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never">
         <Property name="CRM Account Code" caption="&CrmAccountKey;" column="ID_NK" type="String">
