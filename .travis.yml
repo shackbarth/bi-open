@@ -52,8 +52,4 @@ script:
 
   - cd ..
   - sudo cat ErpBI/biserver-ce/tomcat/logs/catalina.out
-  - sudo cat /var/spool/cron/crontabs/travis
-  - sudo cat /var/spool/cron/crontabs/root
-  - sudo find / -name xtuple-server.log
-  - sudo cat xtuple-server.log
   - env
